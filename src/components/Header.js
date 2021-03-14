@@ -6,7 +6,9 @@ class Header extends Component {
         if (header === "") {
             return <br/>
         } else if (header === "NAME") {
-            return this.props.currentPlant.name
+            return (
+                `${this.props.currentPlant.name} the ${this.props.currentPlant.species}`
+            )
         } else if (header === "Plants") {
             return "Plants"
         }
