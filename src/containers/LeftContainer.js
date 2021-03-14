@@ -13,7 +13,8 @@ class LeftContainer extends Component {
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
                 <Header header={this.props.header} />
                 <div className="border-t border-gray-200">
-                    {this.renderPlants()}
+                    {this.props.loadingState === "successfull" ? this.renderPlants() : "loading spinner"}
+                    {/* ATTN loading spinner needs to be added and styled */}
                 </div>
             </div>
         )
