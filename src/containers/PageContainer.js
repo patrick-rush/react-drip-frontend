@@ -13,10 +13,8 @@ class PageContainer extends Component {
     render() {
         return (
             <>
-                <div className="pl-10 pt-5 mx-auto sm:grid grid-cols-3 gap-4 my-4">
+                <div className="pl-10 pr-10 pt-5 mx-auto sm:grid grid-cols-3 gap-4 my-4">
                     <PlantIndexContainer history={this.props.history}/>
-                </div>
-                <div className="bg-white sm:min-h-screen col-span-2 rounded-md shadow">
                     <PlantShowContainer />
                 </div>
                 {/* <section id="flash" class="rounded-md -m-10 h-10 col-span-3 py-2 pl-4 opacity-0 transition-opacity duration-500"></section> */}
