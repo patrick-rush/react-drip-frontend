@@ -11,6 +11,8 @@ class Header extends Component {
             )
         } else if (header === "Plants") {
             return "Plants"
+        } else {
+            return header
         }
     }
     
