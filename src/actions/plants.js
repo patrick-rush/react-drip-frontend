@@ -1,6 +1,8 @@
 import {
     START_LOADING_PLANTS,
     SUCCESSFULLY_LOADED_PLANTS,
+    START_ADDING_PLANT,
+    SUCCESSFULLY_ADDED_PLANT
 } from '.';
 
 export const fetchPlants = () => {
@@ -12,6 +14,27 @@ export const fetchPlants = () => {
                 dispatch({
                     type: SUCCESSFULLY_LOADED_PLANTS,
                     payload: plantsJson
+                })
+            });
+    };
+};
+
+export const addPlant = (plant) => {
+    return (dispatch) => {
+        dispatch({ type: START_ADDING_PLANT })
+        fetch("http://localhost:3000/plants", {
+            method: "POST",
+            headers: {
+                "Accept" : "application/json",
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({plant: plant})
+        })
+            .then(res => res.json())
+            .then((plantJson) => {
+                dispatch({
+                    type: SUCCESSFULLY_ADDED_PLANT,
+                    payload: plantJson
                 })
             });
     };

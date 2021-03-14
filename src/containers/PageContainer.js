@@ -31,7 +31,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPlants: () => dispatch(fetchPlants()),
+        fetchPlants: () => dispatch(fetchPlants())
     }
 }
 
