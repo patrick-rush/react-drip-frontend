@@ -8,7 +8,7 @@ const initialState = {
     plants: []
 };
 
-export default function puzzlesReducer(state = initialState, action) {
+export default function plantsReducer(state = initialState, action) {
     switch (action.type) {
         case START_LOADING_PLANTS: 
             return {
