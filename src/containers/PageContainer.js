@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PlantIndexContainer from './PlantIndexContainer';
+import LeftContainer from './LeftContainer';
 import { connect } from 'react-redux';
 import { fetchPlants } from '../actions/plants';
-import PlantShowContainer from './PlantShowContainer'
+import RightContainer from './RightContainer'
 
 class PageContainer extends Component {
 
@@ -14,8 +14,8 @@ class PageContainer extends Component {
         return (
             <>
                 <div className="pl-10 pr-10 pt-5 mx-auto sm:grid grid-cols-3 gap-4 my-4">
-                    <PlantIndexContainer history={this.props.history}/>
-                    <PlantShowContainer />
+                    <LeftContainer history={this.props.history}/>
+                    <RightContainer />
                 </div>
                 {/* <section id="flash" class="rounded-md -m-10 h-10 col-span-3 py-2 pl-4 opacity-0 transition-opacity duration-500"></section> */}
             </>
