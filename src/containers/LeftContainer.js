@@ -29,7 +29,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        selectPlant: () => dispatch(manageNavigation("plant"))
+        selectPlant: (plantId) => dispatch(manageNavigation("plant", plantId))
     }
 }
 

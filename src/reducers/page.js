@@ -4,7 +4,7 @@ import {
 } from '../actions';
 
 const initialState = {
-    leftHeader: "",
+    leftHeader: "Plants",
     rightHeader: ""
 };
 
@@ -13,7 +13,7 @@ export default function pageReducer(state = initialState, action) {
         case SET_PAGE_TO_WELCOME: 
             return {
                 ...state,
-                leftHeader: "",
+                leftHeader: "Plants",
                 rightHeader: ""
             }
         case SET_PAGE_TO_SHOW_PLANT: 

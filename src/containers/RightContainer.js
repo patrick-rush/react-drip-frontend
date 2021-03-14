@@ -7,7 +7,7 @@ class RightContainer extends Component {
     render() {
         return (
             <div className="overflow-hidden bg-white sm:min-h-screen col-span-2 rounded-md shadow">
-                <Header header={this.props.header}/>
+                <Header header={this.props.header} currentPlant={this.props.currentPlant}/>
                 <div className="border-t border-gray-200">
                     <Welcome />
                 </div>
@@ -18,7 +18,8 @@ class RightContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        header: state.page.leftHeader
+        header: state.page.rightHeader,
+        currentPlant: state.plants.currentPlant
     }
 }
 

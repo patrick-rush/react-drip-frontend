@@ -1,11 +1,13 @@
 import {
     START_LOADING_PLANTS,
     SUCCESSFULLY_LOADED_PLANTS,
+    SET_CURRENT_PLANT
 } from '../actions';
 
 const initialState = {
     loadingState: "notStarted",
-    plants: []
+    plants: [],
+    currentPlant: null
 };
 
 export default function plantsReducer(state = initialState, action) {
@@ -20,6 +22,12 @@ export default function plantsReducer(state = initialState, action) {
                 loadingState: "successfull",
                 plants: action.payload
             }
+        case SET_CURRENT_PLANT: 
+            return {
+                ...state,
+                currentPlant: state.plants.filter(plant => plant.id === action.payload)[0]
+            }
+
         default:
             return state;
     }

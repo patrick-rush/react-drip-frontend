@@ -6,6 +6,8 @@ import {
   NavLink
 } from 'react-router-dom';
 import PageContainer from './containers/PageContainer';
+import { connect } from 'react-redux'
+import { manageNavigation } from './actions/page'
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
                     <NavLink 
                       exact
                       to="/"
+                      // onClick={this.manageNavigation("welcome")}
                       className="hover:bg-green-700 hover:text-white bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium"
                       activeClassName="text-green-100 bg-green-900"
                       >Plants
@@ -47,11 +50,22 @@ function App() {
         <Switch>
           <Route exact path="/" component={PageContainer}></Route>
           <Route exact path="/plants" >route 2</Route>
-          <Route exact path="/plants/:plantId" >route 3</Route>
+          <Route exact path="/plants/new">New Plant</Route>
+          <Route exact path="/plants/:plantId" component={PageContainer}></Route>
         </Switch>
       </Router>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    manageNavigation: (location) => dispatch(manageNavigation(location))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
