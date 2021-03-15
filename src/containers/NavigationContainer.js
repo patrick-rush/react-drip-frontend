@@ -22,7 +22,7 @@ class NavigationContainer extends Component {
                       </NavLink>
                       <NavLink
                         exact
-                        to="/plants"
+                        to="/today"
                         className="hover:bg-green-700 hover:text-white bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium"
                         activeClassName="text-green-100 bg-green-900"
                         >Today

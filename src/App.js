@@ -5,11 +5,12 @@ import {
   Route,
   // NavLink
 } from 'react-router-dom';
-import PageContainer from './containers/PageContainer';
+import PlantPageContainer from './containers/PlantPageContainer';
 // import { connect } from 'react-redux'
 // import { manageNavigation } from './actions/page'
 import NavigationContainer from './containers/NavigationContainer';
 import NewPlantContainer from './containers/NewPlantContainer'; 
+import TodayPageContainer from './containers/TodayPageContainer';
 
 function App() {
   return (
@@ -17,10 +18,10 @@ function App() {
       <Router>
         <NavigationContainer />
         <Switch>
-          <Route exact path="/" component={PageContainer}></Route>
-          <Route exact path="/plants" >route 2</Route>
-          <Route exact path="/plants/new" component={NewPlantContainer}></Route>
-          <Route exact path="/plants/:plantId" component={PageContainer}></Route>
+          <Route exact path="/" component={PlantPageContainer} ></Route>
+          <Route exact path="/today" component={TodayPageContainer} ></Route>
+          <Route exact path="/plants/new" component={NewPlantContainer} ></Route>
+          <Route exact path="/plants/:plantId" component={PlantPageContainer} ></Route>
         </Switch>
       </Router>
     </div>
