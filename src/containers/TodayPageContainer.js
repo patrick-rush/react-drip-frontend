@@ -3,11 +3,13 @@ import EventListContainer from './EventListContainer';
 import RightContainer from './RightContainer';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../actions/events';
+import { fetchPlants } from '../actions/plants';
 
 class TodayPageContainer extends Component {
     
     componentDidMount() {
         this.props.fetchEvents();
+        this.props.fetchPlants();
     }
     
     render() {
@@ -31,7 +33,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchEvents: () => dispatch(fetchEvents())
+        fetchEvents: () => dispatch(fetchEvents()),
+        fetchPlants: () => dispatch(fetchPlants()),
     }
 }
 

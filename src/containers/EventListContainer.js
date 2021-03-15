@@ -6,12 +6,12 @@ import Event from '../components/Event'
 
 class EventListContainer extends Component {
     
-    renderEvents = () => this.props.events.map(event => <Event event={event} history={this.props.history} selectEvent={this.props.selectEvent}/>)
+    renderEvents = () => this.props.events.map(event => <Event event={event} plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]} history={this.props.history} selectEvent={this.props.selectEvent}/>)
     
     render() {
         return (
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-                <Header header={this.props.header} />
+                <Header header={"Events"} />
                 <div className="border-t border-gray-200">
                     {this.props.loadingState === "successfull" ? this.renderEvents() : "loading spinner"}
                     {/* ATTN loading spinner needs to be added and styled */}
@@ -23,6 +23,7 @@ class EventListContainer extends Component {
 
 const mapStateToProps = state => {
     return {
+        plants: state.plants.plants,
         events: state.events.events,
         header: state.page.leftHeader
     }
