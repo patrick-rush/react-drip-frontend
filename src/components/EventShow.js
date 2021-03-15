@@ -9,7 +9,7 @@ class EventShow extends Component {
                     Watering Frequency
                 </li>
                 <li className="watering_frequency mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
-                    Hello World
+                    {this.props.plant.watering_frequency}
                 </li>
                 <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
                     <button className="pl-2 pr-2 text-sm font-medium text-gray-500"><i className="fa fa-minus decreaseDays"></i></button>
@@ -21,7 +21,6 @@ class EventShow extends Component {
                     Mark as Complete
                 </li>
                 <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
-                    Hello World
                 </li>
                 <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
                     <button className="pl-2 pr-2 text-sm font-medium text-gray-500"><i className="fas fa-check completed"></i></button>      

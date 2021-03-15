@@ -7,7 +7,15 @@ import { setPlantToActive } from '../actions/plants';
 
 class PlantListContainer extends Component {
     
-    renderPlants = () => this.props.plants.map(plant => <Plant plant={plant} history={this.props.history} setPlantToActive={this.props.setPlantToActive}/>)
+    renderPlants = () => {
+        return this.props.plants.map(plant => {
+            return <Plant
+                plant={plant}
+                history={this.props.history}
+                setPlantToActive={this.props.setPlantToActive}
+            />
+        });
+    };
     
     render() {
         return (

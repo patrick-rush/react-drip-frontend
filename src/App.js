@@ -19,9 +19,11 @@ function App() {
         <NavigationContainer />
         <Switch>
           <Route exact path="/" component={PlantPageContainer} ></Route>
-          <Route exact path="/today" component={TodayPageContainer} ></Route>
+          <Route exact path="/plants" component={PlantPageContainer} ></Route>
           <Route exact path="/plants/new" component={NewPlantContainer} ></Route>
           <Route exact path="/plants/:plantId" component={PlantPageContainer} ></Route>
+          <Route exact path="/events" component={TodayPageContainer} ></Route>
+          <Route exact path="/events/:eventId" component={TodayPageContainer} ></Route>
         </Switch>
       </Router>
     </div>

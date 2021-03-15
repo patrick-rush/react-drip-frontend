@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import { setEventToActive } from '../actions/events';
+import { setPlantToActive } from '../actions/plants';
 import Event from '../components/Event'
 
 class EventListContainer extends Component {
     
-    renderEvents = () => this.props.events.map(event => <Event event={event} plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]} history={this.props.history} setEventToActive={this.props.setEventToActive} />)
+    renderEvents = () => {
+        return this.props.events.map(event => {
+            return (
+                <Event
+                    event={event}
+                    plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]}
+                    history={this.props.history}
+                    setEventToActive={this.props.setEventToActive}
+                    setPlantToActive={this.props.setPlantToActive}
+                />
+            );
+        });
+    };
     
     render() {
         return (
@@ -32,6 +45,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         // setEventToActive: (eventId) => dispatch(setEventToActive("event", eventId))
+        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
         setEventToActive: (eventId) => dispatch(setEventToActive(eventId))
     }
 }
