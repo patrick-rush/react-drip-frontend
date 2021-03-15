@@ -2,7 +2,8 @@ import {
     START_LOADING_PLANTS,
     SUCCESSFULLY_LOADED_PLANTS,
     START_ADDING_PLANT,
-    SUCCESSFULLY_ADDED_PLANT
+    SUCCESSFULLY_ADDED_PLANT,
+    SET_CURRENT_PLANT
 } from '.';
 
 export const fetchPlants = () => {
@@ -39,3 +40,9 @@ export const addPlant = (plant) => {
             });
     };
 };
+
+export const setPlantToActive = (plantId) => {
+    return (dispatch) => {
+        dispatch({ type: SET_CURRENT_PLANT, payload: plantId })
+    }
+}

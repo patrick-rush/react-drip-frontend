@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class Plant extends Component {
     
     handleClick = event => {
-        this.props.selectPlant(this.props.plant.id);
+        console.log("from plant component", this.props.plant.id)
+        this.props.setPlantToActive(this.props.plant.id);
         this.props.history.push(`/plants/${this.props.plant.id}`)
     }
     

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { manageNavigation } from '../actions/page';
+// import { manageNavigation } from '../actions/page';
 import Event from '../components/Event'
 
 class EventListContainer extends Component {
     
-    renderEvents = () => this.props.events.map(event => <Event event={event} plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]} history={this.props.history} selectEvent={this.props.selectEvent}/>)
+    renderEvents = () => this.props.events.map(event => <Event event={event} plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]} history={this.props.history} /*selectEvent={this.props.selectEvent}*//>)
     
     render() {
         return (
@@ -25,13 +25,13 @@ const mapStateToProps = state => {
     return {
         plants: state.plants.plants,
         events: state.events.events,
-        header: state.page.leftHeader
+        // header: state.page.leftHeader
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        selectEvent: (eventId) => dispatch(manageNavigation("event", eventId))
+        // selectEvent: (eventId) => dispatch(manageNavigation("event", eventId))
     }
 }
 
