@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Event extends Component {
     
     handleClick = event => {
-        this.props.selectEvent(this.props.event.id);
+        this.props.setEventToActive(this.props.event.id);
         this.props.history.push(`/events/${this.props.event.id}`)
     }
     

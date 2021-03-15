@@ -1,7 +1,7 @@
 import {
     START_LOADING_EVENTS,
     SUCCESSFULLY_LOADED_EVENTS,
-    // SET_CURRENT_EVENT,
+    SET_CURRENT_EVENT,
     // START_ADDING_EVENT,
     // SUCCESSFULLY_ADDED_EVENT
 } from '../actions';
@@ -24,11 +24,12 @@ export default function eventsReducer(state = initialState, action) {
                 loadingState: "successful",
                 events: action.payload
             }
-        // case SET_CURRENT_EVENT: 
-        //     return {
-        //         ...state,
-        //         currentEvent: state.events.filter(event => event.id === action.payload)[0]
-        //     }
+        case SET_CURRENT_EVENT: 
+            console.log(action.payload)
+            return {
+                ...state,
+                currentEvent: state.events.filter(event => event.id === action.payload)[0]
+            }
         // case START_ADDING_EVENT:
         //     return {
         //         ...state,

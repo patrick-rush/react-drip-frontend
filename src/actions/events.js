@@ -1,6 +1,7 @@
 import {
     START_LOADING_EVENTS,
     SUCCESSFULLY_LOADED_EVENTS,
+    SET_CURRENT_EVENT
     // START_ADDING_EVENT,
     // SUCCESSFULLY_ADDED_EVENT
 } from '.';
@@ -18,6 +19,12 @@ export const fetchEvents = () => {
             });
     };
 };
+
+export const setEventToActive = (eventId) => {
+    return (dispatch) => {
+        dispatch({ type: SET_CURRENT_EVENT, payload: eventId })
+    }
+}
 
 // export const addPlant = (plant) => {
 //     return (dispatch) => {
