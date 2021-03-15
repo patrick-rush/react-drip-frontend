@@ -21,7 +21,7 @@ export default function plantsReducer(state = initialState, action) {
         case SUCCESSFULLY_LOADED_PLANTS: 
             return {
                 ...state,
-                loadingState: "successfull",
+                loadingState: "successful",
                 plants: action.payload
             }
         case SET_CURRENT_PLANT: 
@@ -39,7 +39,7 @@ export default function plantsReducer(state = initialState, action) {
             console.log(action.payload)
             return {
                 ...state,
-                loadingState: "successfull",
+                loadingState: "successful",
                 currentPlant: action.payload
             }
         default:

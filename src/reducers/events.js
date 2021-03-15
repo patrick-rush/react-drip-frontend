@@ -21,7 +21,7 @@ export default function eventsReducer(state = initialState, action) {
         case SUCCESSFULLY_LOADED_EVENTS: 
             return {
                 ...state,
-                loadingState: "successfull",
+                loadingState: "successful",
                 events: action.payload
             }
         // case SET_CURRENT_EVENT: 
@@ -38,7 +38,7 @@ export default function eventsReducer(state = initialState, action) {
         //     console.log(action.payload)
         //     return {
         //         ...state,
-        //         loadingState: "successfull",
+        //         loadingState: "successful",
         //         currentEvent: action.payload
         //     }
         default:
