@@ -21,7 +21,7 @@ class PlantShowContainer extends Component {
                 { this.props.currentPlant ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header="" /> }
                 {/* <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> */}
                 <div className="border-t border-gray-200">
-                    { this.props.currentPlant ? <PlantShow plant={this.props.currentPlant}/> : <Welcome /> }
+                    { this.props.currentPlant ? <PlantShow plant={this.props.currentPlant} /> : <Welcome /> }
                 </div>
             </div>
         )
