@@ -10,6 +10,18 @@ class NewPlant extends Component {
         photo: ""
     };
 
+    static getDerivedStateFromProps(props, state) {
+        if (props.currentPlant) {
+            return {
+                name: props.currentPlant.name,
+                species: props.currentPlant.species,
+                location: props.currentPlant.location,
+                watering_frequency: props.currentPlant.watering_frequency,
+                photo: ""
+            }
+        }
+    }
+
     handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value
