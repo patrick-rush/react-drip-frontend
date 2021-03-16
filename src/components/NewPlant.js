@@ -6,7 +6,8 @@ class NewPlant extends Component {
         name: "",
         species: "",
         location: "",
-        watering_frequency: "0"
+        watering_frequency: "0",
+        photo: ""
     };
 
     handleOnChange = event => {
@@ -17,18 +18,26 @@ class NewPlant extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        const plant = {
-          name: this.state.name,
-          species: this.state.species,
-          location: this.state.location,
-          watering_frequency: this.state.watering_frequency
-        }
-        this.props.addPlant(plant);
+        // const plant = {
+        //   name: this.state.name,
+        //   species: this.state.species,
+        //   location: this.state.location,
+        //   watering_frequency: this.state.watering_frequency
+        // }
+        const formData = new FormData();
+        formData.append('plant[name]', this.state.name)
+        formData.append('plant[species]', this.state.species)
+        formData.append('plant[location]', this.state.location)
+        formData.append('plant[watering_frequency]', this.state.watering_frequency)
+        formData.append('plant[photo]', event.target.photo.files[0], this.state.photo)
+        debugger
+        this.props.addPlant(formData);
         this.setState({
           name: "",
           species: "",
           location: "",
-          watering_frequency: "0"
+          watering_frequency: "0",
+          photo: ""
         })
         this.props.history.push('/')
     }
@@ -76,6 +85,19 @@ class NewPlant extends Component {
                                     id="location" 
                                     value={this.state.location} 
                                     className="location mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
+                                />
+                            </div>
+                            <div className="col-span-6 sm:col-span-4">
+                                <label className="block text-sm font-medium text-green-700">
+                                    Photo
+                                </label>
+                                <input 
+                                    onChange={this.handleOnChange} 
+                                    type="file" 
+                                    name="photo" 
+                                    id="photo" 
+                                    // value={this.state.photo} 
+                                    className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
                                 />
                             </div>
                             <div className="col-span-6 sm:col-span-3">

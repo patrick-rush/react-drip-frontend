@@ -20,16 +20,16 @@ export const fetchPlants = () => {
     };
 };
 
-export const addPlant = (plant) => {
+export const addPlant = (formData) => {
     return (dispatch) => {
         dispatch({ type: START_ADDING_PLANT })
         fetch("http://localhost:3000/plants", {
             method: "POST",
-            headers: {
-                "Accept" : "application/json",
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify({plant: plant})
+            // headers: {
+            //     "Accept" : "application/json",
+            //     "Content-Type" : "application/json"
+            // },
+            body: formData
         })
             .then(res => res.json())
             .then((plantJson) => {
