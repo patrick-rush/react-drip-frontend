@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Welcome from '../components/Welcome';
 import { connect } from 'react-redux';
 import PlantShow from '../components/PlantShow';
+import { deletePlant } from '../actions/plants';
 
 class PlantShowContainer extends Component {
     
@@ -21,7 +22,7 @@ class PlantShowContainer extends Component {
                 { this.props.currentPlant ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header="" /> }
                 {/* <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> */}
                 <div className="border-t border-gray-200">
-                    { this.props.currentPlant ? <PlantShow plant={this.props.currentPlant} history={this.props.history} /> : <Welcome /> }
+                    { this.props.currentPlant ? <PlantShow plant={this.props.currentPlant} history={this.props.history} deletePlant={this.props.deletePlant} /> : <Welcome /> }
                 </div>
             </div>
         )
@@ -35,4 +36,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(PlantShowContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        deletePlant: (plant) => dispatch(deletePlant(plant))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlantShowContainer);

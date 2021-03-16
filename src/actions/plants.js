@@ -3,9 +3,11 @@ import {
     SUCCESSFULLY_LOADED_PLANTS,
     START_ADDING_PLANT,
     SUCCESSFULLY_ADDED_PLANT,
-    SET_CURRENT_PLANT,
     START_UPDATING_PLANT,
-    SUCCESSFULLY_UPDATED_PLANT
+    SUCCESSFULLY_UPDATED_PLANT,
+    START_DELETING_PLANT,
+    SUCCESSFULLY_DELETED_PLANT,
+    SET_CURRENT_PLANT
 } from '.';
 
 export const fetchPlants = () => {
@@ -55,6 +57,21 @@ export const updatePlant = (formData, plantId) => {
             dispatch({
                 type: SUCCESSFULLY_UPDATED_PLANT,
                 payload: plantJson
+            })
+        });
+    }
+}
+
+export const deletePlant = (plantId) => {
+    return (dispatch) => {
+        dispatch({ type: START_DELETING_PLANT })
+        fetch(`http://localhost:3000/plants/${plantId}`, {
+            method: 'DELETE'
+        })
+        .then(() => {
+            dispatch({
+                type: SUCCESSFULLY_DELETED_PLANT,
+                payload: plantId
             })
         });
     }
