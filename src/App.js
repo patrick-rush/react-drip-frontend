@@ -11,6 +11,7 @@ import PlantPageContainer from './containers/PlantPageContainer';
 import NavigationContainer from './containers/NavigationContainer';
 import NewPlantContainer from './containers/NewPlantContainer'; 
 import TodayPageContainer from './containers/TodayPageContainer';
+import EditPlantContainer from './containers/EditPlantContainer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={PlantPageContainer} ></Route>
           <Route exact path="/plants" component={PlantPageContainer} ></Route>
           <Route exact path="/plants/new" component={NewPlantContainer} ></Route>
+          <Route exact path="/plants/edit/:plantId" component={EditPlantContainer} ></Route>
           <Route exact path="/plants/:plantId" component={PlantPageContainer} ></Route>
           <Route exact path="/events" component={TodayPageContainer} ></Route>
           <Route exact path="/events/:eventId" component={TodayPageContainer} ></Route>

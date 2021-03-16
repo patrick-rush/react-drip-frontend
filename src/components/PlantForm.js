@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class NewPlant extends Component {
+class PlantForm extends Component {
     
     state = {
         name: "",
@@ -10,15 +10,27 @@ class NewPlant extends Component {
         photo: ""
     };
 
-    static getDerivedStateFromProps(props, state) {
-        if (props.currentPlant) {
-            return {
-                name: props.currentPlant.name,
-                species: props.currentPlant.species,
-                location: props.currentPlant.location,
-                watering_frequency: props.currentPlant.watering_frequency,
+    // static getDerivedStateFromProps(props, state) {
+    //     if (props.currentPlant) {
+    //         return {
+    //             name: props.currentPlant.name,
+    //             species: props.currentPlant.species,
+    //             location: props.currentPlant.location,
+    //             watering_frequency: props.currentPlant.watering_frequency,
+    //             photo: ""
+    //         }
+    //     }
+    // }
+
+    componentDidMount() {
+            if (this.props.currentPlant) {
+            this.setState({
+                name: this.props.currentPlant.name,
+                species: this.props.currentPlant.species,
+                location: this.props.currentPlant.location,
+                watering_frequency: this.props.currentPlant.watering_frequency,
                 photo: ""
-            }
+            })
         }
     }
 
@@ -31,13 +43,16 @@ class NewPlant extends Component {
     handleOnSubmit = event => {
         event.preventDefault();
         const formData = new FormData();
+        const plantId = this.props.currentPlant ? this.props.currentPlant.id : null;
+        // debugger
         formData.append('plant[name]', this.state.name)
         formData.append('plant[species]', this.state.species)
         formData.append('plant[location]', this.state.location)
         formData.append('plant[watering_frequency]', this.state.watering_frequency)
-        formData.append('plant[photo]', event.target.photo.files[0], this.state.photo)
-        debugger
-        this.props.addPlant(formData);
+        if (this.state.photo !== "") {
+            formData.append('plant[photo]', event.target.photo.files[0], this.state.photo)
+        }
+        this.props.handlePlantEvent(formData, plantId);
         this.setState({
           name: "",
           species: "",
@@ -124,7 +139,7 @@ class NewPlant extends Component {
                     <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <input 
                             type="submit" 
-                            value="Save" 
+                            value={ this.props.currentPlant ? "Update" : "Save" } 
                             className="submit inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                         />
                     </div>
@@ -134,4 +149,4 @@ class NewPlant extends Component {
     }
 }
 
-export default NewPlant;
+export default PlantForm;

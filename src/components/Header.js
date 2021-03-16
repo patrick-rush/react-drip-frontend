@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 
 class Header extends Component {
     
+    // componentDidUpdate(prevProps) {
+    //     if(prevProps.header !== this.props.header){
+    //         this.setState({
+    //             header: this.props.header
+    //         })
+    //     }
+    // }
+    
     selectHeader = ({ header }) => {
         if (header === "") {
             return <br/>

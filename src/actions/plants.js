@@ -3,7 +3,9 @@ import {
     SUCCESSFULLY_LOADED_PLANTS,
     START_ADDING_PLANT,
     SUCCESSFULLY_ADDED_PLANT,
-    SET_CURRENT_PLANT
+    SET_CURRENT_PLANT,
+    START_UPDATING_PLANT,
+    SUCCESSFULLY_UPDATED_PLANT
 } from '.';
 
 export const fetchPlants = () => {
@@ -40,6 +42,23 @@ export const addPlant = (formData) => {
             });
     };
 };
+
+export const updatePlant = (formData, plantId) => {
+    return (dispatch) => {
+        dispatch({ type: START_UPDATING_PLANT })
+        fetch(`http://localhost:3000/plants/${plantId}`, {
+            method: "PATCH",
+            body: formData
+        })
+        .then(res => res.json())
+        .then((plantJson) => {
+            dispatch({
+                type: SUCCESSFULLY_UPDATED_PLANT,
+                payload: plantJson
+            })
+        });
+    }
+}
 
 export const setPlantToActive = (plantId) => {
     return (dispatch) => {
