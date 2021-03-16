@@ -18,12 +18,6 @@ class NewPlant extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        // const plant = {
-        //   name: this.state.name,
-        //   species: this.state.species,
-        //   location: this.state.location,
-        //   watering_frequency: this.state.watering_frequency
-        // }
         const formData = new FormData();
         formData.append('plant[name]', this.state.name)
         formData.append('plant[species]', this.state.species)
