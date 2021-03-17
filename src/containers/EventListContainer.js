@@ -11,6 +11,7 @@ class EventListContainer extends Component {
         return this.props.events.map(event => {
             return (
                 <Event
+                    key={event.id}
                     event={event}
                     plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]}
                     history={this.props.history}

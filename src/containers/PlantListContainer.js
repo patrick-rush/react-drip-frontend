@@ -10,6 +10,7 @@ class PlantListContainer extends Component {
     renderPlants = () => {
         return this.props.plants.map(plant => {
             return <Plant
+                key={plant.id}
                 plant={plant}
                 history={this.props.history}
                 setPlantToActive={this.props.setPlantToActive}
