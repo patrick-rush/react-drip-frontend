@@ -2,11 +2,26 @@ import React, { Component } from 'react';
 
 class PlantShow extends Component {
     
-    handleClickDelete = () => {
-        const proceed = confirm("Are you sure?");
+    handleDelete = () => {
+        const proceed = window.confirm("Are you sure?");
         if (proceed) {
-            this.props.history.push(`/plants/edit/${this.props.plant.id}`)
+            this.props.deletePlant(this.props.plant.id);
+            this.props.history.push(`/plants`)
         }
+    }
+
+    handleIncrease = () => {
+        const formData = new FormData();
+        const newFrequency = this.props.plant.watering_frequency += 1
+        formData.append('plant[watering_frequency]', newFrequency)
+        this.props.updatePlant(formData, this.props.plant.id)
+    }
+
+    handleDecrease = () => {
+        const formData = new FormData();
+        const newFrequency = this.props.plant.watering_frequency -= 1
+        formData.append('plant[watering_frequency]', newFrequency)
+        this.props.updatePlant(formData, this.props.plant.id)
     }
 
     render() {
@@ -20,10 +35,10 @@ class PlantShow extends Component {
                         {this.props.plant.location}
                     </li>
                     <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
-                        <button onClick={this.handleClickDelete} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button onClick={e => this.props.history.push(`/plants/edit/${this.props.plant.id}`)} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i className="fa fa-pencil-alt content-end"></i>
                         </button>      
-                        <button onClick={e => this.props.deletePlant(this.props.plant.id)} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button onClick={this.handleDelete} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i className="fa fa-trash content-end"></i>
                         </button>      
                     </li>
@@ -36,10 +51,10 @@ class PlantShow extends Component {
                         {this.props.plant.watering_frequency} days
                     </li>
                     <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
-                        <button className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button onClick={this.handleDecrease} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i className="fa fa-minus"></i>
                         </button>
-                        <button className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button onClick={this.handleIncrease} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i className="fa fa-plus"></i>
                         </button>      
                     </li>

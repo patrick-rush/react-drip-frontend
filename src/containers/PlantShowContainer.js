@@ -4,6 +4,7 @@ import Welcome from '../components/Welcome';
 import { connect } from 'react-redux';
 import PlantShow from '../components/PlantShow';
 import { deletePlant } from '../actions/plants';
+import { updatePlant } from '../actions/plants';
 
 class PlantShowContainer extends Component {
     
@@ -22,7 +23,7 @@ class PlantShowContainer extends Component {
                 { this.props.currentPlant ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header="" /> }
                 {/* <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> */}
                 <div className="border-t border-gray-200">
-                    { this.props.currentPlant ? <PlantShow plant={this.props.currentPlant} history={this.props.history} deletePlant={this.props.deletePlant} /> : <Welcome /> }
+                    { this.props.currentPlant ? <PlantShow plant={this.props.currentPlant} history={this.props.history} deletePlant={this.props.deletePlant} updatePlant={this.props.updatePlant} /> : <Welcome /> }
                 </div>
             </div>
         )
@@ -38,7 +39,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deletePlant: (plant) => dispatch(deletePlant(plant))
+        deletePlant: (plant) => dispatch(deletePlant(plant)),
+        updatePlant: (plant, plantId) => dispatch(updatePlant(plant, plantId)),
     }
 }
 

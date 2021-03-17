@@ -40,11 +40,11 @@ export default function plantsReducer(state = initialState, action) {
                 loadingState: "successful",
                 currentPlant: action.payload
             }
-        case START_UPDATING_PLANT:
-            return {
-                ...state,
-                loadingState: "inProgress"
-            }
+        // case START_UPDATING_PLANT:
+        //     return {
+        //         ...state,
+        //         loadingState: "inProgress"
+        //     }
         case SUCCESSFULLY_UPDATED_PLANT:
             console.log("successful update", action.payload)
             return {
