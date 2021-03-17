@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import { connect } from 'react-redux';
 import EventShow from '../components/EventShow';
+import { updatePlant } from '../actions/plants'
 
 class EventShowContainer extends Component {
     render() {
@@ -12,7 +13,7 @@ class EventShowContainer extends Component {
                     currentEvent={this.props.currentEvent}
                 />
                 <div className="border-t border-gray-200">
-                    {this.props.currentEvent ? <EventShow event={this.props.currentEvent} plant={this.props.currentPlant} /> : <br/>}
+                    {this.props.currentEvent ? <EventShow event={this.props.currentEvent} plant={this.props.currentPlant} updatePlant={this.props.updatePlant} /> : <br/>}
                 </div>
             </div>
         )
@@ -27,4 +28,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(EventShowContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        updatePlant: (plant, plantId) => dispatch(updatePlant(plant, plantId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventShowContainer);
