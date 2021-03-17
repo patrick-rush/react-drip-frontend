@@ -10,16 +10,15 @@ class PlantShow extends Component {
         }
     }
 
-    handleIncrease = () => {
+    handleFrequencyChange = event => {
+        console.log(event.target.id)
         const formData = new FormData();
-        const newFrequency = this.props.plant.watering_frequency += 1
-        formData.append('plant[watering_frequency]', newFrequency)
-        this.props.updatePlant(formData, this.props.plant.id)
-    }
-
-    handleDecrease = () => {
-        const formData = new FormData();
-        const newFrequency = this.props.plant.watering_frequency -= 1
+        let newFrequency
+        if (event.target.id === "increase") {
+            newFrequency = this.props.plant.watering_frequency += 1
+        } else if (event.target.id === "decrease") {
+            newFrequency = this.props.plant.watering_frequency -= 1
+        }
         formData.append('plant[watering_frequency]', newFrequency)
         this.props.updatePlant(formData, this.props.plant.id)
     }
@@ -51,11 +50,11 @@ class PlantShow extends Component {
                         {this.props.plant.watering_frequency} days
                     </li>
                     <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
-                        <button onClick={this.handleDecrease} className="pl-2 pr-2 text-sm font-medium text-gray-900">
-                            <i className="fa fa-minus"></i>
+                        <button id="decrease" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="decrease" className="fa fa-minus"></i>
                         </button>
-                        <button onClick={this.handleIncrease} className="pl-2 pr-2 text-sm font-medium text-gray-900">
-                            <i className="fa fa-plus"></i>
+                        <button id="increase" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="increase" className="fa fa-plus"></i>
                         </button>      
                     </li>
                 </div>
