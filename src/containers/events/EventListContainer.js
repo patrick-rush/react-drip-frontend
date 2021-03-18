@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
-import { setEventToActive } from '../actions/events';
-import { setPlantToActive } from '../actions/plants';
-import Event from '../components/Event'
+import Header from '../../components/page/Header';
+import { setEventToActive } from '../../actions/events';
+import { setPlantToActive } from '../../actions/plants';
+import Event from '../../components/events/Event'
 
 class EventListContainer extends Component {
     

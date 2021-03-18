@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
+import Header from '../../components/page/Header';
 import { connect } from 'react-redux';
-import EventShow from '../components/EventShow';
-import { updatePlant } from '../actions/plants'
+import EventShow from '../../components/events/EventShow';
+import { updatePlant } from '../../actions/plants'
 
 class EventShowContainer extends Component {
     render() {

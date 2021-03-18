@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import EventFormContainer from '../containers/EventFormContainer';
-import EventsByPlantContainer from '../containers/EventsByPlantContainer';
+import EventFormContainer from '../../containers/events/EventFormContainer';
+import EventsByPlantContainer from '../../containers/events/EventsByPlantContainer';
 
 class PlantShow extends Component {
     

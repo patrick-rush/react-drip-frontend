@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import EventListContainer from './EventListContainer';
 import EventShowContainer from './EventShowContainer';
 import { connect } from 'react-redux';
-import { fetchEvents } from '../actions/events';
-import { fetchPlants } from '../actions/plants';
+import { fetchEvents } from '../../actions/events';
+import { fetchPlants } from '../../actions/plants';
 
 class TodayPageContainer extends Component {
     

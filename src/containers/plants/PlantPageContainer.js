@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlantListContainer from './PlantListContainer';
 import { connect } from 'react-redux';
-import { fetchPlants } from '../actions/plants';
+import { fetchPlants } from '../../actions/plants';
 import PlantShowContainer from './PlantShowContainer'
 
 class PlantPageContainer extends Component {

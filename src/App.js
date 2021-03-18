@@ -5,13 +5,13 @@ import {
   Route,
   // NavLink
 } from 'react-router-dom';
-import PlantPageContainer from './containers/PlantPageContainer';
+import PlantPageContainer from './containers/plants/PlantPageContainer';
 // import { connect } from 'react-redux'
 // import { manageNavigation } from './actions/page'
-import NavigationContainer from './containers/NavigationContainer';
-import NewPlantContainer from './containers/NewPlantContainer'; 
-import TodayPageContainer from './containers/TodayPageContainer';
-import EditPlantContainer from './containers/EditPlantContainer';
+import NavigationContainer from './containers/page/NavigationContainer';
+import NewPlantContainer from './containers/plants/NewPlantContainer'; 
+import TodayPageContainer from './containers/events/TodayPageContainer';
+import EditPlantContainer from './containers/plants/EditPlantContainer';
 
 function App() {
   return (

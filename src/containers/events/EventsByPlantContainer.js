@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventByPlant from '../components/EventByPlant';
+import EventByPlant from '../../components/events/EventByPlant';
 import { connect } from 'react-redux';
 
 class EventsByPlantContainer extends Component {

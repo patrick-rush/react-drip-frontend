@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
+import Header from '../../components/page/Header';
 import { connect } from 'react-redux';
-import PlantForm from '../components/PlantForm';
-import { updatePlant } from '../actions/plants';
+import PlantForm from '../../components/plants/PlantForm';
+import { updatePlant } from '../../actions/plants';
 
 class EditPlantContainer extends Component {
     render() {

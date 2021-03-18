@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Welcome from '../components/Welcome';
+import Header from '../../components/page/Header';
+import Welcome from '../../components/page/Welcome';
 import { connect } from 'react-redux';
-import PlantShow from '../components/PlantShow';
-import { deletePlant } from '../actions/plants';
-import { updatePlant } from '../actions/plants';
-import { toggleShowEventForm } from '../actions/events';
+import PlantShow from '../../components/plants/PlantShow';
+import { deletePlant } from '../../actions/plants';
+import { updatePlant } from '../../actions/plants';
+import { toggleShowEventForm } from '../../actions/events';
 
 class PlantShowContainer extends Component {
     

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Plant from '../components/Plant';
+import Plant from '../../components/plants/Plant';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
+import Header from '../../components/page/Header';
 // import { manageNavigation } from '../actions/page';
-import { setPlantToActive } from '../actions/plants'; 
-import { fetchEventsByPlant } from '../actions/events';
+import { setPlantToActive } from '../../actions/plants'; 
+import { fetchEventsByPlant } from '../../actions/events';
 
 class PlantListContainer extends Component {
     
