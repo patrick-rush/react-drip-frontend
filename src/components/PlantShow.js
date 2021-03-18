@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EventFormContainer from '../containers/EventFormContainer';
-import CareEventByPlant from '../components/CareEventByPlant';
+import EventsByPlantContainer from '../containers/EventsByPlantContainer';
 
 class PlantShow extends Component {
     
@@ -35,7 +35,7 @@ class PlantShow extends Component {
     render() {
         return (
             <ul>
-                <div className="opacity-80 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Location
                     </li>
@@ -51,7 +51,7 @@ class PlantShow extends Component {
                         </button>      
                     </li>
                 </div>
-                <div className="opacity-80 m-2 bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div className="opacity-90 m-2 bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Watering Frequency
                     </li>
@@ -67,7 +67,7 @@ class PlantShow extends Component {
                         </button>      
                     </li>
                 </div>
-                <div className="opacity-80 m-2 bg-gray-50 px-4 py-5 sm:grid sm:px-6">
+                <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Notes 
                         <button className="pl-2 pr-2 text-sm font-medium text-gray-900">
@@ -75,7 +75,7 @@ class PlantShow extends Component {
                         </button>
                     </li>
                 </div>  
-                <div className="opacity-80 m-2 bg-white px-4 py-5 sm:grid sm:px-6">
+                <div className="opacity-90 m-2 bg-white px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Care Events
                         <button onClick={this.handleShowEventForm} className="pl-2 pr-2 text-sm font-medium text-gray-900">
@@ -83,7 +83,7 @@ class PlantShow extends Component {
                         </button>
                     </li>
                     {this.props.showEventForm === true ? <EventFormContainer /> : null}
-                    {/* {this.renderCareEvents()} */}
+                    {<EventsByPlantContainer history={this.props.history} />}
                 </div>  
             </ul>
 

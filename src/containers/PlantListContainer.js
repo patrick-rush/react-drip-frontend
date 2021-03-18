@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 // import { manageNavigation } from '../actions/page';
 import { setPlantToActive } from '../actions/plants'; 
+import { fetchEventsByPlant } from '../actions/events';
 
 class PlantListContainer extends Component {
     
@@ -14,6 +15,7 @@ class PlantListContainer extends Component {
                 plant={plant}
                 history={this.props.history}
                 setPlantToActive={this.props.setPlantToActive}
+                fetchEventsByPlant={this.props.fetchEventsByPlant}
             />
         });
     };
@@ -40,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId))
+        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
+        fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId))
     }
 }
 

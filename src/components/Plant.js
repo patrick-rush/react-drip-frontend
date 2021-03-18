@@ -5,6 +5,7 @@ class Plant extends Component {
     handleClick = event => {
         console.log("from plant component", this.props.plant.id)
         this.props.setPlantToActive(this.props.plant.id);
+        this.props.fetchEventsByPlant(this.props.plant.id);
         this.props.history.push(`/plants/${this.props.plant.id}`)
     }
     

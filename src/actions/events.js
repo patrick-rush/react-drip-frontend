@@ -4,7 +4,8 @@ import {
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
     START_ADDING_EVENT,
-    SUCCESSFULLY_ADDED_EVENT
+    SUCCESSFULLY_ADDED_EVENT,
+    SUCCESSFULLY_LOADED_EVENTS_BY_PLANT
     // START_ADDING_EVENT,
     // SUCCESSFULLY_ADDED_EVENT
 } from '.';
@@ -17,6 +18,25 @@ export const fetchEvents = () => {
             .then((eventsJson) => {
                 dispatch({
                     type: SUCCESSFULLY_LOADED_EVENTS,
+                    payload: eventsJson
+                })
+            });
+    };
+};
+
+export const fetchEventsByPlant = (plantId) => {
+    return (dispatch) => {
+        dispatch({ type: START_LOADING_EVENTS })
+        fetch(`http://localhost:3000/plants/${plantId}/care_events`, {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+            .then((res) => res.json())
+            .then((eventsJson) => {
+                dispatch({
+                    type: SUCCESSFULLY_LOADED_EVENTS_BY_PLANT,
                     payload: eventsJson
                 })
             });

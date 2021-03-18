@@ -4,14 +4,16 @@ import {
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
     START_ADDING_EVENT,
-    SUCCESSFULLY_ADDED_EVENT
+    SUCCESSFULLY_ADDED_EVENT,
+    SUCCESSFULLY_LOADED_EVENTS_BY_PLANT
 } from '../actions';
 
 const initialState = {
     loadingState: "notStarted",
     events: [],
     currentEvent: null,
-    showEventForm: false
+    showEventForm: false,
+    eventsByCurrentPlant: []
 };
 
 export default function eventsReducer(state = initialState, action) {
@@ -48,7 +50,14 @@ export default function eventsReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingState: "successful",
-                currentEvent: action.payload
+                currentEvent: action.payload,
+                eventsByCurrentPlant: [...state.eventsByCurrentPlant, action.payload]
+            }
+        case SUCCESSFULLY_LOADED_EVENTS_BY_PLANT:
+            return {
+                ...state,
+                loadingState: "successful",
+                eventsByCurrentPlant: action.payload
             }
         default:
             return state;

@@ -14,6 +14,19 @@ class PlantShowContainer extends Component {
             return { backgroundImage: `url("${this.props.currentPlant.photo_url}")` };
         }
     }
+
+    renderPlant = (props) => {
+        return (
+            <PlantShow
+                plant={props.currentPlant}
+                history={props.history} 
+                deletePlant={props.deletePlant} 
+                updatePlant={props.updatePlant} 
+                toggleShowEventForm={props.toggleShowEventForm} 
+                showEventForm={props.showEventForm} 
+            />
+        )
+    }
     
     render() {
         return (
@@ -24,7 +37,7 @@ class PlantShowContainer extends Component {
                 { this.props.currentPlant ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header="" /> }
                 {/* <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> */}
                 <div className="border-t border-gray-200">
-                    { this.props.currentPlant ? <PlantShow plant={this.props.currentPlant} history={this.props.history} deletePlant={this.props.deletePlant} updatePlant={this.props.updatePlant} toggleShowEventForm={this.props.toggleShowEventForm} showEventForm={this.props.showEventForm} /> : <Welcome /> }
+                    { this.props.currentPlant ? this.renderPlant(this.props) : <Welcome /> }
                 </div>
             </div>
         )
@@ -35,7 +48,8 @@ const mapStateToProps = state => {
     return {
         // header: state.page.rightHeader,
         currentPlant: state.plants.currentPlant,
-        showEventForm: state.events.showEventForm
+        showEventForm: state.events.showEventForm,
+        
     }
 }
 
