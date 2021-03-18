@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import EventFormContainer from '../containers/EventFormContainer';
+import CareEventByPlant from '../components/CareEventByPlant';
 
 class PlantShow extends Component {
     
@@ -22,6 +24,13 @@ class PlantShow extends Component {
         formData.append('plant[watering_frequency]', newFrequency)
         this.props.updatePlant(formData, this.props.plant.id)
     }
+
+    handleShowEventForm = event => {
+        console.log("got to handleShowEventForm")
+        this.props.toggleShowEventForm(event)
+    }
+
+    // renderCareEvents = () => this.props.careEvents.map(careEvent => <CareEventByPlant careEvent={careEvent} />)
 
     render() {
         return (
@@ -69,10 +78,12 @@ class PlantShow extends Component {
                 <div className="opacity-80 m-2 bg-white px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Care Events
-                        <button className="pl-2 pr-2 text-sm font-medium text-gray-900">
-                            <i className="fa fa-plus"></i>
+                        <button onClick={this.handleShowEventForm} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            {this.props.showEventForm === false ? <i className="fa fa-plus"></i> : <i className="fa fa-minus"></i>}
                         </button>
                     </li>
+                    {this.props.showEventForm === true ? <EventFormContainer /> : null}
+                    {/* {this.renderCareEvents()} */}
                 </div>  
             </ul>
 

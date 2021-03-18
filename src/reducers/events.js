@@ -2,14 +2,16 @@ import {
     START_LOADING_EVENTS,
     SUCCESSFULLY_LOADED_EVENTS,
     SET_CURRENT_EVENT,
-    // START_ADDING_EVENT,
-    // SUCCESSFULLY_ADDED_EVENT
+    TOGGLE_SHOW_EVENT_FORM,
+    START_ADDING_EVENT,
+    SUCCESSFULLY_ADDED_EVENT
 } from '../actions';
 
 const initialState = {
     loadingState: "notStarted",
     events: [],
-    currentEvent: null
+    currentEvent: null,
+    showEventForm: false
 };
 
 export default function eventsReducer(state = initialState, action) {
@@ -30,18 +32,24 @@ export default function eventsReducer(state = initialState, action) {
                 ...state,
                 currentEvent: state.events.filter(event => event.id === action.payload)[0]
             }
-        // case START_ADDING_EVENT:
-        //     return {
-        //         ...state,
-        //         loadingState: "inProgress"
-        //     }
-        // case SUCCESSFULLY_ADDED_EVENT:
-        //     console.log(action.payload)
-        //     return {
-        //         ...state,
-        //         loadingState: "successful",
-        //         currentEvent: action.payload
-        //     }
+        case TOGGLE_SHOW_EVENT_FORM:
+            return {
+                ...state,
+                showEventForm: !state.showEventForm
+            }
+        case START_ADDING_EVENT:
+            console.log("got to START_ADDING_EVENT")
+            return {
+                ...state,
+                loadingState: "inProgress"
+            }
+        case SUCCESSFULLY_ADDED_EVENT:
+            console.log(action.payload)
+            return {
+                ...state,
+                loadingState: "successful",
+                currentEvent: action.payload
+            }
         default:
             return state;
     }

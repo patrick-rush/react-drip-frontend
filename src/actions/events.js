@@ -1,7 +1,10 @@
 import {
     START_LOADING_EVENTS,
     SUCCESSFULLY_LOADED_EVENTS,
-    SET_CURRENT_EVENT
+    SET_CURRENT_EVENT,
+    TOGGLE_SHOW_EVENT_FORM,
+    START_ADDING_EVENT,
+    SUCCESSFULLY_ADDED_EVENT
     // START_ADDING_EVENT,
     // SUCCESSFULLY_ADDED_EVENT
 } from '.';
@@ -23,6 +26,35 @@ export const fetchEvents = () => {
 export const setEventToActive = (eventId) => {
     return (dispatch) => {
         dispatch({ type: SET_CURRENT_EVENT, payload: eventId })
+    }
+}
+
+export const toggleShowEventForm = () => {
+    return (dispatch) => {
+        dispatch({ type: TOGGLE_SHOW_EVENT_FORM })
+    }
+}
+
+export const createEvent = (event) => {
+    return (dispatch) => {
+        dispatch({ type: START_ADDING_EVENT })
+        console.log("from createEvent Action =", event)
+        fetch("http://localhost:3000/care_events", {
+            method: 'POST',
+            headers: {
+                "Accept" : "application/json",
+                "Content-Type" : "application/json"    
+            },
+            body: JSON.stringify({care_event: event})
+        })
+            .then(res => res.json())
+            .then((eventJson) => {
+                dispatch({
+                    type: SUCCESSFULLY_ADDED_EVENT,
+                    payload: eventJson
+                })
+            });
+
     }
 }
 
