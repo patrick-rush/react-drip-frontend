@@ -6,7 +6,7 @@ import { setEventToActive } from '../../actions/events';
 class EventsByPlantContainer extends Component {
     
     renderEvents = () => {
-        return this.props.events.map(event => <EventByPlant event={event} plant={this.props.plant} history={this.props.history} setEventToActive={this.props.setEventToActive}/>)
+        return this.props.events.map(event => <EventByPlant key={event.id} event={event} plant={this.props.plant} history={this.props.history} setEventToActive={this.props.setEventToActive}/>)
     }
     
     render() {
