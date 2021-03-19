@@ -36,6 +36,7 @@ export default function notesReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingState: "successful",
+                showNoteForm: false,
                 notesByCurrentPlant: [...state.notesByCurrentPlant, action.payload]
             }
         case SUCCESSFULLY_LOADED_NOTES_BY_PLANT:
