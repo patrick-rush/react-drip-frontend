@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import EventFormContainer from '../../containers/events/EventFormContainer';
 import EventsByPlantContainer from '../../containers/events/EventsByPlantContainer';
+import NoteFormContainer from '../../containers/notes/NoteFormContainer';
+import NotesByPlantContainer from '../../containers/notes/NotesByPlantContainer'
 
 class PlantShow extends Component {
     
@@ -25,9 +27,13 @@ class PlantShow extends Component {
         this.props.updatePlant(formData, this.props.plant.id)
     }
 
-    handleShowEventForm = event => {
+    handleShowEventForm = () => {
         console.log("got to handleShowEventForm")
-        this.props.toggleShowEventForm(event)
+        this.props.toggleShowEventForm()
+    }
+
+    handleShowNoteForm = () => {
+        this.props.toggleShowNoteForm()
     }
 
     // renderCareEvents = () => this.props.careEvents.map(careEvent => <CareEventByPlant careEvent={careEvent} />)
@@ -70,10 +76,12 @@ class PlantShow extends Component {
                 <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Notes 
-                        <button className="pl-2 pr-2 text-sm font-medium text-gray-900">
-                            <i className="fa fa-plus"></i>
+                        <button onClick={this.handleShowNoteForm} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            {this.props.showNoteForm === false ? <i className="fa fa-plus"></i> : <i className="fa fa-minus"></i>}
                         </button>
                     </li>
+                    {this.props.showNoteForm === true ? <NoteFormContainer /> : null}
+                    {<NotesByPlantContainer history={this.props.history} />}
                 </div>  
                 <div className="opacity-90 m-2 bg-white px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">

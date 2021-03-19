@@ -6,6 +6,7 @@ class Plant extends Component {
         console.log("from plant component", this.props.plant.id)
         this.props.setPlantToActive(this.props.plant.id);
         this.props.fetchEventsByPlant(this.props.plant.id);
+        this.props.fetchNotesByPlant(this.props.plant.id);
         this.props.history.push(`/plants/${this.props.plant.id}`)
     }
     

@@ -6,7 +6,7 @@ import { createEvent } from '../../actions/events';
 class EventFormContainer extends Component {
     render() {
         return (
-            <EventForm currentPlant={this.props.currentPlant} createEvent={this.props.createEvent} history={this.props.history} />
+            <EventForm currentPlant={this.props.currentPlant} createEvent={this.props.createEvent} />
         )
     }
 }

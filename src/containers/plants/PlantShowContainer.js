@@ -6,6 +6,7 @@ import PlantShow from '../../components/plants/PlantShow';
 import { deletePlant } from '../../actions/plants';
 import { updatePlant } from '../../actions/plants';
 import { toggleShowEventForm } from '../../actions/events';
+import { toggleShowNoteForm } from '../../actions/notes';
 
 class PlantShowContainer extends Component {
     
@@ -23,7 +24,9 @@ class PlantShowContainer extends Component {
                 deletePlant={props.deletePlant} 
                 updatePlant={props.updatePlant} 
                 toggleShowEventForm={props.toggleShowEventForm} 
+                toggleShowNoteForm={props.toggleShowNoteForm} 
                 showEventForm={props.showEventForm} 
+                showNoteForm={props.showNoteForm} 
             />
         )
     }
@@ -49,6 +52,7 @@ const mapStateToProps = state => {
         // header: state.page.rightHeader,
         currentPlant: state.plants.currentPlant,
         showEventForm: state.events.showEventForm,
+        showNoteForm: state.notes.showNoteForm
         
     }
 }
@@ -58,6 +62,7 @@ const mapDispatchToProps = dispatch => {
         deletePlant: (plant) => dispatch(deletePlant(plant)),
         updatePlant: (plant, plantId) => dispatch(updatePlant(plant, plantId)),
         toggleShowEventForm: () => dispatch(toggleShowEventForm()),
+        toggleShowNoteForm: () => dispatch(toggleShowNoteForm()),
     }
 }
 

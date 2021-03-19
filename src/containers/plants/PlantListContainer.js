@@ -5,6 +5,7 @@ import Header from '../../components/page/Header';
 // import { manageNavigation } from '../actions/page';
 import { setPlantToActive } from '../../actions/plants'; 
 import { fetchEventsByPlant } from '../../actions/events';
+import { fetchNotesByPlant } from '../../actions/notes';
 
 class PlantListContainer extends Component {
     
@@ -16,6 +17,7 @@ class PlantListContainer extends Component {
                 history={this.props.history}
                 setPlantToActive={this.props.setPlantToActive}
                 fetchEventsByPlant={this.props.fetchEventsByPlant}
+                fetchNotesByPlant={this.props.fetchNotesByPlant}
             />
         });
     };
@@ -43,7 +45,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
-        fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId))
+        fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId)),
+        fetchNotesByPlant: (plantId) => dispatch(fetchNotesByPlant(plantId))
     }
 }
 
