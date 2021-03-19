@@ -3,9 +3,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 
+const composeEnhancers = composeWithDevTools({trace:true});
 const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(thunk))
+    composeEnhancers(applyMiddleware(thunk))
 );
 
 export default store;
