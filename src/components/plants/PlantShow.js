@@ -36,6 +36,15 @@ class PlantShow extends Component {
         this.props.toggleShowNoteForm()
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.plant !== this.props.plant && prevProps.showNoteForm === true) {
+            this.props.toggleShowNoteForm();
+        }
+        if (prevProps.plant !== this.props.plant && prevProps.showEventForm === true) {
+            this.props.toggleShowEventForm();
+        }
+    }
+
     // renderCareEvents = () => this.props.careEvents.map(careEvent => <CareEventByPlant careEvent={careEvent} />)
 
     render() {
