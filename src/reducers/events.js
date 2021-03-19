@@ -32,7 +32,7 @@ export default function eventsReducer(state = initialState, action) {
             console.log("from reducer", action.payload)
             return {
                 ...state,
-                currentEvent: state.events.filter(event => event.id === action.payload)[0]
+                currentEvent: state.events.find(event => event.id == action.payload)
             }
         case TOGGLE_SHOW_EVENT_FORM:
             return {

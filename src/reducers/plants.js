@@ -3,11 +3,13 @@ import {
     SUCCESSFULLY_LOADED_PLANTS,
     START_ADDING_PLANT,
     SUCCESSFULLY_ADDED_PLANT,
-    START_UPDATING_PLANT,
+    // START_UPDATING_PLANT,
     SUCCESSFULLY_UPDATED_PLANT,
     START_DELETING_PLANT,
     SUCCESSFULLY_DELETED_PLANT,
-    SET_CURRENT_PLANT
+    SET_CURRENT_PLANT,
+    // START_LOADING_PLANT,
+    // SUCCESSFULLY_LOADED_PLANT
 } from '../actions';
 
 const initialState = {
@@ -21,7 +23,7 @@ export default function plantsReducer(state = initialState, action) {
         case START_LOADING_PLANTS: 
             return {
                 ...state,
-                loadingState: "inProgress"};
+                loadingState: "inProgress"}
         case SUCCESSFULLY_LOADED_PLANTS: 
             return {
                 ...state,
@@ -68,8 +70,20 @@ export default function plantsReducer(state = initialState, action) {
             console.log(action.payload)
             return {
                 ...state,
-                currentPlant: state.plants.filter(plant => plant.id === action.payload)[0]
+                currentPlant: state.plants.find(plant => plant.id == action.payload)
             }
+        // case START_LOADING_PLANT:
+        //     return {
+        //         ...state,
+        //         loadingState: "inProgress"
+        //     }
+        // case SUCCESSFULLY_LOADED_PLANT:
+        //     return {
+        //         ...state,
+        //         loadingState: "successful",
+        //         plants: [...state.plants, action.payload],
+        //         currentPlant: action.payload
+        //     }
         default:
             return state;
     }

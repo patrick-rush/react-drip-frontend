@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import PlantListContainer from './PlantListContainer';
 import { connect } from 'react-redux';
 import { fetchPlants } from '../../actions/plants';
-import PlantShowContainer from './PlantShowContainer'
+import PlantShowContainer from './PlantShowContainer';
+import { setPlantToActive } from '../../actions/plants';  
 
 class PlantPageContainer extends Component {
 
     componentDidMount() {
-        this.props.fetchPlants();
+        this.props.fetchPlants()
+        .then(() => {
+            if (this.props.match.params.plantId) {
+                this.props.setPlantToActive(this.props.match.params.plantId)
+            }
+        })
     }
 
     render() {
@@ -31,7 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPlants: () => dispatch(fetchPlants())
+        fetchPlants: () => dispatch(fetchPlants()),
+        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
     }
 }
 
