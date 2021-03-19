@@ -4,27 +4,26 @@ import Header from '../../components/page/Header';
 import { setEventToActive } from '../../actions/events';
 import { setPlantToActive } from '../../actions/plants';
 import Event from '../../components/events/Event'
+import moment from 'moment';
 
 class EventListContainer extends Component {
     
     renderOverdue = () => {
-        const today = new Date().toISOString().slice(0,10);
+        const today = moment().format().slice(0,10);
         const overdueEvents = this.props.events.filter(event => event.due_date < today );
-        console.log(overdueEvents)
         const sortedEvents = overdueEvents.sort((a, b) => a.due_date > b.due_date ? 1:-1);
-        console.log(sortedEvents)
         return this.renderEvents(sortedEvents);
     }
     
     renderToday = () => {
-        const today = new Date().toISOString().slice(0,10);
+        const today = moment().format().slice(0,10);
         const eventsDueToday = this.props.events.filter(event => event.due_date === today)
         const sortedEvents = eventsDueToday.sort((a, b) => a.due_date > b.due_date ? 1:-1);
         return this.renderEvents(sortedEvents);
     };
 
     renderLater = () => {
-        const today = new Date().toISOString().slice(0,10);
+        const today = moment().format().slice(0,10);
         const eventsDueLater = this.props.events.filter(event => event.due_date > today)
         const sortedEvents = eventsDueLater.sort((a, b) => a.due_date > b.due_date ? 1:-1);
         return this.renderEvents(sortedEvents);
