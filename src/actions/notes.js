@@ -3,7 +3,9 @@ import {
     TOGGLE_SHOW_NOTE_FORM,
     START_ADDING_NOTE,
     SUCCESSFULLY_ADDED_NOTE,
-    SUCCESSFULLY_LOADED_NOTES_BY_PLANT
+    SUCCESSFULLY_LOADED_NOTES_BY_PLANT,
+    START_DELETING_NOTE,
+    SUCCESSFULLY_DELETED_NOTE
 } from '.';
 
 // export const fetchNotes = () => {
@@ -70,5 +72,20 @@ export const createNote = (note) => {
                 })
             });
 
+    }
+}
+
+export const deleteNote = (noteId) => {
+    return (dispatch) => {
+        dispatch({ type: START_DELETING_NOTE })
+        fetch(`http://localhost:3000/notes/${noteId}`, {
+            method: 'DELETE'
+        })
+        .then(() => {
+            dispatch({
+                type: SUCCESSFULLY_DELETED_NOTE,
+                payload: noteId
+            })
+        });
     }
 }

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import NoteByPlant from '../../components/notes/NoteByPlant';
 import { connect } from 'react-redux';
+import { deleteNote } from '../../actions/notes';
 
 class NotesByPlantContainer extends Component {
     
     renderNotes = () => {
         const sortedNotes = this.props.notes.sort((a, b) => a.created_at < b.created_at ? 1:-1);
-        return sortedNotes.map(note => <NoteByPlant note={note} plant={this.props.plant} />);
+        return sortedNotes.map(note => <NoteByPlant note={note} plant={this.props.plant} deleteNote={this.props.deleteNote} />);
     }
     
     render() {
@@ -26,9 +27,10 @@ const mapStateToProps = state => {
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//     }
-// }
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteNote: (noteId) => dispatch(deleteNote(noteId)),
+    }
+}
 
-export default connect(mapStateToProps)(NotesByPlantContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(NotesByPlantContainer);

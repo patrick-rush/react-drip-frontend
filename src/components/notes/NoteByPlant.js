@@ -3,7 +3,11 @@ import moment from 'moment';
 
 class NoteByPlant extends Component {
 
-    handleDeleteNote = () => {
+    handleDelete = () => {
+        const proceed = window.confirm("Are you sure?");
+        if (proceed) {
+            this.props.deleteNote(this.props.note.id);
+        }
     }
 
     render() {
@@ -11,7 +15,7 @@ class NoteByPlant extends Component {
             <div className={"bg-white shadow overflow-hidden sm:rounded-lg mt-5"}>
                 <div className="text-sm font-medium px-4 pt-5 pb-0 col-span-full">
                     {moment().format("dddd, MMMM Do YYYY")}
-                    <button onClick={this.handleDeleteNote} >
+                    <button onClick={this.handleDelete} >
                         <i className="pl-5 fa p-2 fa-trash trashNote"></i>
                     </button>
                 </div>
