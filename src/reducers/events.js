@@ -29,7 +29,7 @@ export default function eventsReducer(state = initialState, action) {
                 events: action.payload
             }
         case SET_CURRENT_EVENT: 
-            console.log(action.payload)
+            console.log("from reducer", action.payload)
             return {
                 ...state,
                 currentEvent: state.events.filter(event => event.id === action.payload)[0]

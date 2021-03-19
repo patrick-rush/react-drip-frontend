@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import EventByPlant from '../../components/events/EventByPlant';
 import { connect } from 'react-redux';
+import { setEventToActive } from '../../actions/events';
 
 class EventsByPlantContainer extends Component {
     
     renderEvents = () => {
-        return this.props.events.map(event => <EventByPlant event={event} plant={this.props.plant} />)
+        return this.props.events.map(event => <EventByPlant event={event} plant={this.props.plant} history={this.props.history} setEventToActive={this.props.setEventToActive}/>)
     }
     
     render() {
@@ -24,4 +25,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(EventsByPlantContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        setEventToActive: eventId => dispatch(setEventToActive(eventId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsByPlantContainer);

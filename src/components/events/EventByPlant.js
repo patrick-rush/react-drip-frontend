@@ -14,12 +14,18 @@ class EventByPlant extends Component {
         );
         return date;
     }
+
+    handleOnClick = () => {
+        console.log("from handleOnClick in EventByPlant", this.props.event.id)
+        this.props.setEventToActive(this.props.event.id);
+        this.props.history.push(`/events/${this.props.event.id}`);
+    }
     
     render() {
         return (
             <div className={"bg-gray-50 shadow overflow-hidden sm:rounded-lg mt-5"}>
-                <button className="text-sm font-medium px-4 py-5 col-span-full">
-                {`${this.props.event.event_type} on ${this.formattedDueDate(this.props.event)}`}
+                <button onClick={this.handleOnClick} className="text-sm font-medium px-4 py-5 col-span-full">
+                    {`${this.props.event.event_type} on ${this.formattedDueDate(this.props.event)}`}
                 </button>
             </div>
         )
