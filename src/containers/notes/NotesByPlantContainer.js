@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 class NotesByPlantContainer extends Component {
     
     renderNotes = () => {
-        return this.props.notes.map(note => <NoteByPlant note={note} plant={this.props.plant} />)
+        const sortedNotes = this.props.notes.sort((a, b) => a.created_at < b.created_at ? 1:-1);
+        return sortedNotes.map(note => <NoteByPlant note={note} plant={this.props.plant} />);
     }
     
     render() {
