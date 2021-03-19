@@ -4,12 +4,15 @@ import EventShowContainer from './EventShowContainer';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../../actions/events';
 import { fetchPlants } from '../../actions/plants';
+import { setEventToActive } from '../../actions/events';
+import { setPlantToActive } from '../../actions/plants';
+
 
 class TodayPageContainer extends Component {
     
     componentDidMount() {
-        this.props.fetchEvents();
         this.props.fetchPlants();
+        this.props.fetchEvents()
     }
     
     render() {
@@ -35,6 +38,8 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchEvents: () => dispatch(fetchEvents()),
         fetchPlants: () => dispatch(fetchPlants()),
+        setEventToActive: (eventId) => dispatch(setEventToActive(eventId)),
+        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId))
     }
 }
 
