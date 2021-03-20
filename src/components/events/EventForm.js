@@ -21,6 +21,10 @@ class EventForm extends Component {
             due_date: this.state.date
         }
         this.props.createEvent(newEvent)
+        this.setState({
+            date: null
+        })
+        this.props.toggleShowEventForm();
     }
     
     render() {
@@ -35,6 +39,7 @@ class EventForm extends Component {
                             onChange={this.handleOnChange}
                             type="date"
                             id="dueDate"
+                            value={this.state.date}
                             className="px-4 py-4 mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
                         />
                     </div>

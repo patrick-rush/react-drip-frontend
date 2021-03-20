@@ -1,10 +1,12 @@
 import {
     START_CONTACTING_EVENT_SERVER,
     SUCCESSFULLY_LOADED_EVENTS,
+    SUCCESSFULLY_ADDED_EVENT,
+    SUCCESSFULLY_LOADED_EVENTS_BY_PLANT,
+    SUCCESSFULLY_DELETED_EVENT,
+    SUCCESSFULLY_UPDATED_EVENT,
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
-    SUCCESSFULLY_ADDED_EVENT,
-    SUCCESSFULLY_LOADED_EVENTS_BY_PLANT
 } from '.';
 
 export const fetchEvents = () => {
@@ -40,6 +42,21 @@ export const fetchEventsByPlant = (plantId) => {
     };
 };
 
+export const deleteEvent = (eventId) => {
+    return (dispatch) => {
+        dispatch({ type: START_CONTACTING_EVENT_SERVER })
+        fetch(`http://localhost:3000/care_events/${eventId}`, { 
+            method: 'DELETE', 
+        })
+        .then(() => {
+            dispatch({
+                type: SUCCESSFULLY_DELETED_EVENT,
+                payload: eventId
+            })
+        })
+    }
+}
+
 export const setEventToActive = (eventId) => {
     return (dispatch) => {
         dispatch({ type: SET_CURRENT_EVENT, payload: eventId })
@@ -49,6 +66,29 @@ export const setEventToActive = (eventId) => {
 export const toggleShowEventForm = () => {
     return (dispatch) => {
         dispatch({ type: TOGGLE_SHOW_EVENT_FORM })
+    }
+}
+
+export const updateEvent = (event, eventId) => {
+    return (dispatch) => {
+        dispatch({ type: START_CONTACTING_EVENT_SERVER })
+        fetch(`http://localhost:3000/care_events/${eventId}`, {
+            method: 'PATCH',
+            headers: {
+                "Accept" : "application/json",
+                "Content-Type" : "application/json"    
+            },
+            body: JSON.stringify({ care_event: event })
+        })
+            .then(res => res.json())
+            .then((eventJson) => {
+                console.log("eventJson is ",eventJson)
+
+                dispatch({
+                    type: SUCCESSFULLY_UPDATED_EVENT,
+                    payload: eventJson
+                })
+            })
     }
 }
 
@@ -62,7 +102,7 @@ export const createEvent = (event) => {
                 "Accept" : "application/json",
                 "Content-Type" : "application/json"    
             },
-            body: JSON.stringify({care_event: event})
+            body: JSON.stringify({ care_event: event })
         })
             .then(res => res.json())
             .then((eventJson) => {
@@ -74,24 +114,3 @@ export const createEvent = (event) => {
 
     }
 }
-
-// export const addPlant = (plant) => {
-//     return (dispatch) => {
-//         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-//         fetch("http://localhost:3000/plants", {
-//             method: "POST",
-//             headers: {
-//                 "Accept" : "application/json",
-//                 "Content-Type" : "application/json"
-//             },
-//             body: JSON.stringify({plant: plant})
-//         })
-//             .then(res => res.json())
-//             .then((plantJson) => {
-//                 dispatch({
-//                     type: SUCCESSFULLY_ADDED_EVENT,
-//                     payload: plantJson
-//                 })
-//             });
-//     };
-// };

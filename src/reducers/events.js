@@ -1,10 +1,12 @@
 import {
     START_CONTACTING_EVENT_SERVER,
     SUCCESSFULLY_LOADED_EVENTS,
+    SUCCESSFULLY_ADDED_EVENT,
+    SUCCESSFULLY_LOADED_EVENTS_BY_PLANT,
+    SUCCESSFULLY_DELETED_EVENT,
+    SUCCESSFULLY_UPDATED_EVENT,
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
-    SUCCESSFULLY_ADDED_EVENT,
-    SUCCESSFULLY_LOADED_EVENTS_BY_PLANT
 } from '../actions';
 
 const initialState = {
@@ -52,6 +54,20 @@ export default function eventsReducer(state = initialState, action) {
                 ...state,
                 loadingState: "successful",
                 eventsByCurrentPlant: action.payload
+            }
+        case SUCCESSFULLY_DELETED_EVENT:
+            return {
+                ...state,
+                loadingState: "successful",
+                currentEvent: null,
+                events: state.events.filter(event => event.id !== action.payload)
+            }
+        case SUCCESSFULLY_UPDATED_EVENT:
+            return {
+                ...state,
+                loadingState: "successful",
+                // eslint-disable-next-line
+                currentEvent: action.payload
             }
         default:
             return state;

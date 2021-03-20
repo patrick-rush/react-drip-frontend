@@ -14,6 +14,22 @@ class EventShow extends Component {
         formData.append('plant[watering_frequency]', newFrequency)
         this.props.updatePlant(formData, this.props.plant.id)
     }
+
+    handleDelete = () => {
+        const proceed = window.confirm("Are you sure?");
+        if (proceed) {
+            this.props.deleteEvent(this.props.event.id);
+            this.props.history.push('/events');
+        }
+    }
+
+    handleClickCheck = () => {
+        const completed = !this.props.event.completed;
+        const event = {
+            completed: completed
+        }
+        this.props.updateEvent(event, this.props.event.id);
+    }
     
     render() {
         return (
@@ -41,10 +57,10 @@ class EventShow extends Component {
                     <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
                     </li>
                     <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
-                        <button className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button onClick={this.handleClickCheck} className={`pl-2 pr-2 text-sm font-medium ${this.props.event.completed ? "text-green-500" : "text-gray-900"}`}>
                             <i className="fas fa-check"></i>
                         </button>
-                        <button className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button onClick={this.handleDelete} className={`pl-2 pr-2 text-sm font-medium text-gray-900`}>
                             <i className="fa fa-trash content-end"></i>
                         </button>
                     </li>
