@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchPlants } from '../../actions/plants';
 import PlantShowContainer from './PlantShowContainer';
 import { setPlantToActive } from '../../actions/plants';  
+import { fetchEventsByPlant } from '../../actions/events';
 
 class PlantPageContainer extends Component {
 
@@ -12,6 +13,7 @@ class PlantPageContainer extends Component {
         .then(() => {
             if (this.props.match.params.plantId) {
                 this.props.setPlantToActive(this.props.match.params.plantId)
+                this.props.fetchEventsByPlant(this.props.match.params.plantId)
             }
         })
     }
@@ -39,6 +41,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchPlants: () => dispatch(fetchPlants()),
         setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
+        fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId))
     }
 }
 

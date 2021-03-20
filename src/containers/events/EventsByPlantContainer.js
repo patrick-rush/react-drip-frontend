@@ -6,7 +6,16 @@ import { setEventToActive } from '../../actions/events';
 class EventsByPlantContainer extends Component {
     
     renderEvents = () => {
-        return this.props.events.map(event => <EventByPlant key={event.id} event={event} plant={this.props.plant} history={this.props.history} setEventToActive={this.props.setEventToActive}/>)
+        const sortedEvents = this.props.events.sort((a, b) => a.due_date > b.due_date ? 1:-1);
+        return sortedEvents.map(event => {
+            return <EventByPlant
+                key={event.id}
+                event={event}
+                plant={this.props.plant}
+                history={this.props.history}
+                setEventToActive={this.props.setEventToActive}
+            />
+        })
     }
     
     render() {
