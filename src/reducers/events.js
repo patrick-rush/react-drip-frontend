@@ -32,6 +32,7 @@ export default function eventsReducer(state = initialState, action) {
             console.log("from reducer", action.payload)
             return {
                 ...state,
+                // eslint-disable-next-line
                 currentEvent: state.events.find(event => event.id == action.payload)
             }
         case TOGGLE_SHOW_EVENT_FORM:

@@ -70,6 +70,7 @@ export default function plantsReducer(state = initialState, action) {
             console.log(action.payload)
             return {
                 ...state,
+                // eslint-disable-next-line
                 currentPlant: state.plants.find(plant => plant.id == action.payload)
             }
         // case START_LOADING_PLANT:
