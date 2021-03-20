@@ -22,6 +22,7 @@ class NoteForm extends Component {
         this.setState({
             content: ""
         })
+        this.props.toggleShowNoteForm()
     }
     
     render() {

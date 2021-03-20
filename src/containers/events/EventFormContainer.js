@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EventForm from '../../components/events/EventForm';
 import { createEvent } from '../../actions/events';
+import { toggleShowEventForm } from '../../actions/events';
 
 class EventFormContainer extends Component {
     render() {
         return (
-            <EventForm currentPlant={this.props.currentPlant} createEvent={this.props.createEvent} />
+            <EventForm currentPlant={this.props.currentPlant} createEvent={this.props.createEvent} toggleShowEventForm={this.props.toggleShowEventForm}  />
         )
     }
 }
@@ -19,7 +20,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createEvent: (event) => dispatch(createEvent(event))
+        createEvent: (event) => dispatch(createEvent(event)),
+        toggleShowEventForm: () => dispatch(toggleShowEventForm())
     }
 }
 
