@@ -15,6 +15,7 @@ class PlantListContainer extends Component {
                 key={plant.id}
                 plant={plant}
                 history={this.props.history}
+                textColor={this.props.currentPlant === plant ? "text-green-700" : "text-gray-500"}
                 setPlantToActive={this.props.setPlantToActive}
                 fetchEventsByPlant={this.props.fetchEventsByPlant}
                 fetchNotesByPlant={this.props.fetchNotesByPlant}
@@ -38,6 +39,7 @@ class PlantListContainer extends Component {
 const mapStateToProps = state => {
     return {
         plants: state.plants.plants,
+        currentPlant: state.plants.currentPlant
         // header: state.page.leftHeader
     }
 }
