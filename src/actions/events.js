@@ -13,7 +13,7 @@ import {
 export const fetchEvents = () => {
     return (dispatch) => {
         dispatch({ type: START_LOADING_EVENTS })
-        fetch(`http://localhost:3000/care_events`)
+        return fetch(`http://localhost:3000/care_events`)
             .then((res) => res.json())
             .then((eventsJson) => {
                 dispatch({
