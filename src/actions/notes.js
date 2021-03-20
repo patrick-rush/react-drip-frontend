@@ -1,16 +1,14 @@
 import {
-    START_LOADING_NOTES,
+    START_CONTACTING_NOTE_SERVER,
     TOGGLE_SHOW_NOTE_FORM,
-    START_ADDING_NOTE,
     SUCCESSFULLY_ADDED_NOTE,
     SUCCESSFULLY_LOADED_NOTES_BY_PLANT,
-    START_DELETING_NOTE,
     SUCCESSFULLY_DELETED_NOTE
 } from '.';
 
 // export const fetchNotes = () => {
 //     return (dispatch) => {
-//         dispatch({ type: START_LOADING_NOTES })
+//         dispatch({ type: START_CONTACTING_NOTE_SERVER })
 //         fetch(`http://localhost:3000/notes`)
 //             .then((res) => res.json())
 //             .then((eventsJson) => {
@@ -24,7 +22,7 @@ import {
 
 export const fetchNotesByPlant = (plantId) => {
     return (dispatch) => {
-        dispatch({ type: START_LOADING_NOTES })
+        dispatch({ type: START_CONTACTING_NOTE_SERVER })
         fetch(`http://localhost:3000/plants/${plantId}/notes`, {
             headers: {
                 "Accept": "application/json",
@@ -41,12 +39,6 @@ export const fetchNotesByPlant = (plantId) => {
     };
 };
 
-// export const setNoteToActive = (eventId) => {
-//     return (dispatch) => {
-//         dispatch({ type: SET_CURRENT_NOTE, payload: eventId })
-//     }
-// }
-
 export const toggleShowNoteForm = () => {
     return (dispatch) => {
         dispatch({ type: TOGGLE_SHOW_NOTE_FORM })
@@ -55,7 +47,7 @@ export const toggleShowNoteForm = () => {
 
 export const createNote = (note) => {
     return (dispatch) => {
-        dispatch({ type: START_ADDING_NOTE })
+        dispatch({ type: START_CONTACTING_NOTE_SERVER })
         fetch("http://localhost:3000/notes", {
             method: 'POST',
             headers: {
@@ -77,7 +69,7 @@ export const createNote = (note) => {
 
 export const deleteNote = (noteId) => {
     return (dispatch) => {
-        dispatch({ type: START_DELETING_NOTE })
+        dispatch({ type: START_CONTACTING_NOTE_SERVER })
         fetch(`http://localhost:3000/notes/${noteId}`, {
             method: 'DELETE'
         })

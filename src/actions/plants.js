@@ -1,18 +1,15 @@
 import {
-    START_LOADING_PLANTS,
+    START_CONTACTING_PLANT_SERVER,
     SUCCESSFULLY_LOADED_PLANTS,
-    START_ADDING_PLANT,
     SUCCESSFULLY_ADDED_PLANT,
-    START_UPDATING_PLANT,
     SUCCESSFULLY_UPDATED_PLANT,
-    START_DELETING_PLANT,
     SUCCESSFULLY_DELETED_PLANT,
     SET_CURRENT_PLANT
 } from '.';
 
 export const fetchPlants = () => {
     return (dispatch) => {
-        dispatch({ type: START_LOADING_PLANTS })
+        dispatch({ type: START_CONTACTING_PLANT_SERVER })
         return fetch(`http://localhost:3000/plants`)
             .then((res) => res.json())
             .then((plantsJson) => {
@@ -26,7 +23,7 @@ export const fetchPlants = () => {
 
 export const addPlant = (formData) => {
     return (dispatch) => {
-        dispatch({ type: START_ADDING_PLANT })
+        dispatch({ type: START_CONTACTING_PLANT_SERVER })
         fetch("http://localhost:3000/plants", {
             method: "POST",
             // headers: {
@@ -47,7 +44,7 @@ export const addPlant = (formData) => {
 
 export const updatePlant = (formData, plantId) => {
     return (dispatch) => {
-        dispatch({ type: START_UPDATING_PLANT })
+        dispatch({ type: START_CONTACTING_PLANT_SERVER })
         fetch(`http://localhost:3000/plants/${plantId}`, {
             method: "PATCH",
             body: formData
@@ -64,7 +61,7 @@ export const updatePlant = (formData, plantId) => {
 
 export const deletePlant = (plantId) => {
     return (dispatch) => {
-        dispatch({ type: START_DELETING_PLANT })
+        dispatch({ type: START_CONTACTING_PLANT_SERVER })
         fetch(`http://localhost:3000/plants/${plantId}`, {
             method: 'DELETE'
         })

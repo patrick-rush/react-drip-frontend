@@ -1,9 +1,8 @@
 import {
-    START_LOADING_EVENTS,
+    START_CONTACTING_EVENT_SERVER,
     SUCCESSFULLY_LOADED_EVENTS,
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
-    START_ADDING_EVENT,
     SUCCESSFULLY_ADDED_EVENT,
     SUCCESSFULLY_LOADED_EVENTS_BY_PLANT
 } from '../actions';
@@ -18,7 +17,7 @@ const initialState = {
 
 export default function eventsReducer(state = initialState, action) {
     switch (action.type) {
-        case START_LOADING_EVENTS: 
+        case START_CONTACTING_EVENT_SERVER: 
             return {
                 ...state,
                 loadingState: "inProgress"};
@@ -39,12 +38,6 @@ export default function eventsReducer(state = initialState, action) {
             return {
                 ...state,
                 showEventForm: !state.showEventForm
-            }
-        case START_ADDING_EVENT:
-            console.log("got to START_ADDING_EVENT")
-            return {
-                ...state,
-                loadingState: "inProgress"
             }
         case SUCCESSFULLY_ADDED_EVENT:
             console.log(action.payload)

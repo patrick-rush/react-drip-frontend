@@ -1,18 +1,15 @@
 import {
-    START_LOADING_EVENTS,
+    START_CONTACTING_EVENT_SERVER,
     SUCCESSFULLY_LOADED_EVENTS,
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
-    START_ADDING_EVENT,
     SUCCESSFULLY_ADDED_EVENT,
     SUCCESSFULLY_LOADED_EVENTS_BY_PLANT
-    // START_ADDING_EVENT,
-    // SUCCESSFULLY_ADDED_EVENT
 } from '.';
 
 export const fetchEvents = () => {
     return (dispatch) => {
-        dispatch({ type: START_LOADING_EVENTS })
+        dispatch({ type: START_CONTACTING_EVENT_SERVER })
         return fetch(`http://localhost:3000/care_events`)
             .then((res) => res.json())
             .then((eventsJson) => {
@@ -26,7 +23,7 @@ export const fetchEvents = () => {
 
 export const fetchEventsByPlant = (plantId) => {
     return (dispatch) => {
-        dispatch({ type: START_LOADING_EVENTS })
+        dispatch({ type: START_CONTACTING_EVENT_SERVER })
         fetch(`http://localhost:3000/plants/${plantId}/care_events`, {
             headers: {
                 "Accept": "application/json",
@@ -57,7 +54,7 @@ export const toggleShowEventForm = () => {
 
 export const createEvent = (event) => {
     return (dispatch) => {
-        dispatch({ type: START_ADDING_EVENT })
+        dispatch({ type: START_CONTACTING_EVENT_SERVER })
         console.log("from createEvent Action =", event)
         fetch("http://localhost:3000/care_events", {
             method: 'POST',
@@ -80,7 +77,7 @@ export const createEvent = (event) => {
 
 // export const addPlant = (plant) => {
 //     return (dispatch) => {
-//         dispatch({ type: START_ADDING_EVENT })
+//         dispatch({ type: START_CONTACTING_EVENT_SERVER })
 //         fetch("http://localhost:3000/plants", {
 //             method: "POST",
 //             headers: {
