@@ -15,15 +15,16 @@ class PlantShow extends Component {
     }
 
     handleFrequencyChange = event => {
-        console.log(event.target.id)
+        console.log(event.target.getAttribute('name'))
         const formData = new FormData();
+        const frequencyType = event.target.getAttribute('name')
         let newFrequency
         if (event.target.id === "increase") {
-            newFrequency = this.props.plant.watering_frequency += 1
+            newFrequency = this.props.plant[frequencyType] += 1
         } else if (event.target.id === "decrease") {
-            newFrequency = this.props.plant.watering_frequency -= 1
+            newFrequency = this.props.plant[frequencyType] -= 1
         }
-        formData.append('plant[watering_frequency]', newFrequency)
+        formData.append(`plant[${frequencyType}]`, newFrequency)
         this.props.updatePlant(formData, this.props.plant.id)
     }
 
@@ -74,14 +75,64 @@ class PlantShow extends Component {
                         {this.props.plant.watering_frequency} days
                     </li>
                     <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
-                        <button id="decrease" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
-                            <i id="decrease" className="fa fa-minus"></i>
+                        <button id="decrease" name="watering_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="decrease" name="watering_frequency" className="fa fa-minus"></i>
                         </button>
-                        <button id="increase" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
-                            <i id="increase" className="fa fa-plus"></i>
+                        <button id="increase" name="watering_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="increase" name="watering_frequency" className="fa fa-plus"></i>
                         </button>      
                     </li>
                 </div>
+
+                <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <li className="text-sm font-medium text-gray-900">
+                        Fertilizing Frequency
+                    </li>
+                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                        {this.props.plant.fertilizing_frequency} days
+                    </li>
+                    <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
+                        <button id="decrease" name="fertilizing_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="decrease" name="fertilizing_frequency" className="fa fa-minus"></i>
+                        </button>
+                        <button id="increase" name="fertilizing_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="increase" name="fertilizing_frequency" className="fa fa-plus"></i>
+                        </button>      
+                    </li>
+                </div>
+                {/* <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <li className="text-sm font-medium text-gray-900">
+                        Repotting Frequency
+                    </li>
+                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                        {this.props.plant.repotting_frequency} days
+                    </li>
+                    <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
+                        <button id="decrease" name="repotting_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="decrease" name="repotting_frequency" className="fa fa-minus"></i>
+                        </button>
+                        <button id="increase" name="repotting_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="increase" name="repotting_frequency" className="fa fa-plus"></i>
+                        </button>      
+                    </li>
+                </div>
+                <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <li className="text-sm font-medium text-gray-900">
+                        Pruning Frequency
+                    </li>
+                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                        {this.props.plant.pruning_frequency} days
+                    </li>
+                    <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
+                        <button id="decrease" name="pruning_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="decrease" name="pruning_frequency" className="fa fa-minus"></i>
+                        </button>
+                        <button id="increase" name="pruning_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                            <i id="increase" name="pruning_frequency" className="fa fa-plus"></i>
+                        </button>      
+                    </li>
+                </div> */}
+
                 <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Notes 
