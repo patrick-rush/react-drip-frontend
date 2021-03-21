@@ -33,7 +33,7 @@ class PlantListContainer extends Component {
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
                 <Header header={"Plants"} />
                 <div className="border-t border-gray-200">
-                    {this.props.loadingState === "successful" ? this.renderPlants() : "loading spinner"}
+                    {this.props.loadingState === "successful" ? this.renderPlants() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                     {/* ATTN loading spinner needs to be added and styled */}
                 </div>
             </div>
