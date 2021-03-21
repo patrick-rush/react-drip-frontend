@@ -30,18 +30,66 @@ class EventShow extends Component {
             completed: completed
         }
         this.props.updateEvent(event, this.props.event.id);
+        const eventType = this.props.event.event_type;
+        let frequencyName
+        switch (eventType) {
+            case 'water':
+                frequencyName = 'watering_frequency';
+                break
+            case 'fertilize':
+                frequencyName = 'fertilizing_frequency';
+                break
+            case 'repot':
+                frequencyName = 'repotting_frequency';
+                break
+            case 'prune':
+                frequencyName = 'pruning_frequency';
+                break
+            default:
+                return null;
+        }
         if (completed) {
-            const newDate = moment().add(this.props.plant.watering_frequency, 'days').format("YYYY-MM-DD");
+            const newDate = moment().add(this.props.plant[frequencyName], 'days').format("YYYY-MM-DD");
             const today = moment().format('YYYY-MM-DD');
             console.log("this is watering frequency", this.props.plant.watering_frequency);
             console.log("this is today", today);
             console.log("this is the new date", newDate);
             const newEvent = {
-                event_type: "Water",
+                event_type: eventType,
                 plant_id: this.props.plant.id,
                 due_date: newDate
             }
             this.props.createEvent(newEvent)
+        }
+    }
+
+    createLabel = (eventType) => {
+        switch (eventType) {
+            case 'water':
+                return 'Watering Frequency';
+            case 'fertilize':
+                return 'Fertilizing Frequency';
+            case 'repot':
+                return 'Repotting Frequency';
+            case 'prune':
+                return 'Pruning Frequency';
+            default:
+                return null;
+        }
+    }
+
+    renderFrequency = (eventType, plant) => {
+        switch (eventType) {
+            case 'water':
+                return plant.watering_frequency;
+            case 'fertilize':
+                return plant.fertilizing_frequency;
+            case 'repot':
+                return plant.repotting_frequency;
+            case 'prune':
+                return plant.pruning_frequency;
+            default:
+                return null;
         }
     }
     
@@ -50,10 +98,10 @@ class EventShow extends Component {
             <ul>
                 <div className="opacity-80 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
-                        Watering Frequency
+                        {this.createLabel(this.props.event.event_type)}
                     </li>
                     <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
-                        {this.props.plant.watering_frequency} days
+                        {this.renderFrequency(this.props.event.event_type, this.props.plant)} days
                     </li>
                     <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
                         <button id="decrease" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
