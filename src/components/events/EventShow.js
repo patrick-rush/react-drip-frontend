@@ -4,7 +4,6 @@ import moment from 'moment';
 class EventShow extends Component {
     
     handleFrequencyChange = event => {
-        console.log(event.target.id)
         const formData = new FormData();
         let newFrequency
         if (event.target.id === "increase") {
@@ -50,10 +49,6 @@ class EventShow extends Component {
         }
         if (completed) {
             const newDate = moment().add(this.props.plant[frequencyName], 'days').format("YYYY-MM-DD");
-            const today = moment().format('YYYY-MM-DD');
-            console.log("this is watering frequency", this.props.plant.watering_frequency);
-            console.log("this is today", today);
-            console.log("this is the new date", newDate);
             const newEvent = {
                 event_type: eventType,
                 plant_id: this.props.plant.id,

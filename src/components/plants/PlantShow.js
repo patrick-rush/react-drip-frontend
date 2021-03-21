@@ -15,7 +15,6 @@ class PlantShow extends Component {
     }
 
     handleFrequencyChange = event => {
-        console.log(event.target.getAttribute('name'))
         const formData = new FormData();
         const frequencyType = event.target.getAttribute('name')
         let newFrequency
@@ -29,7 +28,6 @@ class PlantShow extends Component {
     }
 
     handleShowEventForm = () => {
-        console.log("got to handleShowEventForm")
         this.props.toggleShowEventForm()
     }
 

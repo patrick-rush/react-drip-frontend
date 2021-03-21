@@ -30,7 +30,6 @@ export default function eventsReducer(state = initialState, action) {
                 events: action.payload
             }
         case SET_CURRENT_EVENT: 
-            console.log("from reducer", action.payload)
             return {
                 ...state,
                 // eslint-disable-next-line
@@ -42,7 +41,6 @@ export default function eventsReducer(state = initialState, action) {
                 showEventForm: !state.showEventForm
             }
         case SUCCESSFULLY_ADDED_EVENT:
-            console.log(action.payload)
             return {
                 ...state,
                 loadingState: "successful",

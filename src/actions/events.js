@@ -82,7 +82,6 @@ export const updateEvent = (event, eventId) => {
         })
             .then(res => res.json())
             .then((eventJson) => {
-                console.log("eventJson is ",eventJson)
                 dispatch({
                     type: SUCCESSFULLY_DELETED_EVENT,
                     payload: eventId
@@ -98,7 +97,6 @@ export const updateEvent = (event, eventId) => {
 export const createEvent = (event) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        console.log("from createEvent Action =", event)
         fetch("http://localhost:3000/care_events", {
             method: 'POST',
             headers: {

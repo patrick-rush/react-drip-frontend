@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class EventByPlant extends Component {
   
     formattedDueDate = ({due_date}) => {
-        console.log(due_date);
         const date = new Date(`${due_date} 00:00`).toDateString(
             'en-us',
             {
@@ -16,7 +15,6 @@ class EventByPlant extends Component {
     }
 
     handleOnClick = () => {
-        console.log("from handleOnClick in EventByPlant", this.props.event.id)
         this.props.setEventToActive(this.props.event.id);
         this.props.history.push(`/events/${this.props.event.id}`);
     }

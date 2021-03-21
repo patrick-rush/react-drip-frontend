@@ -21,7 +21,6 @@ class EventForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        console.log("from handleOnSubmit =", event.target);
         const newEvent = {
             event_type: this.state.selected,
             plant_id: this.props.currentPlant.id,

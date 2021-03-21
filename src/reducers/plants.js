@@ -26,14 +26,12 @@ export default function plantsReducer(state = initialState, action) {
                 plants: action.payload
             }
         case SUCCESSFULLY_ADDED_PLANT:
-            console.log(action.payload)
             return {
                 ...state,
                 loadingState: "successful",
                 currentPlant: action.payload
             }
         case SUCCESSFULLY_UPDATED_PLANT:
-            console.log("successful update", action.payload)
             return {
                 ...state,
                 loadingState: "successful",
@@ -47,7 +45,6 @@ export default function plantsReducer(state = initialState, action) {
                 plants: state.plants.filter(plant => plant.id !== action.payload)
             }    
         case SET_CURRENT_PLANT: 
-            console.log(action.payload)
             return {
                 ...state,
                 // eslint-disable-next-line

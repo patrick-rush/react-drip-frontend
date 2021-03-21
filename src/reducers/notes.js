@@ -24,7 +24,6 @@ export default function notesReducer(state = initialState, action) {
                 showNoteForm: !state.showNoteForm
             }
         case SUCCESSFULLY_ADDED_NOTE:
-            console.log(action.payload)
             return {
                 ...state,
                 loadingState: "successful",

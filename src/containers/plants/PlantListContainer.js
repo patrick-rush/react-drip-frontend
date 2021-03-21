@@ -23,7 +23,6 @@ class PlantListContainer extends Component {
     };
 
     handleClick = (plantId) => {
-        console.log("from plant component", plantId)
         this.props.setPlantToActive(plantId);
         this.props.fetchEventsByPlant(plantId);
         this.props.fetchNotesByPlant(plantId);
