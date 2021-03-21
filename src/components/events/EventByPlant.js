@@ -15,8 +15,11 @@ class EventByPlant extends Component {
     }
 
     handleOnClick = () => {
-        this.props.setEventToActive(this.props.event.id);
-        this.props.history.push(`/events/${this.props.event.id}`);
+        this.props.fetchEvents()
+        .then(() => {
+            this.props.setEventToActive(this.props.event.id);
+            this.props.history.push(`/events/${this.props.event.id}`);
+        })
     }
     
     render() {
