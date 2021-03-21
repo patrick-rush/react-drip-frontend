@@ -43,12 +43,16 @@ class EventListContainer extends Component {
                     event={event}
                     plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]}
                     textColor={this.props.currentEvent === event ? "text-green-700" : "text-gray-500"}
-                    history={this.props.history}
-                    setEventToActive={this.props.setEventToActive}
-                    setPlantToActive={this.props.setPlantToActive}
+                    handleClick={this.handleClick}
                 />
             );
         });
+    }
+
+    handleClick = (eventId, plantId) => {
+        this.props.setEventToActive(eventId);
+        this.props.setPlantToActive(plantId);
+        this.props.history.push(`/events/${eventId}`)
     }
     
     render() {

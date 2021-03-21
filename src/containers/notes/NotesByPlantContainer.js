@@ -7,7 +7,20 @@ class NotesByPlantContainer extends Component {
     
     renderNotes = () => {
         const sortedNotes = this.props.notes.sort((a, b) => a.created_at < b.created_at ? 1:-1);
-        return sortedNotes.map(note => <NoteByPlant key={note.id} note={note} plant={this.props.plant} deleteNote={this.props.deleteNote} />);
+        return sortedNotes.map(note => {
+            return <NoteByPlant
+                key={note.id}
+                note={note}
+                handleDelete={this.handleDelete}
+            />
+        });
+    }
+
+    handleDelete = (noteId) => {
+        const proceed = window.confirm("Are you sure?");
+        if (proceed) {
+            this.props.deleteNote(noteId);
+        }
     }
     
     render() {

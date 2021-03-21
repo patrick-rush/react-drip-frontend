@@ -13,7 +13,7 @@ class EventShowContainer extends Component {
         return (
             <div className="overflow-hidden bg-white sm:min-h-screen col-span-2 rounded-md shadow">
                 <Header 
-                    header={this.props.currentEvent ? `${this.props.currentEvent.event_type} ${this.props.currentPlant.name} on ${moment(this.props.currentEvent.due_date).format("dddd, MMMM Do YYYY")}` : "" }
+                    header={this.props.currentEvent ? `${this.props.currentEvent.event_type} ${this.props.currentPlant.name} on ${moment(this.props.currentEvent.due_date).format("dddd, MMMM Do YYYY")}` : <br/> }
                     currentEvent={this.props.currentEvent}
                 />
                 <div className="border-t border-gray-200">

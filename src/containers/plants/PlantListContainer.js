@@ -16,14 +16,19 @@ class PlantListContainer extends Component {
             return <Plant
                 key={plant.id}
                 plant={plant}
-                history={this.props.history}
                 textColor={this.props.currentPlant === plant ? "text-green-700" : "text-gray-500"}
-                setPlantToActive={this.props.setPlantToActive}
-                fetchEventsByPlant={this.props.fetchEventsByPlant}
-                fetchNotesByPlant={this.props.fetchNotesByPlant}
+                handleClick={this.handleClick}
             />
         });
     };
+
+    handleClick = (plantId) => {
+        console.log("from plant component", plantId)
+        this.props.setPlantToActive(plantId);
+        this.props.fetchEventsByPlant(plantId);
+        this.props.fetchNotesByPlant(plantId);
+        this.props.history.push(`/plants/${plantId}`)
+    }
     
     render() {
         return (
