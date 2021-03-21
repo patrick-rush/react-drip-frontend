@@ -7,6 +7,7 @@ import {
     SUCCESSFULLY_UPDATED_EVENT,
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
+    CLEAR_EVENTS_BY_CURRENT_PLANT
 } from '../actions';
 
 const initialState = {
@@ -68,6 +69,11 @@ export default function eventsReducer(state = initialState, action) {
                 // eslint-disable-next-line
                 currentEvent: action.payload,
                 events: [...state.events, action.payload]
+            }
+        case CLEAR_EVENTS_BY_CURRENT_PLANT:
+            return {
+                ...state,
+                eventsByCurrentPlant: []
             }
         default:
             return state;

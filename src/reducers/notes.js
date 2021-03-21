@@ -3,7 +3,8 @@ import {
     TOGGLE_SHOW_NOTE_FORM,
     SUCCESSFULLY_ADDED_NOTE,
     SUCCESSFULLY_LOADED_NOTES_BY_PLANT,
-    SUCCESSFULLY_DELETED_NOTE
+    SUCCESSFULLY_DELETED_NOTE,
+    CLEAR_NOTES_BY_CURRENT_PLANT
 } from '../actions';
 
 const initialState = {
@@ -41,6 +42,11 @@ export default function notesReducer(state = initialState, action) {
                 ...state,
                 loadingState: "successful",
                 notesByCurrentPlant: state.notesByCurrentPlant.filter(note => note.id !== action.payload)
+            }
+        case CLEAR_NOTES_BY_CURRENT_PLANT:
+            return {
+                ...state,
+                notesByCurrentPlant: []
             }
         default:
             return state;

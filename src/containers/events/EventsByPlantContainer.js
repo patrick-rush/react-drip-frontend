@@ -31,7 +31,7 @@ class EventsByPlantContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        plant: state.plants.currentPlant,
+        // plant: state.plants.currentPlant,
         events: state.events.eventsByCurrentPlant
     }
 }

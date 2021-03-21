@@ -103,7 +103,7 @@ class PlantShow extends Component {
                         </button>
                     </li>
                     {this.props.showNoteForm === true ? <NoteFormContainer /> : null}
-                    {<NotesByPlantContainer history={this.props.history} />}
+                    {<NotesByPlantContainer plant={this.props.plant} history={this.props.history} />}
                 </div>  
                 <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
@@ -113,7 +113,7 @@ class PlantShow extends Component {
                         </button>
                     </li>
                     {this.props.showEventForm === true ? <EventFormContainer /> : null}
-                    {<EventsByPlantContainer history={this.props.history} />}
+                    {<EventsByPlantContainer plant={this.props.plant} history={this.props.history} />}
                 </div>  
             </ul>
 
