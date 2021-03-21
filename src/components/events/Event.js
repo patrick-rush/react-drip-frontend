@@ -3,7 +3,7 @@ import moment from 'moment';
 
 class Event extends Component {
     
-    handleClick = event => {
+    handleClick = () => {
         this.props.setEventToActive(this.props.event.id);
         this.props.setPlantToActive(this.props.plant.id);
         this.props.history.push(`/events/${this.props.event.id}`)

@@ -26,7 +26,6 @@ class EventShowContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        // header: state.page.rightHeader,
         currentPlant: state.plants.currentPlant,
         currentEvent: state.events.currentEvent
     }

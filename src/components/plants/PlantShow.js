@@ -59,7 +59,7 @@ class PlantShow extends Component {
                         {this.props.plant.location}
                     </li>
                     <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
-                        <button onClick={e => this.props.history.push(`/plants/edit/${this.props.plant.id}`)} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button onClick={() => this.props.history.push(`/plants/edit/${this.props.plant.id}`)} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i className="fa fa-pencil-alt content-end"></i>
                         </button>      
                         <button onClick={this.handleDelete} className="pl-2 pr-2 text-sm font-medium text-gray-900">

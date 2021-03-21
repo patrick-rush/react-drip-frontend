@@ -16,9 +16,6 @@ class EventByPlant extends Component {
     }
 
     handleOnClick = () => {
-        // if (this.props.event.completed) {
-        //     return
-        // }
         console.log("from handleOnClick in EventByPlant", this.props.event.id)
         this.props.setEventToActive(this.props.event.id);
         this.props.history.push(`/events/${this.props.event.id}`);
