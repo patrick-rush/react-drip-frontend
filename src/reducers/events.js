@@ -46,7 +46,7 @@ export default function eventsReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingState: "successful",
-                currentEvent: action.payload,
+                events: [...state.events, action.payload],
                 eventsByCurrentPlant: [...state.eventsByCurrentPlant, action.payload]
             }
         case SUCCESSFULLY_LOADED_EVENTS_BY_PLANT:
@@ -67,7 +67,8 @@ export default function eventsReducer(state = initialState, action) {
                 ...state,
                 loadingState: "successful",
                 // eslint-disable-next-line
-                currentEvent: action.payload
+                currentEvent: action.payload,
+                events: [...state.events, action.payload]
             }
         default:
             return state;

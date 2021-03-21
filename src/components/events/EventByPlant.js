@@ -16,6 +16,9 @@ class EventByPlant extends Component {
     }
 
     handleOnClick = () => {
+        // if (this.props.event.completed) {
+        //     return
+        // }
         console.log("from handleOnClick in EventByPlant", this.props.event.id)
         this.props.setEventToActive(this.props.event.id);
         this.props.history.push(`/events/${this.props.event.id}`);
@@ -24,7 +27,7 @@ class EventByPlant extends Component {
     render() {
         return (
             <div className={"bg-gray-50 shadow overflow-hidden sm:rounded-lg mt-5"}>
-                <button onClick={this.handleOnClick} className="text-sm font-medium px-4 py-5 col-span-full">
+                <button onClick={this.handleOnClick} disabled={this.props.event.completed} className={`text-sm font-medium px-4 py-5 col-span-full ${this.props.event.completed ? "line-through cursor-not-allowed" : null}`} >
                     {`${this.props.event.event_type} on ${this.formattedDueDate(this.props.event)}`}
                 </button>
             </div>

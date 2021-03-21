@@ -8,6 +8,12 @@ import moment from 'moment';
 
 class EventListContainer extends Component {
     
+    // shouldComponentUpdate(nextProps) {
+    //     if (this.props === nextProps) {
+    //         return false
+    //     }
+    // }
+
     renderOverdue = () => {
         const today = moment().format().slice(0,10);
         const overdueEvents = this.props.events.filter(event => event.due_date < today );

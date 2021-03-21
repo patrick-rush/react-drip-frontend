@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class EventShow extends Component {
     
@@ -29,6 +30,19 @@ class EventShow extends Component {
             completed: completed
         }
         this.props.updateEvent(event, this.props.event.id);
+        if (completed) {
+            const newDate = moment().add(this.props.plant.watering_frequency, 'days').format("YYYY-MM-DD");
+            const today = moment().format('YYYY-MM-DD');
+            console.log("this is watering frequency", this.props.plant.watering_frequency);
+            console.log("this is today", today);
+            console.log("this is the new date", newDate);
+            const newEvent = {
+                event_type: "Water",
+                plant_id: this.props.plant.id,
+                due_date: newDate
+            }
+            this.props.createEvent(newEvent)
+        }
     }
     
     render() {

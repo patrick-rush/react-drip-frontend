@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class EventForm extends Component {
 
     state = {
-        date: null
+        date: ""
     }
 
     handleOnChange = event => {

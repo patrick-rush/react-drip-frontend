@@ -83,7 +83,10 @@ export const updateEvent = (event, eventId) => {
             .then(res => res.json())
             .then((eventJson) => {
                 console.log("eventJson is ",eventJson)
-
+                dispatch({
+                    type: SUCCESSFULLY_DELETED_EVENT,
+                    payload: eventId
+                })
                 dispatch({
                     type: SUCCESSFULLY_UPDATED_EVENT,
                     payload: eventJson
