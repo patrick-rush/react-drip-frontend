@@ -66,7 +66,7 @@ class PlantShow extends Component {
                         </button>      
                     </li>
                 </div>
-                <div className="opacity-90 m-2 bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Watering Frequency
                     </li>
@@ -92,7 +92,7 @@ class PlantShow extends Component {
                     {this.props.showNoteForm === true ? <NoteFormContainer /> : null}
                     {<NotesByPlantContainer history={this.props.history} />}
                 </div>  
-                <div className="opacity-90 m-2 bg-white px-4 py-5 sm:grid sm:px-6">
+                <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:px-6">
                     <li className="text-sm font-medium text-gray-900">
                         Care Events
                         <button onClick={this.handleShowEventForm} className="pl-2 pr-2 text-sm font-medium text-gray-900">
