@@ -6,20 +6,6 @@ import {
     SUCCESSFULLY_DELETED_NOTE
 } from '.';
 
-// export const fetchNotes = () => {
-//     return (dispatch) => {
-//         dispatch({ type: START_CONTACTING_NOTE_SERVER })
-//         fetch(`http://localhost:3000/notes`)
-//             .then((res) => res.json())
-//             .then((eventsJson) => {
-//                 dispatch({
-//                     type: SUCCESSFULLY_LOADED_NOTES,
-//                     payload: eventsJson
-//                 })
-//             });
-//     };
-// };
-
 export const fetchNotesByPlant = (plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_NOTE_SERVER })

@@ -26,10 +26,6 @@ export const addPlant = (formData) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
         fetch("http://localhost:3000/plants", {
             method: "POST",
-            // headers: {
-            //     "Accept" : "application/json",
-            //     "Content-Type" : "application/json"
-            // },
             body: formData
         })
             .then(res => res.json())

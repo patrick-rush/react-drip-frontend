@@ -19,17 +19,10 @@ class NewPlantContainer extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        // header: state.page.rightHeader,
-        // currentPlant: state.plants.currentPlant
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         addPlant: (plant) => dispatch(addPlant(plant))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewPlantContainer);
+export default connect(null, mapDispatchToProps)(NewPlantContainer);

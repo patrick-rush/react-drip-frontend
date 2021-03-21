@@ -44,8 +44,6 @@ class PlantShow extends Component {
         }
     }
 
-    // renderCareEvents = () => this.props.careEvents.map(careEvent => <CareEventByPlant careEvent={careEvent} />)
-
     render() {
         return (
             <ul>

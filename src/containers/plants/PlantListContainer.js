@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Plant from '../../components/plants/Plant';
 import { connect } from 'react-redux';
 import Header from '../../components/page/Header';
-// import { manageNavigation } from '../actions/page';
 import { setPlantToActive } from '../../actions/plants'; 
 import { fetchEventsByPlant } from '../../actions/events';
 import { fetchNotesByPlant } from '../../actions/notes';
@@ -46,7 +45,6 @@ const mapStateToProps = state => {
     return {
         plants: state.plants.plants,
         currentPlant: state.plants.currentPlant
-        // header: state.page.leftHeader
     }
 }
 

@@ -8,12 +8,6 @@ import moment from 'moment';
 
 class EventListContainer extends Component {
     
-    // shouldComponentUpdate(nextProps) {
-    //     if (this.props === nextProps) {
-    //         return false
-    //     }
-    // }
-
     renderOverdue = () => {
         const today = moment().format().slice(0,10);
         const overdueEvents = this.props.events.filter(event => event.due_date < today );
@@ -81,13 +75,11 @@ const mapStateToProps = state => {
         plants: state.plants.plants,
         events: state.events.events,
         currentEvent: state.events.currentEvent
-        // header: state.page.leftHeader
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // setEventToActive: (eventId) => dispatch(setEventToActive("event", eventId))
         setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
         setEventToActive: (eventId) => dispatch(setEventToActive(eventId))
     }

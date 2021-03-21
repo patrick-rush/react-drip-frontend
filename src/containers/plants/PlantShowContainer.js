@@ -38,7 +38,6 @@ class PlantShowContainer extends Component {
                 style={this.handleBackground()}
             >
                 { this.props.currentPlant ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header={<br/>} /> }
-                {/* <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> */}
                 <div className="border-t border-gray-200">
                     { this.props.currentPlant ? this.renderPlant(this.props) : <Welcome /> }
                 </div>
@@ -49,7 +48,6 @@ class PlantShowContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        // header: state.page.rightHeader,
         currentPlant: state.plants.currentPlant,
         showEventForm: state.events.showEventForm,
         showNoteForm: state.notes.showNoteForm

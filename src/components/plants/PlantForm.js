@@ -109,7 +109,6 @@ class PlantForm extends Component {
                                     type="file" 
                                     name="photo" 
                                     id="photo" 
-                                    // value={this.state.photo} 
                                     className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
                                 />
                             </div>
