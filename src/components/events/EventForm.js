@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class EventForm extends Component {
 
     state = {
-        date: ""
+        date: "",
+        selected: "water"
     }
 
     handleOnChange = event => {
@@ -12,11 +13,17 @@ class EventForm extends Component {
         })
     }
 
+    handleOptionChange = event => {
+        this.setState({
+            selected: event.target.value
+        })
+    }
+
     handleOnSubmit = event => {
         event.preventDefault();
         console.log("from handleOnSubmit =", event.target);
         const newEvent = {
-            event_type: "Water",
+            event_type: this.state.selected,
             plant_id: this.props.currentPlant.id,
             due_date: this.state.date
         }
@@ -32,8 +39,34 @@ class EventForm extends Component {
             <form onSubmit={this.handleOnSubmit} className="bg-grey-50 shadow overflow-hidden sm:rounded-lg mt-5">
                 <div className="col-span-6 sm:col-span-3">
                     <div className="col-span-6 sm:col-span-3">
+                        <div className="opacity-90 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+                            <div>
+                                <label className="p-2 text-sm font-medium">
+                                    <input onChange={this.handleOptionChange} type="radio" value="water" checked={this.state.selected === "water"} className="mr-2 form-check-input"></input>
+                                    Water
+                                </label>
+                            </div>
+                            <div>
+                                <label className="p-2 text-sm font-medium">
+                                    <input onChange={this.handleOptionChange} type="radio" value="fertilize" checked={this.state.selected === "fertilize"} className="mr-2 form-check-input"></input>
+                                    Fertilize
+                                </label>
+                            </div>
+                            <div>
+                                <label className="p-2 text-sm font-medium">
+                                    <input onChange={this.handleOptionChange} type="radio" value="repot" checked={this.state.selected === "repot"} className="mr-2 form-check-input"></input>
+                                    Repot
+                                </label>
+                            </div>
+                            <div>
+                                <label className="p-2 text-sm font-medium">
+                                    <input onChange={this.handleOptionChange} type="radio" value="prune" checked={this.state.selected === "prune"} className="mr-2 form-check-input"></input>
+                                    Prune
+                                </label>
+                            </div>
+                            </div>
                         <label className="block p-4 text-sm font-medium text-green-700">
-                            Choose a date to water {this.props.currentPlant.name}
+                            Choose a date to {this.state.selected} {this.props.currentPlant.name}
                         </label>
                         <input
                             onChange={this.handleOnChange}
