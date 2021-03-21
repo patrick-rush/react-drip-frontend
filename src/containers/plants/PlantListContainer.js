@@ -10,7 +10,9 @@ import { fetchNotesByPlant } from '../../actions/notes';
 class PlantListContainer extends Component {
     
     renderPlants = () => {
-        return this.props.plants.map(plant => {
+        const sortedPlants = this.props.plants.sort((a, b) => a.name > b.name ? 1:-1);
+
+        return sortedPlants.map(plant => {
             return <Plant
                 key={plant.id}
                 plant={plant}
