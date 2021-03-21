@@ -4,13 +4,15 @@ import {
     SUCCESSFULLY_ADDED_PLANT,
     SUCCESSFULLY_UPDATED_PLANT,
     SUCCESSFULLY_DELETED_PLANT,
-    SET_CURRENT_PLANT
+    SET_CURRENT_PLANT,
+    CLEAR_NOTES_BY_CURRENT_PLANT,
+    CLEAR_EVENTS_BY_CURRENT_PLANT
 } from '.';
 
 export const fetchPlants = () => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        return fetch(`http://localhost:3000/plants`)
+        return fetch(`${process.env.REACT_APP_SERVER}/plants`)
             .then((res) => res.json())
             .then((plantsJson) => {
                 dispatch({
@@ -24,12 +26,18 @@ export const fetchPlants = () => {
 export const addPlant = (formData) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        fetch("http://localhost:3000/plants", {
+        fetch(`${process.env.REACT_APP_SERVER}/plants`, {
             method: "POST",
             body: formData
         })
             .then(res => res.json())
             .then((plantJson) => {
+                dispatch({
+                    type: CLEAR_NOTES_BY_CURRENT_PLANT
+                })
+                dispatch({
+                    type: CLEAR_EVENTS_BY_CURRENT_PLANT
+                })
                 dispatch({
                     type: SUCCESSFULLY_ADDED_PLANT,
                     payload: plantJson
@@ -41,7 +49,7 @@ export const addPlant = (formData) => {
 export const updatePlant = (formData, plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        fetch(`http://localhost:3000/plants/${plantId}`, {
+        fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`, {
             method: "PATCH",
             body: formData
         })
@@ -58,7 +66,7 @@ export const updatePlant = (formData, plantId) => {
 export const deletePlant = (plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        fetch(`http://localhost:3000/plants/${plantId}`, {
+        fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`, {
             method: 'DELETE'
         })
         .then(() => {

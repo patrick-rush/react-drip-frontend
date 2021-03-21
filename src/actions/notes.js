@@ -9,7 +9,7 @@ import {
 export const fetchNotesByPlant = (plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_NOTE_SERVER })
-        fetch(`http://localhost:3000/plants/${plantId}/notes`, {
+        fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}/notes`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -34,7 +34,7 @@ export const toggleShowNoteForm = () => {
 export const createNote = (note) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_NOTE_SERVER })
-        fetch("http://localhost:3000/notes", {
+        fetch(`${process.env.REACT_APP_SERVER}/notes`, {
             method: 'POST',
             headers: {
                 "Accept" : "application/json",
@@ -56,7 +56,7 @@ export const createNote = (note) => {
 export const deleteNote = (noteId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_NOTE_SERVER })
-        fetch(`http://localhost:3000/notes/${noteId}`, {
+        fetch(`${process.env.REACT_APP_SERVER}/notes/${noteId}`, {
             method: 'DELETE'
         })
         .then(() => {

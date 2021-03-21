@@ -12,7 +12,7 @@ import {
 export const fetchEvents = () => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        return fetch(`http://localhost:3000/care_events`)
+        return fetch(`${process.env.REACT_APP_SERVER}/care_events`)
             .then((res) => res.json())
             .then((eventsJson) => {
                 dispatch({
@@ -26,7 +26,7 @@ export const fetchEvents = () => {
 export const fetchEventsByPlant = (plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        fetch(`http://localhost:3000/plants/${plantId}/care_events`, {
+        fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}/care_events`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -45,7 +45,7 @@ export const fetchEventsByPlant = (plantId) => {
 export const deleteEvent = (eventId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        fetch(`http://localhost:3000/care_events/${eventId}`, { 
+        fetch(`${process.env.REACT_APP_SERVER}/care_events/${eventId}`, { 
             method: 'DELETE', 
         })
         .then(() => {
@@ -72,7 +72,7 @@ export const toggleShowEventForm = () => {
 export const updateEvent = (event, eventId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        fetch(`http://localhost:3000/care_events/${eventId}`, {
+        fetch(`${process.env.REACT_APP_SERVER}/care_events/${eventId}`, {
             method: 'PATCH',
             headers: {
                 "Accept" : "application/json",
@@ -97,7 +97,7 @@ export const updateEvent = (event, eventId) => {
 export const createEvent = (event) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        fetch("http://localhost:3000/care_events", {
+        fetch(`${process.env.REACT_APP_SERVER}/care_events`, {
             method: 'POST',
             headers: {
                 "Accept" : "application/json",
