@@ -8,8 +8,6 @@ class PlantForm extends Component {
         location: "",
         watering_frequency: "0",
         fertilizing_frequency: "0",
-        repotting_frequency: "0",
-        pruning_frequency: "0",
         photo: ""
     };
 
@@ -20,6 +18,7 @@ class PlantForm extends Component {
                 species: this.props.currentPlant.species,
                 location: this.props.currentPlant.location,
                 watering_frequency: this.props.currentPlant.watering_frequency,
+                fertilizing_frequency: this.props.currentPlant.fertilizing_frequency,
                 photo: ""
             })
         }
