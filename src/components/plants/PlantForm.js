@@ -7,6 +7,9 @@ class PlantForm extends Component {
         species: "",
         location: "",
         watering_frequency: "0",
+        fertilizing_frequency: "0",
+        repotting_frequency: "0",
+        pruning_frequency: "0",
         photo: ""
     };
 
@@ -17,6 +20,8 @@ class PlantForm extends Component {
                 species: this.props.currentPlant.species,
                 location: this.props.currentPlant.location,
                 watering_frequency: this.props.currentPlant.watering_frequency,
+                repotting_frequency: this.props.currentPlant.repotting_frequency,
+                pruning_frequency: this.props.currentPlant.pruning_frequency,
                 photo: ""
             })
         }
@@ -37,6 +42,9 @@ class PlantForm extends Component {
         formData.append('plant[species]', this.state.species)
         formData.append('plant[location]', this.state.location)
         formData.append('plant[watering_frequency]', this.state.watering_frequency)
+        formData.append('plant[fertilizing_frequency]', this.state.fertilizing_frequency)
+        formData.append('plant[repotting_frequency]', this.state.repotting_frequency)
+        formData.append('plant[pruning_frequency]', this.state.pruning_frequency)
         if (this.state.photo !== "") {
             formData.append('plant[photo]', event.target.photo.files[0], this.state.photo)
         }
@@ -46,6 +54,9 @@ class PlantForm extends Component {
           species: "",
           location: "",
           watering_frequency: "0",
+          fertilizing_frequency: "0",
+          repotting_frequency: "0",
+          pruning_frequency: "0",
           photo: ""
         })
         this.props.history.push('/')
@@ -119,7 +130,47 @@ class PlantForm extends Component {
                                     name="watering_frequency" 
                                     id="watering_frequency" 
                                     value={this.state.watering_frequency} 
-                                    className="watering_frequency mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
+                                    className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
+                                />
+                            </div>
+                            <div className="col-span-6 sm:col-span-3">
+                                <label className="block text-sm font-medium text-green-700">
+                                    Fertilizing Frequency (days)
+                                </label>
+                                <input 
+                                    onChange={this.handleOnChange} 
+                                    type="number" 
+                                    name="fertilizing_frequency" 
+                                    id="fertilizing_frequency" 
+                                    value={this.state.fertilizing_frequency} 
+                                    className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
+                                />
+                            </div>
+
+                            <div className="col-span-6 sm:col-span-3">
+                                <label className="block text-sm font-medium text-green-700">
+                                    Repotting Frequency (days)
+                                </label>
+                                <input 
+                                    onChange={this.handleOnChange} 
+                                    type="number" 
+                                    name="repotting_frequency" 
+                                    id="repotting_frequency" 
+                                    value={this.state.repotting_frequency} 
+                                    className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
+                                />
+                            </div>
+                            <div className="col-span-6 sm:col-span-3">
+                                <label className="block text-sm font-medium text-green-700">
+                                    Pruning Frequency (days)
+                                </label>
+                                <input 
+                                    onChange={this.handleOnChange} 
+                                    type="number" 
+                                    name="pruning_frequency" 
+                                    id="pruning_frequency" 
+                                    value={this.state.pruning_frequency} 
+                                    className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
                                 />
                             </div>
                         </div>
