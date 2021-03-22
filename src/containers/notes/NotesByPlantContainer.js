@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NoteByPlant from '../../components/notes/NoteByPlant';
 import { connect } from 'react-redux';
+import NoteByPlant from '../../components/notes/NoteByPlant';
 import { deleteNote } from '../../actions/notes';
 
 class NotesByPlantContainer extends Component {
@@ -34,7 +34,6 @@ class NotesByPlantContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        // plant: state.plants.currentPlant,
         events: state.events.eventsByCurrentPlant,
         notes: state.notes.notesByCurrentPlant
     }

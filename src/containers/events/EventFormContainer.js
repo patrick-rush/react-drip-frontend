@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EventForm from '../../components/events/EventForm';
-import { createEvent } from '../../actions/events';
-import { toggleShowEventForm } from '../../actions/events';
+import { createEvent, toggleShowEventForm } from '../../actions/events';
 
 class EventFormContainer extends Component {
     render() {

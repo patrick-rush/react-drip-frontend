@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import PlantListContainer from './PlantListContainer';
 import { connect } from 'react-redux';
-import { fetchPlants } from '../../actions/plants';
+import PlantListContainer from './PlantListContainer';
 import PlantShowContainer from './PlantShowContainer';
-import { setPlantToActive } from '../../actions/plants';  
+import {
+    fetchPlants,
+    setPlantToActive,
+    fetchPlant
+} from '../../actions/plants';
 import { fetchEventsByPlant } from '../../actions/events';
-import { fetchPlant } from '../../actions/plants';
 
 class PlantPageContainer extends Component {
 

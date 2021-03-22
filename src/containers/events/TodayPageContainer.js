@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import EventListContainer from './EventListContainer';
 import EventShowContainer from './EventShowContainer';
-import { connect } from 'react-redux';
-import { fetchEvents } from '../../actions/events';
+import { fetchEvents, setEventToActive } from '../../actions/events';
 import { fetchPlants } from '../../actions/plants';
-import { setEventToActive } from '../../actions/events';
-// import { setPlantToActive } from '../../actions/plants';
-
 
 class TodayPageContainer extends Component {
     
@@ -22,7 +19,6 @@ class TodayPageContainer extends Component {
                     <EventListContainer loadingState={this.props.loadingState} history={this.props.history}/>
                     <EventShowContainer history={this.props.history} />
                 </div>
-                {/* <section id="flash" class="rounded-md -m-10 h-10 col-span-3 py-2 pl-4 opacity-0 transition-opacity duration-500"></section> */}
             </>
         )
     }
@@ -39,7 +35,6 @@ const mapDispatchToProps = dispatch => {
         fetchEvents: () => dispatch(fetchEvents()),
         fetchPlants: () => dispatch(fetchPlants()),
         setEventToActive: (eventId) => dispatch(setEventToActive(eventId)),
-        // setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId))
     }
 }
 

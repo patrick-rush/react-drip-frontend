@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../../components/page/Header';
 import { connect } from 'react-redux';
+import Header from '../../components/page/Header';
 import PlantForm from '../../components/plants/PlantForm';
 import { addPlant } from '../../actions/plants';
 

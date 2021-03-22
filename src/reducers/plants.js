@@ -34,12 +34,6 @@ export default function plantsReducer(state = initialState, action) {
                 loadingState: "successful",
                 plants: plants
             }
-        case SUCCESSFULLY_LOADED_PLANT:
-            return {
-                ...state,
-                loadingState: "successful",
-                currentPlant: action.payload,
-            }
         case SUCCESSFULLY_ADDED_PLANT:
             return {
                 ...state,
@@ -65,6 +59,12 @@ export default function plantsReducer(state = initialState, action) {
                 ...state,
                 // eslint-disable-next-line
                 currentPlant: state.plants.find(plant => plant.id == action.payload)
+            }
+        case SUCCESSFULLY_LOADED_PLANT:
+            return {
+                ...state,
+                loadingState: "successful",
+                currentPlant: action.payload,
             }
         default:
             return state;

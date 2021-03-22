@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NoteForm from '../../components/notes/NoteForm';
-import { createNote } from '../../actions/notes';
-import { toggleShowNoteForm } from '../../actions/notes';
+import { createNote, toggleShowNoteForm } from '../../actions/notes';
 
 class NoteFormContainer extends Component {
     render() {

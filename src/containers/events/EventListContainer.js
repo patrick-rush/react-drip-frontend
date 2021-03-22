@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../../components/page/Header';
-import { setEventToActive } from '../../actions/events';
-// import { setPlantToActive } from '../../actions/plants';
-import Event from '../../components/events/Event';
 import moment from 'moment';
+import Header from '../../components/page/Header';
+import Event from '../../components/events/Event';
+import { setEventToActive } from '../../actions/events';
 import { fetchPlant } from '../../actions/plants';
+// import { setPlantToActive } from '../../actions/plants';
 
 class EventListContainer extends Component {
     
@@ -37,6 +37,7 @@ class EventListContainer extends Component {
                     key={event.id}
                     event={event}
                     // plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]}
+                    // eslint-disable-next-line
                     plant={this.props.plants.find(plant => plant.id == event.plant_id)}
                     textColor={this.props.currentEvent === event ? "text-green-700" : "text-gray-500"}
                     handleClick={this.handleClick}

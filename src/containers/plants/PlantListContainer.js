@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Plant from '../../components/plants/Plant';
 import { connect } from 'react-redux';
+import Plant from '../../components/plants/Plant';
 import Header from '../../components/page/Header';
-// import { setPlantToActive } from '../../actions/plants'; 
 import { fetchEventsByPlant } from '../../actions/events';
 import { fetchNotesByPlant } from '../../actions/notes';
 import { fetchPlant } from '../../actions/plants';

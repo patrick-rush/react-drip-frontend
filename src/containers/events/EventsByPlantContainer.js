@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import EventByPlant from '../../components/events/EventByPlant';
 import { connect } from 'react-redux';
-import { setEventToActive } from '../../actions/events';
-import { fetchEvents } from '../../actions/events';
+import EventByPlant from '../../components/events/EventByPlant';
+import { setEventToActive, fetchEvents } from '../../actions/events';
 
 class EventsByPlantContainer extends Component {
     

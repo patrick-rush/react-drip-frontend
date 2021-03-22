@@ -30,17 +30,6 @@ export default function eventsReducer(state = initialState, action) {
                 loadingState: "successful",
                 events: action.payload
             }
-        case SET_CURRENT_EVENT: 
-            return {
-                ...state,
-                // eslint-disable-next-line
-                currentEvent: state.events.find(event => event.id == action.payload)
-            }
-        case TOGGLE_SHOW_EVENT_FORM:
-            return {
-                ...state,
-                showEventForm: !state.showEventForm
-            }
         case SUCCESSFULLY_ADDED_EVENT:
             return {
                 ...state,
@@ -69,6 +58,17 @@ export default function eventsReducer(state = initialState, action) {
                 // eslint-disable-next-line
                 currentEvent: action.payload,
                 events: [...state.events, action.payload]
+            }
+        case SET_CURRENT_EVENT: 
+            return {
+                ...state,
+                // eslint-disable-next-line
+                currentEvent: state.events.find(event => event.id == action.payload)
+            }
+        case TOGGLE_SHOW_EVENT_FORM:
+            return {
+                ...state,
+                showEventForm: !state.showEventForm
             }
         case CLEAR_EVENTS_BY_CURRENT_PLANT:
             return {

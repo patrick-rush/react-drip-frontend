@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import Header from '../../components/page/Header';
+import moment from 'moment';
 import { connect } from 'react-redux';
+import Header from '../../components/page/Header';
 import EventShow from '../../components/events/EventShow';
 import { updatePlant } from '../../actions/plants';
-import { deleteEvent } from '../../actions/events';
-import { updateEvent } from '../../actions/events';
-import { createEvent } from '../../actions/events';
-import moment from 'moment';
+import {
+    deleteEvent,
+    updateEvent,
+    createEvent
+} from '../../actions/events';
 
 class EventShowContainer extends Component {
     render() {
         return (
             <div className="overflow-hidden bg-white sm:min-h-screen col-span-2 rounded-md shadow">
                 <Header 
+                    // eslint-disable-next-line
                     header={this.props.currentEvent ? `${this.props.currentEvent.event_type} ${this.props.plants.find(plant => plant.id == this.props.currentEvent.plant_id).name} on ${moment(this.props.currentEvent.due_date).format("dddd, MMMM Do YYYY")}` : <br/> }
                     currentEvent={this.props.currentEvent}
                 />
                 <div className="border-t border-gray-200">
+                    {/*eslint-disable-next-line*/}
                     {this.props.currentEvent ? <EventShow event={this.props.currentEvent} plant={this.props.plants.find(plant => plant.id == this.props.currentEvent.plant_id)} updatePlant={this.props.updatePlant} history={this.props.history} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} createEvent={this.props.createEvent}/> : <br/>}
                 </div>
             </div>
