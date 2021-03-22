@@ -22,10 +22,17 @@ export default function plantsReducer(state = initialState, action) {
                 ...state,
                 loadingState: "inProgress"}
         case SUCCESSFULLY_LOADED_PLANTS: 
+            const plants = action.payload.map(plant =>
+                ({
+                    name: plant.name,
+                    id: plant.id,
+                    species: plant.species
+                })
+            )
             return {
                 ...state,
                 loadingState: "successful",
-                plants: action.payload
+                plants: plants
             }
         case SUCCESSFULLY_LOADED_PLANT:
             return {

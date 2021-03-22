@@ -1,3 +1,6 @@
+import { fetchEventsByPlant } from './events';
+import { fetchNotesByPlant } from './notes';
+
 import {
     START_CONTACTING_PLANT_SERVER,
     SUCCESSFULLY_LOADED_PLANTS,
@@ -34,8 +37,10 @@ export const fetchPlant = (plantId) => {
                     type: SUCCESSFULLY_LOADED_PLANT,
                     payload: plantJson
                 })
+                dispatch(fetchEventsByPlant(plantId));
+                dispatch(fetchNotesByPlant(plantId));
             })
-    }
+        }
 }
 
 export const addPlant = (formData) => {
