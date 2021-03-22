@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { fetchEvents } from '../../actions/events';
 import { fetchPlants } from '../../actions/plants';
 import { setEventToActive } from '../../actions/events';
-import { setPlantToActive } from '../../actions/plants';
+// import { setPlantToActive } from '../../actions/plants';
 
 
 class TodayPageContainer extends Component {
@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => {
         fetchEvents: () => dispatch(fetchEvents()),
         fetchPlants: () => dispatch(fetchPlants()),
         setEventToActive: (eventId) => dispatch(setEventToActive(eventId)),
-        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId))
+        // setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId))
     }
 }
 

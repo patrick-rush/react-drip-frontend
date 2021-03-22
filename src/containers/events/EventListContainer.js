@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../../components/page/Header';
 import { setEventToActive } from '../../actions/events';
-import { setPlantToActive } from '../../actions/plants';
-import Event from '../../components/events/Event'
+// import { setPlantToActive } from '../../actions/plants';
+import Event from '../../components/events/Event';
 import moment from 'moment';
+import { fetchPlant } from '../../actions/plants';
 
 class EventListContainer extends Component {
     
@@ -35,7 +36,8 @@ class EventListContainer extends Component {
                 <Event
                     key={event.id}
                     event={event}
-                    plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]}
+                    // plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]}
+                    plant={this.props.plants.find(plant => plant.id == event.plant_id)}
                     textColor={this.props.currentEvent === event ? "text-green-700" : "text-gray-500"}
                     handleClick={this.handleClick}
                 />
@@ -45,7 +47,8 @@ class EventListContainer extends Component {
 
     handleClick = (eventId, plantId) => {
         this.props.setEventToActive(eventId);
-        this.props.setPlantToActive(plantId);
+        // this.props.setPlantToActive(plantId);
+        this.props.fetchPlant(plantId);
         this.props.history.push(`/events/${eventId}`)
     }
     
@@ -74,14 +77,16 @@ const mapStateToProps = state => {
     return {
         plants: state.plants.plants,
         events: state.events.events,
-        currentEvent: state.events.currentEvent
+        currentEvent: state.events.currentEvent,
+        currentPlant: state.plants.currentPlant
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
-        setEventToActive: (eventId) => dispatch(setEventToActive(eventId))
+        // setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
+        setEventToActive: (eventId) => dispatch(setEventToActive(eventId)),
+        fetchPlant: (plantId) => dispatch(fetchPlant(plantId))
     }
 }
 

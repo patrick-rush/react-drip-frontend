@@ -5,17 +5,15 @@ import { fetchPlants } from '../../actions/plants';
 import PlantShowContainer from './PlantShowContainer';
 import { setPlantToActive } from '../../actions/plants';  
 import { fetchEventsByPlant } from '../../actions/events';
+import { fetchPlant } from '../../actions/plants';
 
 class PlantPageContainer extends Component {
 
     componentDidMount() {
         this.props.fetchPlants()
-        .then(() => {
-            if (this.props.match.params.plantId) {
-                this.props.setPlantToActive(this.props.match.params.plantId)
-                this.props.fetchEventsByPlant(this.props.match.params.plantId)
-            }
-        })
+        if (this.props.match.params.plantId) {
+            this.props.fetchPlant(this.props.match.params.plantId)
+        }
     }
 
     render() {
@@ -33,7 +31,8 @@ class PlantPageContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        loadingState: state.plants.loadingState
+        loadingState: state.plants.loadingState,
+        plants: state.plants.plants
     }
 }
 
@@ -41,7 +40,8 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchPlants: () => dispatch(fetchPlants()),
         setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
-        fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId))
+        fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId)),
+        fetchPlant: (plantId) => dispatch(fetchPlant(plantId))
     }
 }
 
