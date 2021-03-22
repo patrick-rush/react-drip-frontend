@@ -5,6 +5,7 @@ import {
     SUCCESSFULLY_UPDATED_PLANT,
     SUCCESSFULLY_DELETED_PLANT,
     SET_CURRENT_PLANT,
+    SUCCESSFULLY_LOADED_PLANT
 } from '../actions';
 
 const initialState = {
@@ -25,6 +26,12 @@ export default function plantsReducer(state = initialState, action) {
                 ...state,
                 loadingState: "successful",
                 plants: action.payload
+            }
+        case SUCCESSFULLY_LOADED_PLANT:
+            return {
+                ...state,
+                loadingState: "successful",
+                currentPlant: action.payload,
             }
         case SUCCESSFULLY_ADDED_PLANT:
             return {
