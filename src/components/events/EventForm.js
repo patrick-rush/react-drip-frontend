@@ -4,7 +4,8 @@ class EventForm extends Component {
 
     state = {
         date: "",
-        selected: "water"
+        selected: "water",
+        errors: {}
     }
 
     handleOnChange = event => {
@@ -27,10 +28,19 @@ class EventForm extends Component {
             due_date: this.state.date
         }
         this.props.createEvent(newEvent)
-        this.setState({
-            date: null
+            .then(() => {
+                this.setState({
+                    date: null,
+                    selected: "water",
+                    errors: {}
+                })
+                this.props.toggleShowEventForm();
+            })
+        .catch((errors) => {
+            this.setState({
+                errors
+            })
         })
-        this.props.toggleShowEventForm();
     }
     
     render() {
@@ -53,7 +63,7 @@ class EventForm extends Component {
                             </div>
                         </div>
                         <label className="block p-4 text-sm font-medium text-green-700">
-                            Choose a date to {this.state.selected} {this.props.currentPlant.name}
+                            Choose a date to {this.state.selected} {this.props.currentPlant.name} <span className="text-sm font-medium text-red-400">{this.state.errors.due_date}</span>
                         </label>
                         <input
                             onChange={this.handleOnChange}

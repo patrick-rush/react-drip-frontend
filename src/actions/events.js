@@ -97,7 +97,7 @@ export const updateEvent = (event, eventId) => {
 export const createEvent = (event) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        fetch(`${process.env.REACT_APP_SERVER}/care_events`, {
+        return fetch(`${process.env.REACT_APP_SERVER}/care_events`, {
             method: 'POST',
             headers: {
                 "Accept" : "application/json",
@@ -105,7 +105,14 @@ export const createEvent = (event) => {
             },
             body: JSON.stringify({ care_event: event })
         })
-            .then(res => res.json())
+            // .then(res => res.json())
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return res.json().then((errors) => Promise.reject(errors))
+                }
+            })
             .then((eventJson) => {
                 dispatch({
                     type: SUCCESSFULLY_ADDED_EVENT,
