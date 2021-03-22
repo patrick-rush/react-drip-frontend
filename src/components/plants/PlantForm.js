@@ -8,7 +8,8 @@ class PlantForm extends Component {
         location: "",
         watering_frequency: "0",
         fertilizing_frequency: "0",
-        photo: ""
+        photo: "",
+        errors: {}
     };
 
     componentDidMount() {
@@ -19,7 +20,8 @@ class PlantForm extends Component {
                 location: this.props.currentPlant.location,
                 watering_frequency: this.props.currentPlant.watering_frequency,
                 fertilizing_frequency: this.props.currentPlant.fertilizing_frequency,
-                photo: ""
+                photo: "",
+                errors: {}
             })
         }
     }
@@ -42,16 +44,24 @@ class PlantForm extends Component {
         if (this.state.photo !== "") {
             formData.append('plant[photo]', event.target.photo.files[0], this.state.photo)
         }
-        this.props.handlePlantEvent(formData, plantId);
-        this.setState({
-          name: "",
-          species: "",
-          location: "",
-          watering_frequency: "0",
-          fertilizing_frequency: "0",
-          photo: ""
-        })
-        this.props.history.push('/')
+        this.props.handlePlantEvent(formData, plantId)
+            .then(() => {
+                this.setState({
+                  name: "",
+                  species: "",
+                  location: "",
+                  watering_frequency: "0",
+                  fertilizing_frequency: "0",
+                  photo: ""
+                })
+                this.props.history.push('/')
+            })
+            .catch((errors) => {
+                console.log("Errors:", errors)
+                this.setState({
+                    errors: errors
+                })
+            })
     }
 
     render() {
@@ -62,7 +72,7 @@ class PlantForm extends Component {
                         <div className="grid grid-cols-6 gap-6">
                             <div className="col-span-6 sm:col-span-3">
                                 <label className="block text-sm font-medium text-green-700">
-                                    Name
+                                    Name <span className="text-sm font-medium text-red-400">{this.state.errors.name}</span>
                                 </label>
                                 <input 
                                     onChange={this.handleOnChange} 
@@ -70,7 +80,7 @@ class PlantForm extends Component {
                                     name="name" 
                                     id="name" 
                                     value={this.state.name} 
-                                    className="name mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md"
+                                    className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md"
                                 />
                             </div>
                             <div className="col-span-6 sm:col-span-3">

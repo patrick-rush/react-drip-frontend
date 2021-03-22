@@ -10,7 +10,8 @@ import {
 const initialState = {
     loadingState: "notStarted",
     plants: [],
-    currentPlant: null
+    currentPlant: null,
+    errors: {}
 };
 
 export default function plantsReducer(state = initialState, action) {
@@ -29,7 +30,8 @@ export default function plantsReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingState: "successful",
-                currentPlant: action.payload
+                currentPlant: action.payload,
+                errors: {}
             }
         case SUCCESSFULLY_UPDATED_PLANT:
             return {

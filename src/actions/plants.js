@@ -6,7 +6,7 @@ import {
     SUCCESSFULLY_DELETED_PLANT,
     SET_CURRENT_PLANT,
     CLEAR_NOTES_BY_CURRENT_PLANT,
-    CLEAR_EVENTS_BY_CURRENT_PLANT
+    CLEAR_EVENTS_BY_CURRENT_PLANT,
 } from '.';
 
 export const fetchPlants = () => {
@@ -26,11 +26,17 @@ export const fetchPlants = () => {
 export const addPlant = (formData) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        fetch(`${process.env.REACT_APP_SERVER}/plants`, {
+        return fetch(`${process.env.REACT_APP_SERVER}/plants`, {
             method: "POST",
             body: formData
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                } else {
+                    return res.json().then((errors) => Promise.reject(errors))
+                }
+            })
             .then((plantJson) => {
                 dispatch({
                     type: CLEAR_NOTES_BY_CURRENT_PLANT
@@ -42,7 +48,7 @@ export const addPlant = (formData) => {
                     type: SUCCESSFULLY_ADDED_PLANT,
                     payload: plantJson
                 })
-            });
+            })
     };
 };
 
