@@ -59,7 +59,7 @@ class PlantForm extends Component {
             .catch((errors) => {
                 console.log("Errors:", errors)
                 this.setState({
-                    errors: errors
+                    errors
                 })
             })
     }
