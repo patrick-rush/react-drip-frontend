@@ -9,19 +9,19 @@ function NavigationContainer() {
             <div className="flex items-center">
               <div className="">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <NavLink 
-                    exact
-                    to="/"
-                    className="hover:bg-green-700 hover:text-white bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium"
-                    activeClassName="text-green-100 bg-green-900"
-                    >Plants
-                  </NavLink>
                   <NavLink
                     exact
                     to="/events"
                     className="hover:bg-green-700 hover:text-white bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium"
                     activeClassName="text-green-100 bg-green-900"
                     >Today
+                  </NavLink>
+                  <NavLink 
+                    exact
+                    to="/"
+                    className="hover:bg-green-700 hover:text-white bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium"
+                    activeClassName="text-green-100 bg-green-900"
+                    >Plants
                   </NavLink>
                   <NavLink
                     exact
