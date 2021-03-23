@@ -38,7 +38,7 @@ class PlantShowContainer extends Component {
             >
                 { this.props.currentPlant ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header={<br/>} /> }
                 <div className="border-t border-gray-200">
-                    { this.props.currentPlant ? this.renderPlant(this.props) : <Welcome /> }
+                    { this.props.currentPlant ? this.renderPlant(this.props) : <Welcome info="All of your plant babies in one place" sillyMessage="" /> }
                 </div>
             </div>
         )

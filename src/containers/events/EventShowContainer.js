@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
+import Welcome from '../../components/page/Welcome';
 import Header from '../../components/page/Header';
 import EventShow from '../../components/events/EventShow';
 import { updatePlant } from '../../actions/plants';
@@ -21,7 +22,7 @@ class EventShowContainer extends Component {
                 />
                 <div className="border-t border-gray-200">
                     {/*eslint-disable-next-line*/}
-                    {this.props.currentEvent ? <EventShow event={this.props.currentEvent} plant={this.props.plants.find(plant => plant.id == this.props.currentEvent.plant_id)} updatePlant={this.props.updatePlant} history={this.props.history} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} createEvent={this.props.createEvent}/> : <br/>}
+                    {this.props.currentEvent ? <EventShow event={this.props.currentEvent} plant={this.props.plants.find(plant => plant.id == this.props.currentEvent.plant_id)} updatePlant={this.props.updatePlant} history={this.props.history} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} createEvent={this.props.createEvent}/> : <Welcome info="Keep track of who needs watering today" sillyMessage="And who needed it yesterday" />}
                 </div>
             </div>
         )
