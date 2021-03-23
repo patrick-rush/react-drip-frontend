@@ -5,7 +5,6 @@ import Header from '../../components/page/Header';
 import Event from '../../components/events/Event';
 import { setEventToActive } from '../../actions/events';
 import { fetchPlant } from '../../actions/plants';
-// import { setPlantToActive } from '../../actions/plants';
 
 class EventListContainer extends Component {
     
@@ -36,7 +35,6 @@ class EventListContainer extends Component {
                 <Event
                     key={event.id}
                     event={event}
-                    // plant={this.props.plants.filter(plant => plant.id === event.plant_id)[0]}
                     // eslint-disable-next-line
                     plant={this.props.plants.find(plant => plant.id == event.plant_id)}
                     textColor={this.props.currentEvent === event ? "text-green-700" : "text-gray-500"}
@@ -48,7 +46,6 @@ class EventListContainer extends Component {
 
     handleClick = (eventId, plantId) => {
         this.props.setEventToActive(eventId);
-        // this.props.setPlantToActive(plantId);
         this.props.fetchPlant(plantId);
         this.props.history.push(`/events/${eventId}`)
     }
@@ -85,7 +82,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
         setEventToActive: (eventId) => dispatch(setEventToActive(eventId)),
         fetchPlant: (plantId) => dispatch(fetchPlant(plantId))
     }

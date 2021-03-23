@@ -7,9 +7,12 @@ import { fetchPlants } from '../../actions/plants';
 
 class TodayPageContainer extends Component {
     
-    componentDidMount() {
-        this.props.fetchPlants();
-        this.props.fetchEvents()
+    constructor(props) {
+        super(props);
+        this.props.fetchPlants()
+            .then(() => {
+                this.props.fetchEvents()
+            })
     }
     
     render() {

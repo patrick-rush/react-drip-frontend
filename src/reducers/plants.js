@@ -22,17 +22,10 @@ export default function plantsReducer(state = initialState, action) {
                 ...state,
                 loadingState: "inProgress"}
         case SUCCESSFULLY_LOADED_PLANTS: 
-            const plants = action.payload.map(plant =>
-                ({
-                    name: plant.name,
-                    id: plant.id,
-                    species: plant.species
-                })
-            )
             return {
                 ...state,
                 loadingState: "successful",
-                plants: plants
+                plants: action.payload
             }
         case SUCCESSFULLY_ADDED_PLANT:
             return {
@@ -42,10 +35,13 @@ export default function plantsReducer(state = initialState, action) {
                 errors: {}
             }
         case SUCCESSFULLY_UPDATED_PLANT:
+            console.log("payload", action.payload)
             return {
                 ...state,
                 loadingState: "successful",
-                currentPlant: action.payload
+                currentPlant: action.payload,
+                // eslint-disable-next-line
+                plants: state.plants.map(plant => (plant.id == action.payload.id ? action.payload : plant))
             }
         case SUCCESSFULLY_DELETED_PLANT:
             return {
