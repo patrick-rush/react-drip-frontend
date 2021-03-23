@@ -75,7 +75,7 @@ export const addPlant = (formData) => {
 export const updatePlant = (formData, plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`, {
+        return fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`, {
             method: "PATCH",
             body: formData
         })

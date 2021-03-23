@@ -54,7 +54,7 @@ class PlantForm extends Component {
                   fertilizing_frequency: "0",
                   photo: ""
                 })
-                this.props.history.push('/')
+                this.props.history.push('/plants')
             })
             .catch((errors) => {
                 console.log("Errors:", errors)
