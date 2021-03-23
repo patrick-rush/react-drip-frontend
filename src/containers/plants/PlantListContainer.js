@@ -4,7 +4,7 @@ import Plant from '../../components/plants/Plant';
 import Header from '../../components/page/Header';
 import { fetchEventsByPlant } from '../../actions/events';
 import { fetchNotesByPlant } from '../../actions/notes';
-import { fetchPlant } from '../../actions/plants';
+import { fetchPlant, setPlantToActive } from '../../actions/plants';
 
 class PlantListContainer extends Component {
     
@@ -22,8 +22,8 @@ class PlantListContainer extends Component {
     };
 
     handleClick = (plantId) => {
-        this.props.fetchPlant(plantId);
-        // this.props.setPlantToActive(plantId);
+        // this.props.fetchPlant(plantId);
+        this.props.setPlantToActive(plantId)
         this.props.fetchEventsByPlant(plantId);
         this.props.fetchNotesByPlant(plantId);
         this.props.history.push(`/plants/${plantId}`)
@@ -51,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
+        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
         fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId)),
         fetchNotesByPlant: (plantId) => dispatch(fetchNotesByPlant(plantId)),
         fetchPlant: (plantId) => dispatch(fetchPlant(plantId))

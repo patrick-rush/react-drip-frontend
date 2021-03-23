@@ -4,18 +4,24 @@ import PlantListContainer from './PlantListContainer';
 import PlantShowContainer from './PlantShowContainer';
 import {
     fetchPlants,
-    setPlantToActive,
-    fetchPlant
+    setPlantToActive
 } from '../../actions/plants';
 import { fetchEventsByPlant } from '../../actions/events';
+import { fetchNotesByPlant } from '../../actions/notes';
 
 class PlantPageContainer extends Component {
 
-    componentDidMount() {
-        this.props.fetchPlants()
-        if (this.props.match.params.plantId) {
-            this.props.fetchPlant(this.props.match.params.plantId)
-        }
+    constructor(props) {
+        super(props);
+        props.fetchPlants()
+            .then(() => {
+                const plantId = props.match.params.plantId
+                if (plantId) {
+                    props.setPlantToActive(plantId);
+                    props.fetchEventsByPlant(plantId);
+                    props.fetchNotesByPlant(plantId);
+                }
+            })
     }
 
     render() {
@@ -25,7 +31,6 @@ class PlantPageContainer extends Component {
                     <PlantListContainer loadingState={this.props.loadingState} history={this.props.history}/>
                     <PlantShowContainer history={this.props.history} />
                 </div>
-                {/* <section id="flash" class="rounded-md -m-10 h-10 col-span-3 py-2 pl-4 opacity-0 transition-opacity duration-500"></section> */}
             </>
         )
     }
@@ -43,7 +48,7 @@ const mapDispatchToProps = dispatch => {
         fetchPlants: () => dispatch(fetchPlants()),
         setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId)),
         fetchEventsByPlant: (plantId) => dispatch(fetchEventsByPlant(plantId)),
-        fetchPlant: (plantId) => dispatch(fetchPlant(plantId))
+        fetchNotesByPlant: ( plantId) => dispatch(fetchNotesByPlant(plantId)),
     }
 }
 

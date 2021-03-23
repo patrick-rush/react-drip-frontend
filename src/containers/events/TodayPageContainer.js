@@ -9,9 +9,14 @@ class TodayPageContainer extends Component {
     
     constructor(props) {
         super(props);
-        this.props.fetchPlants()
+        props.fetchPlants()
             .then(() => {
-                this.props.fetchEvents()
+                props.fetchEvents()
+                    .then(() => {
+                        if (props.match.params.eventId) {
+                            props.setEventToActive(props.match.params.eventId)
+                        }
+                    })        
             })
     }
     
@@ -29,6 +34,7 @@ class TodayPageContainer extends Component {
 
 const mapStateToProps = state => {
     return {
+        currentEvent: state.events.currentEvent,
         loadingState: state.events.loadingState
     }
 }

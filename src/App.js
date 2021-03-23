@@ -18,9 +18,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={TodayPageContainer} ></Route>
           <Route exact path="/events" component={TodayPageContainer} ></Route>
-          <Route exact path="/events/:eventId" component={TodayPageContainer} ></Route>
+          <Route path="/events/:eventId" component={TodayPageContainer} ></Route>
           <Route exact path="/plants" component={PlantPageContainer} ></Route>
-          <Route exact path="/plants/new" component={NewPlantContainer} ></Route>
+          <Route path="/plants/new" component={NewPlantContainer} ></Route>
           <Route exact path="/plants/edit/:plantId" component={EditPlantContainer} ></Route>
           <Route exact path="/plants/:plantId" component={PlantPageContainer} ></Route>
         </Switch>

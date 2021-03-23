@@ -4,7 +4,7 @@ import moment from 'moment';
 import Header from '../../components/page/Header';
 import Event from '../../components/events/Event';
 import { setEventToActive } from '../../actions/events';
-import { fetchPlant } from '../../actions/plants';
+import { setPlantToActive } from '../../actions/plants';
 
 class EventListContainer extends Component {
     
@@ -46,7 +46,7 @@ class EventListContainer extends Component {
 
     handleClick = (eventId, plantId) => {
         this.props.setEventToActive(eventId);
-        this.props.fetchPlant(plantId);
+        this.props.setPlantToActive(plantId);
         this.props.history.push(`/events/${eventId}`)
     }
     
@@ -83,7 +83,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         setEventToActive: (eventId) => dispatch(setEventToActive(eventId)),
-        fetchPlant: (plantId) => dispatch(fetchPlant(plantId))
+        setPlantToActive: (plantId) => dispatch(setPlantToActive(plantId))
     }
 }
 
