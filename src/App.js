@@ -9,6 +9,7 @@ import NavigationContainer from './containers/page/NavigationContainer';
 import NewPlantContainer from './containers/plants/NewPlantContainer'; 
 import TodayPageContainer from './containers/events/TodayPageContainer';
 import EditPlantContainer from './containers/plants/EditPlantContainer';
+import Welcome from './components/page/Welcome';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/plants/new" component={NewPlantContainer} ></Route>
           <Route exact path="/plants/edit/:plantId" component={EditPlantContainer} ></Route>
           <Route exact path="/plants/:plantId" component={PlantPageContainer} ></Route>
+          <Route path ="/*" ><Welcome info="Your plants are gonna miss you" sillyMessage="Better hit that back button" /></Route>
         </Switch>
       </Router>
     </div>
