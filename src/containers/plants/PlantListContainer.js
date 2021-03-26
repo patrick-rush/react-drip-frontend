@@ -7,7 +7,7 @@ import { fetchNotesByPlant } from '../../actions/notes';
 import { fetchPlant, setPlantToActive } from '../../actions/plants';
 
 class PlantListContainer extends Component {
-    
+        
     renderPlants = () => {
         const sortedPlants = this.props.plants.sort((a, b) => a.name > b.name ? 1:-1);
 
@@ -22,7 +22,6 @@ class PlantListContainer extends Component {
     };
 
     handleClick = (plantId) => {
-        // this.props.fetchPlant(plantId);
         this.props.setPlantToActive(plantId)
         this.props.fetchEventsByPlant(plantId);
         this.props.fetchNotesByPlant(plantId);
@@ -35,7 +34,6 @@ class PlantListContainer extends Component {
                 <Header header={"Plants"} />
                 <div className="border-t border-gray-200">
                     {this.props.loadingState === "successful" ? this.renderPlants() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
-                    {/* ATTN loading spinner needs to be added and styled */}
                 </div>
             </div>
         )

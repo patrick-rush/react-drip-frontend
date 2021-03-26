@@ -11,19 +11,6 @@ import { fetchNotesByPlant } from '../../actions/notes';
 
 class PlantPageContainer extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     props.fetchPlants()
-    //         .then(() => {
-    //             const plantId = props.match.params.plantId
-    //             if (plantId) {
-    //                 props.setPlantToActive(plantId);
-    //                 props.fetchEventsByPlant(plantId);
-    //                 props.fetchNotesByPlant(plantId);
-    //             }
-    //         })
-    // }
-
     componentDidMount() {
         this.props.fetchPlants()
         .then(() => {
