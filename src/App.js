@@ -10,6 +10,7 @@ import NewPlantContainer from './containers/plants/NewPlantContainer';
 import TodayPageContainer from './containers/events/TodayPageContainer';
 import EditPlantContainer from './containers/plants/EditPlantContainer';
 import Welcome from './components/page/Welcome';
+import withAuth from './withAuth';
 
 function App() {
   return (
@@ -31,4 +32,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuth(App);
