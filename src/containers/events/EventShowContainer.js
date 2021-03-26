@@ -5,6 +5,7 @@ import Welcome from '../../components/page/Welcome';
 import Header from '../../components/page/Header';
 import EventShow from '../../components/events/EventShow';
 import { updatePlant } from '../../actions/plants';
+import { objectIsEmpty } from '../../helpers';
 import {
     deleteEvent,
     updateEvent,
@@ -17,12 +18,12 @@ class EventShowContainer extends Component {
             <div className="overflow-hidden bg-white sm:min-h-screen col-span-2 rounded-md shadow">
                 <Header 
                     // eslint-disable-next-line
-                    header={this.props.currentEvent ? `${this.props.currentEvent.event_type} ${this.props.plants.find(plant => plant.id == this.props.currentEvent.plant_id).name} on ${moment(this.props.currentEvent.due_date).format("dddd, MMMM Do YYYY")}` : <br/> }
+                    header={!objectIsEmpty(this.props.currentEvent) ? `${this.props.currentEvent.event_type} ${this.props.currentPlant.name} on ${moment(this.props.currentEvent.due_date).format("dddd, MMMM Do YYYY")}` : <br/> }
                     currentEvent={this.props.currentEvent}
                 />
                 <div className="border-t border-gray-200">
                     {/*eslint-disable-next-line*/}
-                    {this.props.currentEvent ? <EventShow event={this.props.currentEvent} plant={this.props.plants.find(plant => plant.id == this.props.currentEvent.plant_id)} updatePlant={this.props.updatePlant} history={this.props.history} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} createEvent={this.props.createEvent}/> : <Welcome info="Keep track of who needs watering today" sillyMessage="And who needed it yesterday" />}
+                    {!objectIsEmpty(this.props.currentEvent) ? <EventShow event={this.props.currentEvent} plant={this.props.currentPlant} updatePlant={this.props.updatePlant} history={this.props.history} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} createEvent={this.props.createEvent}/> : <Welcome info="Keep track of who needs watering today" sillyMessage="And who needed it yesterday" />}
                 </div>
             </div>
         )
@@ -33,6 +34,7 @@ const mapStateToProps = state => {
     return {
         // currentPlant: state.plants.currentPlant,
         plants: state.plants.plants,
+        currentPlant: state.plants.currentPlant,
         currentEvent: state.events.currentEvent
     }
 }
