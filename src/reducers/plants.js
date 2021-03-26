@@ -11,7 +11,7 @@ import {
 const initialState = {
     loadingState: "notStarted",
     plants: [],
-    currentPlant: null,
+    currentPlant: {},
     errors: {}
 };
 
