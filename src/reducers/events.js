@@ -13,7 +13,7 @@ import {
 const initialState = {
     loadingState: "notStarted",
     events: [],
-    currentEvent: null,
+    currentEvent: {},
     showEventForm: false,
     eventsByCurrentPlant: []
 };

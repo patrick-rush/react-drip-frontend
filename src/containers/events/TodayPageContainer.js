@@ -7,19 +7,18 @@ import { fetchPlants } from '../../actions/plants';
 
 class TodayPageContainer extends Component {
     
-    constructor(props) {
-        super(props);
-        props.fetchPlants()
-            .then(() => {
-                props.fetchEvents()
-                    .then(() => {
-                        if (props.match.params.eventId) {
-                            props.setEventToActive(props.match.params.eventId)
-                        }
-                    })        
-            })
+    componentDidMount() {
+        this.props.fetchPlants()
+        .then(() => {
+            this.props.fetchEvents()
+                .then(() => {
+                    if (this.props.match.params.eventId) {
+                        this.props.setEventToActive(this.props.match.params.eventId)
+                    }
+                })        
+        })
     }
-    
+
     render() {
         return (
             <>

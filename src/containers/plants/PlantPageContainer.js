@@ -11,17 +11,17 @@ import { fetchNotesByPlant } from '../../actions/notes';
 
 class PlantPageContainer extends Component {
 
-    constructor(props) {
-        super(props);
-        props.fetchPlants()
-            .then(() => {
-                const plantId = props.match.params.plantId
-                if (plantId) {
-                    props.setPlantToActive(plantId);
-                    props.fetchEventsByPlant(plantId);
-                    props.fetchNotesByPlant(plantId);
-                }
-            })
+    componentDidMount() {
+        this.props.fetchPlants()
+        .then(() => {
+            const plantId = this.props.match.params.plantId
+            if (plantId) {
+                this.props.setPlantToActive(plantId);
+                this.props.fetchEventsByPlant(plantId);
+                this.props.fetchNotesByPlant(plantId);
+            }
+        })
+
     }
 
     render() {
