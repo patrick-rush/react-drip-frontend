@@ -6,7 +6,7 @@ import {
 
 export const loginUser = (user) => {
     return (dispatch) => {
-        fetch("http://localhost:3000/signup", {
+        fetch("http://localhost:3000/login", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
