@@ -7,6 +7,9 @@ function Header(props) {
             <h3 className="text-lg leading-6 font-medium text-green-900">
                 {props.header}
             </h3>
+            <div>
+                {props.header === "Plants" ? <button onClick={props.sort} >Sort Plants</button> : null}
+            </div>
         </div>
     )
 }

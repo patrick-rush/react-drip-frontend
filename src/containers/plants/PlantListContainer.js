@@ -8,8 +8,19 @@ import { fetchPlant, setPlantToActive } from '../../actions/plants';
 
 class PlantListContainer extends Component {
         
+    state = {
+        sorted: false
+    }
+
     renderPlants = () => {
-        const sortedPlants = this.props.plants.sort((a, b) => a.name > b.name ? 1:-1);
+        let workingArray = [...this.props.plants]
+        let sortedPlants
+
+        if (this.state.sorted) {
+            sortedPlants = workingArray.sort((a, b) => a.name > b.name ? 1:-1);
+        } else if (!this.state.sorted) {
+            sortedPlants = this.props.plants
+        }
 
         return sortedPlants.map(plant => {
             return <Plant
@@ -21,6 +32,12 @@ class PlantListContainer extends Component {
         });
     };
 
+    handleSort = () => {
+        this.setState({
+            sorted: !this.state.sorted
+        })
+    }
+
     handleClick = (plantId) => {
         this.props.setPlantToActive(plantId)
         this.props.fetchEventsByPlant(plantId);
@@ -31,7 +48,7 @@ class PlantListContainer extends Component {
     render() {
         return (
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-                <Header header={"Plants"} />
+                <Header header={"Plants"} sort={this.handleSort}/>
                 <div className="border-t border-gray-200">
                     {this.props.loadingState === "successful" ? this.renderPlants() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                 </div>
