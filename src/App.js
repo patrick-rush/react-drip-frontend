@@ -11,6 +11,7 @@ import TodayPageContainer from './containers/events/TodayPageContainer';
 import EditPlantContainer from './containers/plants/EditPlantContainer';
 import Welcome from './components/page/Welcome';
 import withAuth from './withAuth';
+import './index.css'
 
 function App() {
   return (

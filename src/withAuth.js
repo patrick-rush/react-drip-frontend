@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { checkLoginStatus, loginUser, signupUser } from './actions/auth';
+import './index.css'
 
 function withAuth(WrappedComponent) {
     class AuthorizedComponent extends React.Component {
@@ -46,10 +47,12 @@ function withAuth(WrappedComponent) {
                 // return <p>You need to <button onClick={() => this.props.dispatchLoginUser()}>login</button></p>
             // START HERE - ADD FORM
                 return (
-                    // <div className="bg-gradient-to-r from-green to-yellow">
-                    <div className="bg-green">
+                    <div className="bg-gradient-to-r from-purple to-pink">
+                    {/* <div className="bg-green"> */}
+                        <div className="bg-black">
+
                         <div className="login-wrapper min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-                            <div className={"max-w-md w-full space-y-8"}>
+                            <div className={"max-w-md w-full space-y-8 animate-wiggle"}>
                             {/* <div className={`max-w-md w-full space-y-8 ${animation}`}> */}
 
                                 <h1 className="mt-6 text-center text-3xl font-extrabold text-black">Please Log In</h1>
@@ -65,7 +68,7 @@ function withAuth(WrappedComponent) {
                                                 placeholder="Email" 
                                                 value={this.state.email} 
                                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                            />
+                                                />
                                         </div>
                                         <div>
                                             <label className="sr-only">Password</label>
@@ -77,7 +80,7 @@ function withAuth(WrappedComponent) {
                                                 placeholder="Password" 
                                                 value={this.state.password} 
                                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                            />
+                                                />
                                         </div>
                                         <div>
                                             <input type="submit" value="Login" onClick={this.handleOnLogin} className="group relative w-full flex justify-center mt-2 my-2 py-2 px-4 border-2 border-white text-sm font-medium rounded-md text-white bg-gradient-to-l from-green to-yellow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green"></input>
@@ -86,6 +89,7 @@ function withAuth(WrappedComponent) {
                                     </div>
                                 </form>
                             </div>
+                        </div>
                         </div>
                     </div>
                 )
