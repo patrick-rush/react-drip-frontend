@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { checkLoginStatus } from './actions/auth';
-import { loginUser } from './actions/auth';
+import { checkLoginStatus, loginUser, signupUser } from './actions/auth';
 
 function withAuth(WrappedComponent) {
     class AuthorizedComponent extends React.Component {
@@ -21,9 +20,19 @@ function withAuth(WrappedComponent) {
               })      
         }
 
-        handleOnSubmit = event => {
+        handleOnLogin = event => {
             event.preventDefault();
+            console.log("type =", event)
             this.props.dispatchLoginUser(this.state);
+            this.setState({
+                email: '',
+                password: ''
+            })
+        }
+
+        handleOnSignup = event => {
+            event.preventDefault();
+            this.props.dispatchSignupUser(this.state);
             this.setState({
                 email: '',
                 password: ''
@@ -37,15 +46,47 @@ function withAuth(WrappedComponent) {
                 // return <p>You need to <button onClick={() => this.props.dispatchLoginUser()}>login</button></p>
             // START HERE - ADD FORM
                 return (
-                    <div>
-                        <h3>You need to login</h3>
-                        <form onSubmit={this.handleOnSubmit} >
-                            <label name="email">Email</label>
-                            <input onChange={this.handleOnChange} type="text" name="email" value={this.state.email}></input>
-                            <label name="password">Password</label>
-                            <input onChange={this.handleOnChange} type="password" name="password" value={this.state.password}></input>
-                            <input type="submit" value="Login"></input>
-                        </form>
+                    // <div className="bg-gradient-to-r from-green to-yellow">
+                    <div className="bg-green">
+                        <div className="login-wrapper min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+                            <div className={"max-w-md w-full space-y-8"}>
+                            {/* <div className={`max-w-md w-full space-y-8 ${animation}`}> */}
+
+                                <h1 className="mt-6 text-center text-3xl font-extrabold text-black">Please Log In</h1>
+                                <form className="mt-8 space-y-6">
+                                    <div className="rounded-md shadow-sm -space-y-px">
+                                        <div>
+                                            <label className="sr-only">Email</label>
+                                            <input 
+                                                onChange={this.handleOnChange} 
+                                                type="text" 
+                                                name="email" 
+                                                required
+                                                placeholder="Email" 
+                                                value={this.state.email} 
+                                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="sr-only">Password</label>
+                                            <input 
+                                                onChange={this.handleOnChange} 
+                                                type="password" 
+                                                name="password" 
+                                                required
+                                                placeholder="Password" 
+                                                value={this.state.password} 
+                                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-white placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                            />
+                                        </div>
+                                        <div>
+                                            <input type="submit" value="Login" onClick={this.handleOnLogin} className="group relative w-full flex justify-center mt-2 my-2 py-2 px-4 border-2 border-white text-sm font-medium rounded-md text-white bg-gradient-to-l from-green to-yellow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green"></input>
+                                            <input type="submit" value="Signup" onClick={this.handleOnSignup} className="group relative w-full flex justify-center my-2 py-2 px-4 border-2 border-white text-sm font-medium rounded-md text-white bg-gradient-to-l from-green to-yellow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-bright"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 )
             }
@@ -64,6 +105,7 @@ function withAuth(WrappedComponent) {
         return {
             dispatchCheckLoginStatus: () => dispatch(checkLoginStatus()),
             dispatchLoginUser: (user) => dispatch(loginUser(user)),
+            dispatchSignupUser: (user) => dispatch(signupUser(user))
         };
     }
 
