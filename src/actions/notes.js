@@ -6,13 +6,16 @@ import {
     SUCCESSFULLY_DELETED_NOTE
 } from '.';
 
+const TOKEN = localStorage.getItem('token')
+
 export const fetchNotesByPlant = (plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_NOTE_SERVER })
         fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}/notes`, {
             headers: {
                 "Accept": "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: TOKEN
             }
         })
             .then((res) => res.json())
@@ -38,7 +41,8 @@ export const createNote = (note) => {
             method: 'POST',
             headers: {
                 "Accept" : "application/json",
-                "Content-Type" : "application/json"    
+                "Content-Type" : "application/json",
+                Authorization: TOKEN
             },
             body: JSON.stringify({note: note})
         })
@@ -57,6 +61,10 @@ export const deleteNote = (noteId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_NOTE_SERVER })
         fetch(`${process.env.REACT_APP_SERVER}/notes/${noteId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: TOKEN
+            },
             method: 'DELETE'
         })
         .then(() => {

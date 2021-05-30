@@ -4,6 +4,34 @@ import {
     CHECK_LOGIN_STATUS
 } from '.';
 
+export const signupUser = (user) => {
+    return (dispatch) => {
+        fetch("http://localhost:3000/signup", {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                user: {
+                    email: user.email,
+                    password: user.password
+                }
+            })
+        })
+            .then((res) => {
+                if (res.ok) {
+                    console.log(res.headers.get("Authorization"));
+                    localStorage.setItem("token", res.headers.get("Authorization"));
+                    return dispatch({ type: LOG_IN, payload: res.json() });
+                } else {
+                    throw new Error(res);
+                }
+            })
+            .then((json) => console.dir(json))
+            .catch((err) => console.dir(err));
+    }
+}
+
 export const loginUser = (user) => {
     return (dispatch) => {
         fetch("http://localhost:3000/login", {

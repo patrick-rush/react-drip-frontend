@@ -9,10 +9,18 @@ import {
     TOGGLE_SHOW_EVENT_FORM,
 } from '.';
 
+const TOKEN = localStorage.getItem('token')
+
 export const fetchEvents = () => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
-        return fetch(`${process.env.REACT_APP_SERVER}/care_events`)
+        return fetch(`${process.env.REACT_APP_SERVER}/care_events`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: TOKEN
+            }
+        })
             .then((res) => res.json())
             .then((eventsJson) => {
                 dispatch({
@@ -29,7 +37,8 @@ export const fetchEventsByPlant = (plantId) => {
         fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}/care_events`, {
             headers: {
                 "Accept": "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: TOKEN
             }
         })
             .then((res) => res.json())
@@ -46,6 +55,10 @@ export const deleteEvent = (eventId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_EVENT_SERVER })
         fetch(`${process.env.REACT_APP_SERVER}/care_events/${eventId}`, { 
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: TOKEN
+            },
             method: 'DELETE', 
         })
         .then(() => {
@@ -76,7 +89,8 @@ export const updateEvent = (event, eventId) => {
             method: 'PATCH',
             headers: {
                 "Accept" : "application/json",
-                "Content-Type" : "application/json"    
+                "Content-Type" : "application/json",
+                Authorization: TOKEN  
             },
             body: JSON.stringify({ care_event: event })
         })
@@ -101,7 +115,8 @@ export const createEvent = (event) => {
             method: 'POST',
             headers: {
                 "Accept" : "application/json",
-                "Content-Type" : "application/json"    
+                "Content-Type" : "application/json",
+                Authorization: TOKEN
             },
             body: JSON.stringify({ care_event: event })
         })
