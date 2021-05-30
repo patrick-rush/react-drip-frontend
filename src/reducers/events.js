@@ -47,7 +47,7 @@ export default function eventsReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingState: "successful",
-                currentEvent: null,
+                currentEvent: {},
                 events: state.events.filter(event => event.id !== action.payload),
                 eventsByCurrentPlant: state.eventsByCurrentPlant.filter(event => event.id !== action.payload),
             }

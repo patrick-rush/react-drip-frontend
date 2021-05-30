@@ -47,7 +47,7 @@ export default function plantsReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingState: "successful",
-                currentPlant: null,
+                currentPlant: {},
                 plants: state.plants.filter(plant => plant.id !== action.payload)
             }    
         case SET_CURRENT_PLANT: 
