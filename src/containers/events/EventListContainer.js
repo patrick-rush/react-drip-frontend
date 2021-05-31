@@ -11,21 +11,21 @@ class EventListContainer extends Component {
     renderOverdue = () => {
         const today = moment().format().slice(0,10);
         const overdueEvents = this.props.events.filter(event => event.due_date < today );
-        const sortedEvents = overdueEvents.sort((a, b) => a.due_date > b.due_date ? 1:-1);
+        const sortedEvents = overdueEvents.sort((a, b) => a.due_date > b.due_date ? 1:-1) || [];
         return this.renderEvents(sortedEvents);
     }
     
     renderToday = () => {
         const today = moment().format().slice(0,10);
         const eventsDueToday = this.props.events.filter(event => event.due_date === today)
-        const sortedEvents = eventsDueToday.sort((a, b) => a.due_date > b.due_date ? 1:-1);
+        const sortedEvents = eventsDueToday.sort((a, b) => a.due_date > b.due_date ? 1:-1) || [];
         return this.renderEvents(sortedEvents);
     };
 
     renderLater = () => {
         const today = moment().format().slice(0,10);
         const eventsDueLater = this.props.events.filter(event => event.due_date > today)
-        const sortedEvents = eventsDueLater.sort((a, b) => a.due_date > b.due_date ? 1:-1);
+        const sortedEvents = eventsDueLater.sort((a, b) => a.due_date > b.due_date ? 1:-1) || [];
         return this.renderEvents(sortedEvents);
     }
 
