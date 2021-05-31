@@ -31,6 +31,12 @@ function NavigationContainer() {
                     activeClassName="text-green-light bg-green-dark"
                     >New Plant
                   </NavLink>
+                  {/* <button
+                    onClick={() => localStorage.clear()}
+                    className="hover:bg-green-dark hover:text-white bg-green text-white px-3 py-2 rounded-md text-sm font-medium"
+                    activeClassName="text-green-light bg-green-dark"
+                    >Logout
+                  </button> */}
                 </div>
               </div>  
             </div>
