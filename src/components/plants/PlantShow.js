@@ -51,10 +51,10 @@ class PlantShow extends Component {
                     <li className="text-sm font-medium text-gray-900">
                         Location
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                         {this.props.plant.location}
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                         <button onClick={() => this.props.history.push(`/plants/edit/${this.props.plant.id}`)} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i className="fa fa-pencil-alt content-end"></i>
                         </button>      
@@ -67,10 +67,10 @@ class PlantShow extends Component {
                     <li className="text-sm font-medium text-gray-900">
                         Watering Frequency
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                         {this.props.plant.watering_frequency} days
                     </li>
-                    <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm col-span-2 text-green-dark sm:mt-0 sm:col-span-1">
                         <button id="decrease" name="watering_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i id="decrease" name="watering_frequency" className="fa fa-minus"></i>
                         </button>
@@ -83,10 +83,10 @@ class PlantShow extends Component {
                     <li className="text-sm font-medium text-gray-900">
                         Fertilizing Frequency
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                         {this.props.plant.fertilizing_frequency} days
                     </li>
-                    <li className="mt-1 text-sm col-span-2 text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm col-span-2 text-green-dark sm:mt-0 sm:col-span-1">
                         <button id="decrease" name="fertilizing_frequency" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i id="decrease" name="fertilizing_frequency" className="fa fa-minus"></i>
                         </button>

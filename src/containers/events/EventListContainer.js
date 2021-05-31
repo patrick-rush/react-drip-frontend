@@ -37,7 +37,7 @@ class EventListContainer extends Component {
                     event={event}
                     // eslint-disable-next-line
                     plant={this.props.plants.find(plant => plant.id == event.plant_id)}
-                    textColor={this.props.currentEvent === event ? "text-green-700" : "text-gray-500"}
+                    textColor={this.props.currentEvent === event ? "text-green-dark" : "text-gray-500"}
                     handleClick={this.handleClick}
                 />
             );

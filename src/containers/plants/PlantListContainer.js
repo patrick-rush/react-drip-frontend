@@ -15,7 +15,7 @@ class PlantListContainer extends Component {
             return <Plant
                 key={plant.id}
                 plant={plant}
-                textColor={this.props.currentPlant === plant ? "text-green-700" : "text-gray-500"}
+                textColor={this.props.currentPlant === plant ? "text-green-dark" : "text-gray-500"}
                 handleClick={this.handleClick}
             />
         });

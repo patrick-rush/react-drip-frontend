@@ -95,10 +95,10 @@ class EventShow extends Component {
                     <li className="text-sm font-medium text-gray-900">
                         {this.createLabel(this.props.event.event_type)}
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                         {this.renderFrequency(this.props.event.event_type, this.props.plant)} days
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                         <button id="decrease" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
                             <i id="decrease" className="fa fa-minus"></i>
                         </button>
@@ -111,10 +111,10 @@ class EventShow extends Component {
                     <li className="text-sm font-medium text-gray-900">
                         Mark as Complete
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                     </li>
-                    <li className="mt-1 text-sm text-green-900 sm:mt-0 sm:col-span-1">
-                        <button onClick={this.handleClickCheck} className={`pl-2 pr-2 text-sm font-medium ${this.props.event.completed ? "text-green-500" : "text-gray-900"}`}>
+                    <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
+                        <button onClick={this.handleClickCheck} className={`pl-2 pr-2 text-sm font-medium ${this.props.event.completed ? "text-green" : "text-gray-900"}`}>
                             <i className="fas fa-check"></i>
                         </button>
                         <button onClick={this.handleDelete} className={`pl-2 pr-2 text-sm font-medium text-gray-900`}>

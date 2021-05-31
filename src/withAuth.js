@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { checkLoginStatus, loginUser, signupUser } from './actions/auth';
-import './index.css'
 
 function withAuth(WrappedComponent) {
     class AuthorizedComponent extends React.Component {
@@ -47,13 +46,13 @@ function withAuth(WrappedComponent) {
                 // return <p>You need to <button onClick={() => this.props.dispatchLoginUser()}>login</button></p>
             // START HERE - ADD FORM
                 return (
-                    <div className="bg-gradient-to-r from-purple to-pink">
+                    <div>
                     {/* <div className="bg-green"> */}
-                        <div className="bg-black">
+                        <div>
 
-                        <div className="login-wrapper min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-                            <div className={"max-w-md w-full space-y-8 animate-wiggle"}>
-                            {/* <div className={`max-w-md w-full space-y-8 ${animation}`}> */}
+                        <div className="login-wrapper min-h-screen flex items-center justify-center bg-gradient-to-r from-green-dark via-green-light to-yellow py-12 px-4 sm:px-6 lg:px-8">
+                            <div className={"max-w-md w-full space-y-8"}>
+                            {/* <div className={`max-w-md w-full space-y-8 animate-wiggle`}> */}
 
                                 <h1 className="mt-6 text-center text-3xl font-extrabold text-black">Please Log In</h1>
                                 <form className="mt-8 space-y-6">
@@ -83,8 +82,8 @@ function withAuth(WrappedComponent) {
                                                 />
                                         </div>
                                         <div>
-                                            <input type="submit" value="Login" onClick={this.handleOnLogin} className="group relative w-full flex justify-center mt-2 my-2 py-2 px-4 border-2 border-white text-sm font-medium rounded-md text-white bg-gradient-to-l from-green to-yellow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green"></input>
-                                            <input type="submit" value="Signup" onClick={this.handleOnSignup} className="group relative w-full flex justify-center my-2 py-2 px-4 border-2 border-white text-sm font-medium rounded-md text-white bg-gradient-to-l from-green to-yellow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-bright"></input>
+                                            <input type="submit" value="Login" onClick={this.handleOnLogin} className="group relative w-full flex justify-center mt-2 my-2 py-2 px-4 border-2 border-white text-sm font-medium rounded-md text-white bg-green hover:bg-green-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green"></input>
+                                            <input type="submit" value="Signup" onClick={this.handleOnSignup} className="group relative w-full flex justify-center my-2 py-2 px-4 border-2 border-white text-sm font-medium rounded-md text-white bg-green hover:bg-green-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-bright"></input>
                                         </div>
                                     </div>
                                 </form>
