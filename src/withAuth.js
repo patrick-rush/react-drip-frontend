@@ -56,7 +56,7 @@ function withAuth(WrappedComponent) {
 
                                 <h1 className="mt-6 text-center text-3xl font-extrabold text-black">Please Log In</h1>
                                 <form className="mt-8 space-y-6">
-                                    <div className="rounded-md shadow-sm -space-y-px">
+                                    <div className="rounded-md -space-y-px">
                                         <div>
                                             <label className="sr-only">Email</label>
                                             <input 

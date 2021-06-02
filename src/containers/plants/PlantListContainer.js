@@ -30,7 +30,7 @@ class PlantListContainer extends Component {
     
     render() {
         return (
-            <div className="bg-white opacity-90 shadow overflow-hidden sm:rounded-lg">
+            <div className="bg-white opacity-90 overflow-hidden sm:rounded-lg">
                 <Header header={"Plants"} />
                 <div className="border-t border-gray-light">
                     {this.props.loadingState === "successful" ? this.renderPlants() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}

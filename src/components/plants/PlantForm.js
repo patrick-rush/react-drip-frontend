@@ -67,7 +67,7 @@ class PlantForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleOnSubmit}>
-                <div className="shadow overflow-hidden rounded-none rounded-b-md">
+                <div className="overflow-hidden rounded-none rounded-b-md">
                     {/* <div>
                         <span className="text-sm font-medium text-red-400">{this.state.errors.name}</span>
                     </div> */}
@@ -166,7 +166,7 @@ class PlantForm extends Component {
                         <input 
                             type="submit" 
                             value={ this.props.currentPlant ? "Update" : "Save" } 
-                            className="submit inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green hover:bg-green-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green"
+                            className="submit inline-flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green hover:bg-green-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green"
                         />
                     </div>
                 </div>
