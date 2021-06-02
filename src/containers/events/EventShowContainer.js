@@ -15,7 +15,7 @@ import {
 class EventShowContainer extends Component {
     render() {
         return (
-            <div className="overflow-hidden bg-white sm:min-h-screen col-span-2 rounded-md shadow">
+            <div className="overflow-hidden bg-white opacity-90 sm:min-h-screen col-span-2 rounded-md shadow">
                 <Header 
                     // eslint-disable-next-line
                     header={!objectIsEmpty(this.props.currentEvent) ? `${this.props.currentEvent.event_type} ${this.props.currentPlant.name} on ${moment(this.props.currentEvent.due_date).format("dddd, MMMM Do YYYY")}` : <br/> }

@@ -15,7 +15,7 @@ import './index.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-gradient-to-r to-green via-green-light from-yellow-light">
       <Router>
         <NavigationContainer />
         <Switch>

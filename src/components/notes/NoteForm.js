@@ -27,7 +27,7 @@ class NoteForm extends Component {
     
     render() {
         return (
-            <form onSubmit={this.handleOnSubmit} className="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <form onSubmit={this.handleOnSubmit} className="bg-white opacity-90 shadow overflow-hidden sm:rounded-lg mt-5">
                 <div className="col-span-6 sm:col-span-3">
                     <textarea onChange={this.handleOnChange} value={this.state.content} className="h-20 px-2 py-1 mt-1 focus:ring-green focus:border-green block w-full shadow-sm sm:text-sm border-gray-light rounded-md"></textarea>
                 </div>

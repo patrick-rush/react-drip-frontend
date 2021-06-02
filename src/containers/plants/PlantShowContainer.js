@@ -34,7 +34,7 @@ class PlantShowContainer extends Component {
     render() {
         return (
             <div 
-                className="overflow-hidden bg-center bg-cover bg-white sm:min-h-screen col-span-2 rounded-md shadow" 
+                className="overflow-hidden bg-center bg-cover bg-white opacity-90 sm:min-h-screen col-span-2 rounded-md shadow" 
                 style={this.handleBackground()}
             >
                 { !objectIsEmpty(this.props.currentPlant) ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header={<br/>} /> }

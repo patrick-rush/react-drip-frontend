@@ -3,7 +3,7 @@ import moment from 'moment';
 
 function NoteByPlant({ handleDelete, note }) {
     return (
-        <div className={"bg-white shadow overflow-hidden sm:rounded-lg mt-5"}>
+        <div className={"bg-white opacity-90 shadow overflow-hidden sm:rounded-lg mt-5"}>
             <div className="text-sm font-medium px-4 pt-5 pb-0 col-span-full">
                 {moment().format("dddd, MMMM Do YYYY")}
                 <button onClick={() => handleDelete(note.id)} >

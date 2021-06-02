@@ -50,7 +50,7 @@ function withAuth(WrappedComponent) {
                     {/* <div className="bg-green"> */}
                         <div>
 
-                        <div className="login-wrapper min-h-screen flex items-center justify-center bg-gradient-to-r from-green-dark via-green-light to-yellow py-12 px-4 sm:px-6 lg:px-8">
+                        <div className="login-wrapper min-h-screen flex items-center justify-center bg-gradient-to-r to-green-dark via-green-light from-yellow py-12 px-4 sm:px-6 lg:px-8">
                             <div className={"max-w-md w-full space-y-8"}>
                             {/* <div className={`max-w-md w-full space-y-8 animate-wiggle`}> */}
 
