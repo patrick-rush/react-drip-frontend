@@ -3,10 +3,9 @@ import {
     TOGGLE_SHOW_NOTE_FORM,
     SUCCESSFULLY_ADDED_NOTE,
     SUCCESSFULLY_LOADED_NOTES_BY_PLANT,
-    SUCCESSFULLY_DELETED_NOTE
+    SUCCESSFULLY_DELETED_NOTE,
+    TOKEN
 } from '.';
-
-const TOKEN = sessionStorage.getItem('token')
 
 export const fetchNotesByPlant = (plantId) => {
     return (dispatch) => {

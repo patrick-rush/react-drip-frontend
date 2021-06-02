@@ -1,10 +1,9 @@
 import {
     LOG_IN,
     LOG_OUT,
-    CHECK_LOGIN_STATUS
+    CHECK_LOGIN_STATUS,
+    TOKEN
 } from '.';
-
-const TOKEN = sessionStorage.getItem('token')
 
 export const signupUser = (user) => {
     return (dispatch) => {

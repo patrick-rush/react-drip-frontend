@@ -30,3 +30,6 @@ export const CLEAR_NOTES_BY_CURRENT_PLANT = "CLEAR_NOTES_BY_CURRENT_PLANT";
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
 export const CHECK_LOGIN_STATUS = "CHECK_LOGIN_STATUS";
+
+// TOKEN
+export const TOKEN = sessionStorage.getItem('token');

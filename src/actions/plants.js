@@ -10,10 +10,9 @@ import {
     SET_CURRENT_PLANT,
     CLEAR_NOTES_BY_CURRENT_PLANT,
     CLEAR_EVENTS_BY_CURRENT_PLANT,
-    SUCCESSFULLY_LOADED_PLANT
+    SUCCESSFULLY_LOADED_PLANT,
+    TOKEN
 } from '.';
-
-const TOKEN = sessionStorage.getItem('token')
 
 export const fetchPlants = () => {
     return (dispatch) => {

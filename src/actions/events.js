@@ -7,9 +7,8 @@ import {
     SUCCESSFULLY_UPDATED_EVENT,
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
+    TOKEN
 } from '.';
-
-const TOKEN = sessionStorage.getItem('token')
 
 export const fetchEvents = () => {
     return (dispatch) => {
