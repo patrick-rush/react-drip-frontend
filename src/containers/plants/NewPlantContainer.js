@@ -10,7 +10,7 @@ class NewPlantContainer extends Component {
             <div className="pl-10 pr-10 pt-5 mx-auto sm:grid gap-4 my-4">
                 <div className="overflow-hidden bg-transparent sm:min-h-screen col-span-2 rounded-md">
                     <Header header={"New Plant"} />
-                    <div className="border-t border-gray-200">
+                    <div className="border-t border-gray">
                         <PlantForm handlePlantEvent={this.props.addPlant} history={this.props.history} />
                     </div>
                 </div>

@@ -15,7 +15,7 @@ class PlantListContainer extends Component {
             return <Plant
                 key={plant.id}
                 plant={plant}
-                textColor={this.props.currentPlant === plant ? "text-green-dark" : "text-gray-500"}
+                textColor={this.props.currentPlant === plant ? "text-green-dark" : "text-gray"}
                 handleClick={this.handleClick}
             />
         });
@@ -32,7 +32,7 @@ class PlantListContainer extends Component {
         return (
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
                 <Header header={"Plants"} />
-                <div className="border-t border-gray-200">
+                <div className="border-t border-gray">
                     {this.props.loadingState === "successful" ? this.renderPlants() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                 </div>
             </div>

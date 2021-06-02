@@ -3,9 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      fontFamily: {
-        'nunito': ['Nunito']
-      },
+      // fontFamily: {
+      //   'nunito': ['Nunito']
+      // },
       keyframes: {
         wiggle: {
           '0%, 100%': {
@@ -31,13 +31,17 @@ module.exports = {
         dark: '#477238',
       },
       yellow: {
-        DEFAULT: '#f7ce46'
+        light: '#f7dd88',
+        DEFAULT: '#f7ce46',
+        dark: 'daa700'
       },
       white: {
-        DEFAULT: '#e3e9e7',
+        DEFAULT: '#f5fcf9',
       },
       gray: {
-        DEFAULT: '#c2c7c5'
+        light: '#dfe5e3',
+        DEFAULT: '#c2c7c5',
+        dark: 'adb2b0'
       },
       black: {
         DEFAULT: '#282928'

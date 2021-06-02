@@ -10,7 +10,7 @@ class EditPlantContainer extends Component {
             <div className="pl-10 pr-10 pt-5 mx-auto sm:grid gap-4 my-4">
                 <div className="overflow-hidden bg-white sm:min-h-screen col-span-2 rounded-md shadow">
                     <Header header={`Edit ${this.props.currentPlant.name}`} />
-                    <div className="border-t border-gray-200">
+                    <div className="border-t border-gray">
                         <PlantForm handlePlantEvent={this.props.updatePlant} history={this.props.history} currentPlant={this.props.currentPlant} />
                     </div>
                 </div>

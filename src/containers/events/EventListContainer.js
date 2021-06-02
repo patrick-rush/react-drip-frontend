@@ -54,16 +54,16 @@ class EventListContainer extends Component {
         return (
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
                 <Header header="Overdue" />
-                <div className="border-t border-gray-200">
+                <div className="border-t border-gray-light">
                     {this.props.loadingState === "successful" ? this.renderOverdue() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                 </div>
                 <Header header="Today" />
-                <div className="border-t border-gray-200">
+                <div className="border-t border-gray-light">
                     {this.props.loadingState === "successful" ? this.renderToday() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                     {/* ATTN loading spinner needs to be added and styled */}
                 </div>
                 <Header header="Later" />
-                <div className="border-t border-gray-200">
+                <div className="border-t border-gray-light">
                     {this.props.loadingState === "successful" ? this.renderLater() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                 </div>
             </div>

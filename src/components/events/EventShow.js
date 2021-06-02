@@ -91,33 +91,33 @@ class EventShow extends Component {
     render() {
         return (
             <ul>
-                <div className="opacity-80 m-2 bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <li className="text-sm font-medium text-gray-900">
+                <div className="opacity-80 m-2 bg-gray-light px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <li className="text-sm font-medium text-gray-dark">
                         {this.createLabel(this.props.event.event_type)}
                     </li>
                     <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                         {this.renderFrequency(this.props.event.event_type, this.props.plant)} days
                     </li>
                     <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
-                        <button id="decrease" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button id="decrease" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-dark">
                             <i id="decrease" className="fa fa-minus"></i>
                         </button>
-                        <button id="increase" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-900">
+                        <button id="increase" onClick={this.handleFrequencyChange} className="pl-2 pr-2 text-sm font-medium text-gray-dark">
                             <i id="increase" className="fa fa-plus"></i>
                         </button>
                     </li>
                 </div>
                 <div className="opacity-80 m-2 bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <li className="text-sm font-medium text-gray-900">
+                    <li className="text-sm font-medium text-gray-dark">
                         Mark as Complete
                     </li>
                     <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
                     </li>
                     <li className="mt-1 text-sm text-green-dark sm:mt-0 sm:col-span-1">
-                        <button onClick={this.handleClickCheck} className={`pl-2 pr-2 text-sm font-medium ${this.props.event.completed ? "text-green" : "text-gray-900"}`}>
+                        <button onClick={this.handleClickCheck} className={`pl-2 pr-2 text-sm font-medium ${this.props.event.completed ? "text-green" : "text-gray-dark"}`}>
                             <i className="fas fa-check"></i>
                         </button>
-                        <button onClick={this.handleDelete} className={`pl-2 pr-2 text-sm font-medium text-gray-900`}>
+                        <button onClick={this.handleDelete} className={`pl-2 pr-2 text-sm font-medium text-gray-dark`}>
                             <i className="fa fa-trash content-end"></i>
                         </button>
                     </li>
