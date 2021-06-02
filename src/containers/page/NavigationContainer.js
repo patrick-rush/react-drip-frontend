@@ -14,7 +14,7 @@ function NavigationContainer() {
                     exact
                     to="/"
                     className="hover:bg-green-dark hover:text-white bg-green text-white px-3 py-2 rounded-md text-sm font-medium"
-                    activeClassName="text-green-light bg-green-dar"
+                    activeClassName="text-green-light bg-green-dark"
                     >Today
                   </NavLink>
                   <NavLink 
