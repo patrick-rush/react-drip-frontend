@@ -22,7 +22,6 @@ function withAuth(WrappedComponent) {
 
         handleOnLogin = event => {
             event.preventDefault();
-            console.log("type =", event)
             this.props.dispatchLoginUser(this.state);
             this.setState({
                 email: '',

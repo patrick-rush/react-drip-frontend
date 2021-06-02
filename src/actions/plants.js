@@ -16,7 +16,6 @@ import {
 const TOKEN = sessionStorage.getItem('token')
 
 export const fetchPlants = () => {
-    console.log("token =", TOKEN)
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
         return fetch(`${process.env.REACT_APP_SERVER}/plants`, {

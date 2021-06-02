@@ -22,7 +22,6 @@ export const signupUser = (user) => {
         })
             .then((res) => {
                 if (res.ok) {
-                    console.log(res.headers.get("Authorization"));
                     sessionStorage.setItem("token", res.headers.get("Authorization"));
                     return dispatch({ type: LOG_IN, payload: res.json() });
                 } else {
@@ -50,7 +49,6 @@ export const loginUser = (user) => {
     })
         .then((res) => {
             if (res.ok) {
-                console.log(res.headers.get("Authorization"));
                 sessionStorage.setItem("token", res.headers.get("Authorization"));
                 return dispatch({ type: LOG_IN, payload: res.json() });
             } else {
