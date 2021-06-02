@@ -13,7 +13,7 @@ import {
     SUCCESSFULLY_LOADED_PLANT
 } from '.';
 
-const TOKEN = localStorage.getItem('token')
+const TOKEN = sessionStorage.getItem('token')
 
 export const fetchPlants = () => {
     console.log("token =", TOKEN)

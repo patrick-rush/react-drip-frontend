@@ -4,6 +4,8 @@ import {
     CHECK_LOGIN_STATUS
 } from '.';
 
+const TOKEN = sessionStorage.getItem('token')
+
 export const signupUser = (user) => {
     return (dispatch) => {
         fetch("http://localhost:3000/signup", {
@@ -21,7 +23,7 @@ export const signupUser = (user) => {
             .then((res) => {
                 if (res.ok) {
                     console.log(res.headers.get("Authorization"));
-                    localStorage.setItem("token", res.headers.get("Authorization"));
+                    sessionStorage.setItem("token", res.headers.get("Authorization"));
                     return dispatch({ type: LOG_IN, payload: res.json() });
                 } else {
                     throw new Error(res);
@@ -49,7 +51,7 @@ export const loginUser = (user) => {
         .then((res) => {
             if (res.ok) {
                 console.log(res.headers.get("Authorization"));
-                localStorage.setItem("token", res.headers.get("Authorization"));
+                sessionStorage.setItem("token", res.headers.get("Authorization"));
                 return dispatch({ type: LOG_IN, payload: res.json() });
             } else {
                 throw new Error(res);
@@ -67,8 +69,14 @@ export const logoutUser = () => {
 }
 
 export const checkLoginStatus = () => {
-    return (dispatch) => {
-        dispatch({ type: CHECK_LOGIN_STATUS })
+    if (TOKEN) {
+        return (dispatch) => {
+            dispatch({ type: CHECK_LOGIN_STATUS, payload: true })
+        }
+    } else {
+        return (dispatch) => {
+            dispatch({ type: CHECK_LOGIN_STATUS, payload: false })
+    }
     }
 }
 

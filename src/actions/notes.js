@@ -6,7 +6,7 @@ import {
     SUCCESSFULLY_DELETED_NOTE
 } from '.';
 
-const TOKEN = localStorage.getItem('token')
+const TOKEN = sessionStorage.getItem('token')
 
 export const fetchNotesByPlant = (plantId) => {
     return (dispatch) => {

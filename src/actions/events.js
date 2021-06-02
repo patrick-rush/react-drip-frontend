@@ -9,7 +9,7 @@ import {
     TOGGLE_SHOW_EVENT_FORM,
 } from '.';
 
-const TOKEN = localStorage.getItem('token')
+const TOKEN = sessionStorage.getItem('token')
 
 export const fetchEvents = () => {
     return (dispatch) => {
