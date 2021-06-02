@@ -36,10 +36,10 @@ module.exports = {
         dark: 'daa700'
       },
       white: {
-        DEFAULT: '#f5fcf9',
+        DEFAULT: '#ffffff',
       },
       gray: {
-        light: '#dfe5e3',
+        light: '#c7d7b3',
         DEFAULT: '#c2c7c5',
         dark: 'adb2b0'
       },

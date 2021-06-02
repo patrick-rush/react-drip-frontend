@@ -107,7 +107,7 @@ class EventShow extends Component {
                         </button>
                     </li>
                 </div>
-                <div className="opacity-80 m-2 bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div className="opacity-80 m-2 bg-gray-light px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <li className="text-sm font-medium text-gray-dark">
                         Mark as Complete
                     </li>
