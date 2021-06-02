@@ -86,7 +86,7 @@ class PlantForm extends Component {
                                     placeholder="Name"
                                     required
                                     // className="mt-1 focus:ring-green focus:border-green block w-full shadow-sm sm:text-sm border-green-light rounded-md"
-                                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-white placeholder-gray text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"
+                                    className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-light border border-white placeholder-gray-dark text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"
                                 />
                             </div>
                             <div className="col-span-6 sm:col-span-3">
@@ -100,7 +100,8 @@ class PlantForm extends Component {
                                     id="species" 
                                     value={this.state.species} 
                                     placeholder="Species"
-                                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-white placeholder-gray text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"                                />
+                                    className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-light border border-white placeholder-gray-dark text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"
+                                />
                             </div>
                             <div className="col-span-6 sm:col-span-6">
                                 <label className="sr-only">
@@ -113,7 +114,8 @@ class PlantForm extends Component {
                                     id="location" 
                                     value={this.state.location} 
                                     placeholder="Location"
-                                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-white placeholder-gray text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"                                />
+                                    className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-light border border-white placeholder-gray-dark text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"
+                                />
                             </div>
                             <div className="col-span-6 sm:col-span-6">
                                 <label className="block text-sm font-medium text-green-700">
@@ -140,7 +142,8 @@ class PlantForm extends Component {
                                     value={this.state.watering_frequency} 
                                     placeholder="Watering Frequency (days)" 
                                     required
-                                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-white placeholder-gray text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"                                />
+                                    className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-light border border-white placeholder-gray-dark text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"
+                                />
                             </div>
                             <div className="col-span-6 sm:col-span-3">
                                 <label className="sr-only">
@@ -154,7 +157,8 @@ class PlantForm extends Component {
                                     placeholder="Fertilizing Frequency (days)" 
                                     required
                                     value={this.state.fertilizing_frequency} 
-                                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-white placeholder-gray text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"                                />
+                                    className="appearance-none rounded-md relative block w-full px-3 py-2 bg-gray-light border border-white placeholder-gray-dark text-gray-dark focus:outline-none focus:ring-yellow focus:border-yellow focus:z-10 sm:text-sm"
+                                />
                             </div>
                         </div>
                     </div>
