@@ -1,7 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logoutUser } from '../../actions/auth';
 
-function NavigationContainer() {
+
+function NavigationContainer(props) {
+
+  const handleLogout = () => {
+    const proceed = window.confirm("Are you sure you want to log out?");
+    if (proceed) {
+      props.logout()
+    }
+  }
+
   return (
     <nav className="bg-gradient-to-r to-green-dark via-green-light from-yellow">
     {/* <nav className="bg-gradient-to-r from-green-400 to-green-800"> */}
@@ -37,6 +48,7 @@ function NavigationContainer() {
                     activeClassName="text-green-light bg-green-dark"
                     >Logout
                   </button> */}
+                  <div onClick={handleLogout} className="cursor-pointer hover:bg-green-dark hover:text-white bg-green text-white px-3 py-2 rounded-md text-sm font-medium">Logout</div>
                 </div>
               </div>  
             </div>
@@ -46,4 +58,10 @@ function NavigationContainer() {
   )
 }
 
-export default NavigationContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logoutUser())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NavigationContainer);

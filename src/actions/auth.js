@@ -60,6 +60,7 @@ export const loginUser = (user) => {
 }
 
 export const logoutUser = () => {
+    sessionStorage.removeItem('token')
     return (dispatch) => {
         dispatch({ type: LOG_OUT })
     }
