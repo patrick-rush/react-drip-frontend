@@ -34,11 +34,11 @@ class PlantShowContainer extends Component {
     render() {
         return (
             <div 
-                className="overflow-hidden bg-center bg-cover bg-white sm:min-h-screen col-span-2 rounded-md shadow" 
+                className="overflow-hidden bg-center bg-cover bg-white opacity-90 sm:min-h-screen col-span-2 rounded-md" 
                 style={this.handleBackground()}
             >
                 { !objectIsEmpty(this.props.currentPlant) ? <Header header={`${this.props.currentPlant.name} the ${this.props.currentPlant.species}`} currentPlant={this.props.currentPlant}/> : <Header header={<br/>} /> }
-                <div className="border-t border-gray-200">
+                <div className="border-t border-gray-light">
                     { !objectIsEmpty(this.props.currentPlant) ? this.renderPlant(this.props) : <Welcome info="All of your plant babies in one place" sillyMessage="" /> }
                 </div>
             </div>

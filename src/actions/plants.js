@@ -10,13 +10,20 @@ import {
     SET_CURRENT_PLANT,
     CLEAR_NOTES_BY_CURRENT_PLANT,
     CLEAR_EVENTS_BY_CURRENT_PLANT,
-    SUCCESSFULLY_LOADED_PLANT
+    SUCCESSFULLY_LOADED_PLANT,
+    GET_TOKEN
 } from '.';
 
 export const fetchPlants = () => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        return fetch(`${process.env.REACT_APP_SERVER}/plants`)
+        return fetch(`${process.env.REACT_APP_SERVER}/plants`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: GET_TOKEN()
+            }
+        })
             .then((res) => res.json())
             .then((plantsJson) => {
                 dispatch({
@@ -30,7 +37,13 @@ export const fetchPlants = () => {
 export const fetchPlant = (plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
-        return fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`)
+        return fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: GET_TOKEN()
+            }
+        })
             .then((res) => res.json())
             .then((plantJson) => {
                 dispatch({
@@ -48,7 +61,11 @@ export const addPlant = (formData) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
         return fetch(`${process.env.REACT_APP_SERVER}/plants`, {
             method: "POST",
-            body: formData
+            body: formData,
+            headers: {
+                // "Accept": "application/json",
+                Authorization: GET_TOKEN()
+            }
         })
             .then(res => {
                 if (res.ok) {
@@ -77,7 +94,11 @@ export const updatePlant = (formData, plantId) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
         return fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`, {
             method: "PATCH",
-            body: formData
+            body: formData,
+            headers: {
+                // "Accept": "application/json",
+                Authorization: GET_TOKEN()
+            }
         })
         .then(res => res.json())
         .then((plantJson) => {
@@ -93,6 +114,11 @@ export const deletePlant = (plantId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_PLANT_SERVER })
         fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: GET_TOKEN()
+            },
             method: 'DELETE'
         })
         .then(() => {

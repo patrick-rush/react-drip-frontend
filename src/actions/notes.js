@@ -3,7 +3,8 @@ import {
     TOGGLE_SHOW_NOTE_FORM,
     SUCCESSFULLY_ADDED_NOTE,
     SUCCESSFULLY_LOADED_NOTES_BY_PLANT,
-    SUCCESSFULLY_DELETED_NOTE
+    SUCCESSFULLY_DELETED_NOTE,
+    GET_TOKEN
 } from '.';
 
 export const fetchNotesByPlant = (plantId) => {
@@ -12,7 +13,8 @@ export const fetchNotesByPlant = (plantId) => {
         fetch(`${process.env.REACT_APP_SERVER}/plants/${plantId}/notes`, {
             headers: {
                 "Accept": "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: GET_TOKEN()
             }
         })
             .then((res) => res.json())
@@ -38,7 +40,8 @@ export const createNote = (note) => {
             method: 'POST',
             headers: {
                 "Accept" : "application/json",
-                "Content-Type" : "application/json"    
+                "Content-Type" : "application/json",
+                Authorization: GET_TOKEN()
             },
             body: JSON.stringify({note: note})
         })
@@ -57,6 +60,10 @@ export const deleteNote = (noteId) => {
     return (dispatch) => {
         dispatch({ type: START_CONTACTING_NOTE_SERVER })
         fetch(`${process.env.REACT_APP_SERVER}/notes/${noteId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: GET_TOKEN()
+            },
             method: 'DELETE'
         })
         .then(() => {

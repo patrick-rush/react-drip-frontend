@@ -35,7 +35,6 @@ export default function plantsReducer(state = initialState, action) {
                 errors: {}
             }
         case SUCCESSFULLY_UPDATED_PLANT:
-            console.log("payload", action.payload)
             return {
                 ...state,
                 loadingState: "successful",
@@ -47,7 +46,7 @@ export default function plantsReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingState: "successful",
-                currentPlant: null,
+                currentPlant: {},
                 plants: state.plants.filter(plant => plant.id !== action.payload)
             }    
         case SET_CURRENT_PLANT: 
@@ -57,7 +56,6 @@ export default function plantsReducer(state = initialState, action) {
                 currentPlant: state.plants.find(plant => plant.id == action.payload)
             }
         case SUCCESSFULLY_LOADED_PLANT:
-            console.log("success", action.payload)
             return {
                 ...state,
                 loadingState: "successful",

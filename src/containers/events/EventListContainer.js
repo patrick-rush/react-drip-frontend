@@ -5,27 +5,29 @@ import Header from '../../components/page/Header';
 import Event from '../../components/events/Event';
 import { setEventToActive } from '../../actions/events';
 import { setPlantToActive } from '../../actions/plants';
+import { arrayIsEmpty } from '../../helpers';
 
 class EventListContainer extends Component {
     
     renderOverdue = () => {
         const today = moment().format().slice(0,10);
+        console.log("EVENTS =", this.props.events)
         const overdueEvents = this.props.events.filter(event => event.due_date < today );
-        const sortedEvents = overdueEvents.sort((a, b) => a.due_date > b.due_date ? 1:-1);
+        const sortedEvents = overdueEvents.sort((a, b) => a.due_date > b.due_date ? 1:-1) || [];
         return this.renderEvents(sortedEvents);
     }
     
     renderToday = () => {
         const today = moment().format().slice(0,10);
         const eventsDueToday = this.props.events.filter(event => event.due_date === today)
-        const sortedEvents = eventsDueToday.sort((a, b) => a.due_date > b.due_date ? 1:-1);
+        const sortedEvents = eventsDueToday.sort((a, b) => a.due_date > b.due_date ? 1:-1) || [];
         return this.renderEvents(sortedEvents);
     };
 
     renderLater = () => {
         const today = moment().format().slice(0,10);
         const eventsDueLater = this.props.events.filter(event => event.due_date > today)
-        const sortedEvents = eventsDueLater.sort((a, b) => a.due_date > b.due_date ? 1:-1);
+        const sortedEvents = eventsDueLater.sort((a, b) => a.due_date > b.due_date ? 1:-1) || [];
         return this.renderEvents(sortedEvents);
     }
 
@@ -37,7 +39,7 @@ class EventListContainer extends Component {
                     event={event}
                     // eslint-disable-next-line
                     plant={this.props.plants.find(plant => plant.id == event.plant_id)}
-                    textColor={this.props.currentEvent === event ? "text-green-700" : "text-gray-500"}
+                    textColor={this.props.currentEvent === event ? "text-gray-dark" : "text-green-dark"}
                     handleClick={this.handleClick}
                 />
             );
@@ -52,19 +54,19 @@ class EventListContainer extends Component {
     
     render() {
         return (
-            <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div className="bg-white opacity-90 overflow-hidden sm:rounded-lg">
                 <Header header="Overdue" />
-                <div className="border-t border-gray-200">
-                    {this.props.loadingState === "successful" ? this.renderOverdue() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
+                <div className="border-t border-gray-light">
+                    {this.props.loadingState === "successful" && !arrayIsEmpty(this.props.events)? this.renderOverdue() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                 </div>
                 <Header header="Today" />
-                <div className="border-t border-gray-200">
-                    {this.props.loadingState === "successful" ? this.renderToday() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
+                <div className="border-t border-gray-light">
+                    {this.props.loadingState === "successful" && !arrayIsEmpty(this.props.events)? this.renderToday() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                     {/* ATTN loading spinner needs to be added and styled */}
                 </div>
                 <Header header="Later" />
-                <div className="border-t border-gray-200">
-                    {this.props.loadingState === "successful" ? this.renderLater() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
+                <div className="border-t border-gray-light">
+                    {this.props.loadingState === "successful" && !arrayIsEmpty(this.props.events)? this.renderLater() : <i className="fa fa-leaf animate-spin text-center w-full m-2 px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6"></i>}
                 </div>
             </div>
         )

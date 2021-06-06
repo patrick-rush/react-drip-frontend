@@ -45,10 +45,10 @@ class EventForm extends Component {
     
     render() {
         return (
-            <form onSubmit={this.handleOnSubmit} className="bg-grey-50 shadow overflow-hidden sm:rounded-lg mt-5">
+            <form onSubmit={this.handleOnSubmit} className="bg-gray-light overflow-hidden sm:rounded-lg mt-5">
                 <div className="col-span-6 sm:col-span-3">
                     <div className="col-span-6 sm:col-span-3">
-                        <div className="opacity-90 m-2 bg-gray-50 text-center px-4 py-5 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-6">
+                        <div className="opacity-90 m-2 bg-gray-light text-center px-4 py-5 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-6">
                             <div>
                                 <label className="text-sm font-medium">
                                     <input onChange={this.handleOptionChange} type="radio" value="water" checked={this.state.selected === "water"} className="mr-2 form-radio"></input>
@@ -62,7 +62,7 @@ class EventForm extends Component {
                                 </label>
                             </div>
                         </div>
-                        <label className="block p-4 text-sm font-medium text-green-700">
+                        <label className="block p-4 text-sm font-medium text-green-dark">
                             Choose a date to {this.state.selected} {this.props.currentPlant.name} <span className="text-sm font-medium text-red-400">{this.state.errors.due_date}</span>
                         </label>
                         <input
@@ -70,13 +70,13 @@ class EventForm extends Component {
                             type="date"
                             id="dueDate"
                             value={this.state.date}
-                            className="px-4 py-4 mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-green-100 rounded-md" 
+                            className="px-4 py-4 mt-1 focus:ring-green focus:border-green block w-full sm:text-sm border-green-light rounded-md" 
                         />
                     </div>
-                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <div className="px-4 py-3 bg-gray-light text-right sm:px-6">
                         <input
                             type="submit"
-                            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                            className="inline-flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green hover:bg-green-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green"
                         />
                     </div>
                 </div>
