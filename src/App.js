@@ -10,22 +10,27 @@ import NewPlantContainer from './containers/plants/NewPlantContainer';
 import TodayPageContainer from './containers/events/TodayPageContainer';
 import EditPlantContainer from './containers/plants/EditPlantContainer';
 import Welcome from './components/page/Welcome';
+import Signup from './components/auth/Signup';
+import Login from './components/auth/Login';
 import withAuth from './withAuth';
 import './index.css'
 
 function App() {
   return (
-    <div className="App bg-gradient-to-r to-green via-green-light from-yellow-light">
+    <div className="App bg-white">
       <Router>
         <NavigationContainer />
         <Switch>
-          <Route exact path="/" component={TodayPageContainer} ></Route>
-          <Route exact path="/events" component={TodayPageContainer} ></Route>
-          <Route path="/events/:eventId" component={TodayPageContainer} ></Route>
-          <Route exact path="/plants" component={PlantPageContainer} ></Route>
-          <Route path="/plants/new" component={NewPlantContainer} ></Route>
-          <Route exact path="/plants/edit/:plantId" component={EditPlantContainer} ></Route>
-          <Route exact path="/plants/:plantId" component={PlantPageContainer} ></Route>
+          {/* <Route exact path="/" component={TodayPageContainer} ></Route> */}
+          <Route exact path="/"><Welcome info="We're glad you're here" sillyMessage="Log In or Sign Up to get started!" /></Route>
+          <Route exact path="/events" component={withAuth(TodayPageContainer)} ></Route>
+          <Route path="/events/:eventId" component={withAuth(TodayPageContainer)} ></Route>
+          <Route exact path="/plants" component={withAuth(PlantPageContainer)} ></Route>
+          <Route path="/plants/new" component={withAuth(NewPlantContainer)} ></Route>
+          <Route exact path="/plants/edit/:plantId" component={withAuth(EditPlantContainer)} ></Route>
+          <Route exact path="/plants/:plantId" component={withAuth(PlantPageContainer)} ></Route>
+          <Route exact path="/signup" component={Signup} ></Route>
+          <Route exact path="/login" component={Login} ></Route>
           <Route path ="/*" ><Welcome info="Your plants are gonna miss you" sillyMessage="Better hit that back button" /></Route>
         </Switch>
       </Router>
@@ -33,4 +38,4 @@ function App() {
   );
 }
 
-export default withAuth(App);
+export default App;
