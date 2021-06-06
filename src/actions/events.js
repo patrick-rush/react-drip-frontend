@@ -7,7 +7,7 @@ import {
     SUCCESSFULLY_UPDATED_EVENT,
     SET_CURRENT_EVENT,
     TOGGLE_SHOW_EVENT_FORM,
-    TOKEN
+    GET_TOKEN
 } from '.';
 
 export const fetchEvents = () => {
@@ -17,7 +17,7 @@ export const fetchEvents = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             }
         })
             .then((res) => res.json())
@@ -37,7 +37,7 @@ export const fetchEventsByPlant = (plantId) => {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             }
         })
             .then((res) => res.json())
@@ -56,7 +56,7 @@ export const deleteEvent = (eventId) => {
         fetch(`${process.env.REACT_APP_SERVER}/care_events/${eventId}`, { 
             headers: {
                 "Content-Type": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             },
             method: 'DELETE', 
         })
@@ -89,7 +89,7 @@ export const updateEvent = (event, eventId) => {
             headers: {
                 "Accept" : "application/json",
                 "Content-Type" : "application/json",
-                Authorization: TOKEN  
+                Authorization: GET_TOKEN()  
             },
             body: JSON.stringify({ care_event: event })
         })
@@ -115,7 +115,7 @@ export const createEvent = (event) => {
             headers: {
                 "Accept" : "application/json",
                 "Content-Type" : "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             },
             body: JSON.stringify({ care_event: event })
         })

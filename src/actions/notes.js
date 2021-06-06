@@ -4,7 +4,7 @@ import {
     SUCCESSFULLY_ADDED_NOTE,
     SUCCESSFULLY_LOADED_NOTES_BY_PLANT,
     SUCCESSFULLY_DELETED_NOTE,
-    TOKEN
+    GET_TOKEN
 } from '.';
 
 export const fetchNotesByPlant = (plantId) => {
@@ -14,7 +14,7 @@ export const fetchNotesByPlant = (plantId) => {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             }
         })
             .then((res) => res.json())
@@ -41,7 +41,7 @@ export const createNote = (note) => {
             headers: {
                 "Accept" : "application/json",
                 "Content-Type" : "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             },
             body: JSON.stringify({note: note})
         })
@@ -62,7 +62,7 @@ export const deleteNote = (noteId) => {
         fetch(`${process.env.REACT_APP_SERVER}/notes/${noteId}`, {
             headers: {
                 "Content-Type": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             },
             method: 'DELETE'
         })

@@ -11,7 +11,7 @@ import {
     CLEAR_NOTES_BY_CURRENT_PLANT,
     CLEAR_EVENTS_BY_CURRENT_PLANT,
     SUCCESSFULLY_LOADED_PLANT,
-    TOKEN
+    GET_TOKEN
 } from '.';
 
 export const fetchPlants = () => {
@@ -21,7 +21,7 @@ export const fetchPlants = () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             }
         })
             .then((res) => res.json())
@@ -41,7 +41,7 @@ export const fetchPlant = (plantId) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             }
         })
             .then((res) => res.json())
@@ -64,7 +64,7 @@ export const addPlant = (formData) => {
             body: formData,
             headers: {
                 // "Accept": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             }
         })
             .then(res => {
@@ -97,7 +97,7 @@ export const updatePlant = (formData, plantId) => {
             body: formData,
             headers: {
                 // "Accept": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             }
         })
         .then(res => res.json())
@@ -117,7 +117,7 @@ export const deletePlant = (plantId) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                Authorization: TOKEN
+                Authorization: GET_TOKEN()
             },
             method: 'DELETE'
         })
