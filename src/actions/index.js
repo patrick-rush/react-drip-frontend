@@ -29,7 +29,21 @@ export const CLEAR_NOTES_BY_CURRENT_PLANT = "CLEAR_NOTES_BY_CURRENT_PLANT";
 // AUTH
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
+export const AUTHENTICATED = "AUTHENTICATED";
+export const NOT_AUTHENTICATED = "NOT_AUTHENTICATED";
 export const CHECK_LOGIN_STATUS = "CHECK_LOGIN_STATUS";
 
 // TOKEN
-export const TOKEN = sessionStorage.getItem('token');
+// export const TOKEN = sessionStorage.getItem('token');
+export const SET_TOKEN = (token) => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('lastLoginTime', new Date(Date.now()).getTime());
+}
+export const GET_TOKEN = () => {
+    const now = new Date(Date.now()).getTime();
+    const thirtyMinutes = 1000 * 60 * 30;
+    const timeSinceLastLogin = now - localStorage.getItem('lastLoginTime');
+    if (timeSinceLastLogin < thirtyMinutes) {
+        return localStorage.getItem('token');
+    }
+}
